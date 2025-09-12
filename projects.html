@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>HackerFab — Projects — HackerFab</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header" role="banner">
+      <div class="brand">
+        <div class="logo">HF</div>
+        <div>
+          <div style="font-weight:800">HackerFab</div>
+          <div class="small" style="color:var(--muted)">Student-built microfabrication lab</div>
+        </div>
+      </div>
+      <nav id="navlinks" style="display:flex;align-items:center">
+        <a class="nav-link " href="index.html">Home</a>
+        <a class="nav-link " href="about.html">About</a>
+        <a class="nav-link active" href="projects.html">Projects</a>
+        <a class="nav-link " href="team.html">Team</a>
+        <a class="nav-link " href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-mobile btn" onclick="toggleNav()">Menu</button>
+    </header>
+
+    
+<section class="section">
+  <div class="card">
+    <div class="section-title"><h2>Projects</h2></div>
+    <p class="small">Selected projects and prototypes with links to documentation and repositories (add links after uploading repos).</p>
+    <div style="margin-top:12px" class="card-grid">
+      <div class="card">
+        <div class="img-card"><img src="assets/images/hero_lab.svg" alt="spin" /></div>
+        <h3>Spin Coater (v1)</h3><p class="small">Motor+MCU, gravity chuck, controlled spin profiles. <strong>Status:</strong> Prototype</p>
+      </div>
+      <div class="card">
+        <div class="img-card"><img src="assets/images/prototype.svg" alt="litho" /></div>
+        <h3>Maskless Lithography</h3><p class="small">Projected patterns using microscope optics and UV LED arrays. <strong>Status:</strong> Prototype</p>
+      </div>
+      <div class="card">
+        <div class="img-card"><img src="assets/images/team_photo.svg" alt="eda" /></div>
+        <h3>Open EDA Tools</h3><p class="small">Pipelines for photomask generation and device layout. <strong>Status:</strong> Planning</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <footer class="footer">
+      <div>© HackerFab — Built with ❤️ • Host on GitHub Pages</div>
+    </footer>
+  </div>
+<script src="assets/script.js"></script>
+</body>
+</html>
