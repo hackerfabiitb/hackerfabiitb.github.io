@@ -1,0 +1,206 @@
+<!--
+Simple single-file static website (index.html)
+
+How to use:
+1. Save this file as index.html
+2. Create a new GitHub repository (e.g. `your-username.github.io` for user site, or any repo for a project site)
+3. Commit & push index.html to the repository's default branch (main/master) or to the `gh-pages` branch
+4. Enable GitHub Pages in the repository settings (choose branch and root or /docs folder). For `your-username.github.io` the page will be served from the root automatically.
+
+Customize: edit the sections below (About, Projects, Contact) and replace placeholder images/text.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Site — Built for GitHub Pages</title>
+  <meta name="description" content="A clean, responsive single-file website ready to host on GitHub Pages." />
+
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa6bf;--accent:#67e8f9;--glass: rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,#071025 0%, #071022 60%);}
+    a{color:var(--accent);text-decoration:none}
+    header{padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:linear-gradient(180deg, rgba(7,16,37,0.8), rgba(7,16,34,0.5));backdrop-filter: blur(6px);z-index:20}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#06b6d4,#60a5fa);display:flex;align-items:center;justify-content:center;color:#022; font-weight:700}
+    nav{display:flex;gap:16px;align-items:center}
+    .btn{padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);cursor:pointer}
+
+    .wrap{max-width:1000px;margin:36px auto;padding:18px}
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:14px;box-shadow: 0 6px 20px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    h1{margin:0 0 8px;font-size:28px}
+    p.lead{margin:0;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .card h3{margin:0 0 6px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    footer{padding:28px 0;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width:880px){.grid{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.brand span{display:none}}
+
+    /* Small utilities */
+    .muted{color:var(--muted)}
+    .button-primary{background:linear-gradient(90deg,#06b6d4,#60a5fa);padding:10px 14px;border-radius:10px;color:#022;font-weight:600;border:none}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:600px){.projects{grid-template-columns:1fr}}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:13px;border:1px solid rgba(255,255,255,0.03)}
+
+    .nav-toggle{display:none}
+    @media (max-width:720px){nav{display:none}.nav-toggle{display:block}}
+
+    .contact-form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:#e6eef8}
+    textarea{min-height:120px}
+    .small{font-size:13px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">YK</div>
+      <div>
+        <div style="font-weight:700">Your Site</div>
+        <div class="muted" style="font-size:13px">A GitHub Pages-ready single-file site</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="#download" onclick="downloadSite()">Download</a>
+    </nav>
+
+    <button class="nav-toggle btn" aria-label="open menu" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">Menu</button>
+  </header>
+
+  <div id="mobileMenu" class="hidden" style="padding:12px;background:linear-gradient(180deg, rgba(7,16,37,0.9), rgba(7,16,34,0.9));position:sticky;top:66px;z-index:15">
+    <a href="#about" style="display:block;padding:8px 0">About</a>
+    <a href="#projects" style="display:block;padding:8px 0">Projects</a>
+    <a href="#contact" style="display:block;padding:8px 0">Contact</a>
+  </div>
+
+  <main class="wrap">
+    <section class="hero-card hero">
+      <div>
+        <h1>Fast, clean website — ready to host on GitHub</h1>
+        <p class="lead">This single-file site is responsive, accessible, and easy to edit. Modify the sections below and push to GitHub to get it online.</p>
+        <div style="margin-top:14px;display:flex;gap:10px">
+          <a class="button-primary" href="#projects">See projects</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <div style="padding:26px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:inline-block">
+          <h3 style="margin:0">Static site</h3>
+          <p class="muted small">Perfect for portfolios, docs, and small projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:20px">
+      <div class="hero-card">
+        <h2>About this site</h2>
+        <p class="muted">Built as a single HTML file (index.html). No build tools required. Works with GitHub Pages or any static host.</p>
+
+        <div class="grid" style="margin-top:12px">
+          <div class="card">
+            <h3>Lightweight</h3>
+            <p>Minimal dependencies — fast to load and simple to maintain.</p>
+          </div>
+          <div class="card">
+            <h3>Responsive</h3>
+            <p>Layouts that adapt to mobile and desktop screens.</p>
+          </div>
+          <div class="card">
+            <h3>Editable</h3>
+            <p>Open the file in any editor and replace text or images.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" style="margin-top:18px">
+      <div class="hero-card">
+        <h2>Projects</h2>
+        <p class="muted">Showcase a few projects. Replace these cards with links to your repos or live demos.</p>
+
+        <div class="projects" style="margin-top:12px">
+          <div class="card">
+            <h3>Project One</h3>
+            <p class="small muted">Short description. <a href="#">View repo</a></p>
+          </div>
+          <div class="card">
+            <h3>Project Two</h3>
+            <p class="small muted">Short description. <a href="#">View demo</a></p>
+          </div>
+          <div class="card">
+            <h3>Project Three</h3>
+            <p class="small muted">Short description. <a href="#">Read more</a></p>
+          </div>
+          <div class="card">
+            <h3>Project Four</h3>
+            <p class="small muted">Short description. <a href="#">View repo</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:18px">
+      <div class="hero-card">
+        <h2>Contact</h2>
+        <p class="muted">Replace with a real form or use a mailto link. This demo shows a local interaction without external services.</p>
+
+        <form id="contactForm" class="contact-form" onsubmit="handleContact(event)">
+          <input id="name" placeholder="Your name" required />
+          <input id="email" placeholder="Your email" type="email" required />
+          <textarea id="message" placeholder="Message" required></textarea>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="button-primary" type="submit">Send</button>
+            <div class="muted small">Or email: <a href="mailto:you@example.com">you@example.com</a></div>
+          </div>
+          <div id="formStatus" class="small muted" style="margin-top:8px"></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="muted">Made with ❤️ — ready for GitHub Pages. &nbsp; • &nbsp; <span class="chip">No JS build</span></div>
+    </div>
+  </footer>
+
+  <script>
+    function handleContact(e){
+      e.preventDefault();
+      var name=document.getElementById('name').value.trim();
+      var email=document.getElementById('email').value.trim();
+      var message=document.getElementById('message').value.trim();
+      var status=document.getElementById('formStatus');
+      // This demo doesn't send mail — show a copy-paste message and a mailto link instead.
+      status.textContent = 'Preview: "' + message.slice(0,120) + '" — Click to open mail client.';
+      window.location.href = 'mailto:you@example.com?subject=' + encodeURIComponent('Contact from ' + name) + '&body=' + encodeURIComponent(message + '\n\nEmail: ' + email);
+    }
+
+    function downloadSite(){
+      var html = document.documentElement.outerHTML;
+      var blob = new Blob([html], {type: 'text/html'});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a'); a.href = url; a.download = 'index.html'; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url), 1000);
+    }
+
+    // small helper to show/hide mobile menu
+    document.getElementById('mobileMenu').classList.add('hidden');
+  </script>
+</body>
+</html>
