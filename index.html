@@ -1,775 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>HackerFab IITB</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Clarity
-  * Template URL: https://bootstrapmade.com/clarity-bootstrap-agency-template/
-  * Updated: Sep 13 2025 with Bootstrap v5.3.8
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackerFab | IIT Bombay</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
-<body class="index-page">
-
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="https://hackerfab.ece.cmu.edu/" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">HackerFab Network</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Goals</a></li>
-          <!-- <li><a href="#portfolio">Progress</a></li> -->
-          <li><a href="#team">Team</a></li>
-          <!-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li> -->
-          <li><a href="#contact">Contact</a></li>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-logo">HackerFab</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#timeline">Journey</a></li>
+            <li><a href="#team">Team</a></li>
+            <!-- <li><a href="#sponsors">Sponsors</a></li> -->
+            <li><a href="#contact">Contact</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted" href="#about">Get Started</a>
-
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
-
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-            <div class="hero-content">
-              <h1>India’s first student-built microfabrication lab</h1>
-              <p>
-                Creating open-source, student-designed fabrication tools to make hands-on fabrication accessible across India. Join us in spreading this culture of innovation and learning!
-              <div class="hero-buttons">
-                <div class="social-buttons">
-                  <a href="https://github.com/hackerfab" class="social-btn github-btn" target="_blank">
-                    <i class="bi bi-github"></i>
-                    <span>GitHub</span>
-                  </a>
-                  <a href="https://www.linkedin.com/company/hackerfab-iitb/" class="social-btn linkedin-btn" target="_blank">
-                    <i class="bi bi-linkedin"></i>
-                    <span>LinkedIn</span>
-                  </a>
-                  <a href="https://discord.gg/f4WvC2fa9d" class="social-btn discord-btn" target="_blank">
-                    <i class="bi bi-discord"></i>
-                    <span>Discord</span>
-                  </a>
-                  <a href="mailto:hackerfabiitb@gmail.com" class="social-btn mail-btn" target="_blank">
-                    <i class="bi bi-envelope"></i>
-                    <span>Email</span>
-                  </a>
-                </div>
-                <!-- <a href = "assets/documents/Email_format.pdf"> For students at IITB who wish to join us</a>   -->
-                <!-- <a href="#" class="btn btn-primary">Get Started</a>
-                <a href="#" class="btn btn-outline">Our Work</a> -->
-              </div>
-              <div class="hero-stats">
-                <!-- <div class="stat-item">
-                  <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"></span>
-                  <span class="stat-label">Projects Completed</span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="95" data-purecounter-duration="1"></span>
-                  <span class="stat-label">Client Satisfaction</span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1"></span>
-                  <span class="stat-label">Team Members</span>
-                </div> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
-            <div class="hero-visual">
-              <div class="hero-image">
-                <img src="assets/img/Logos/HackerFabLogo-removebg.png" alt="Digital Agency Hero" class="img-fluid">
-              </div>
-            </div>
-          </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-      </div>
+    </nav>
 
-      <div class="hero-bg-elements">
-        <div class="bg-shape shape-1"></div>
-        <div class="bg-shape shape-2"></div>
-        <div class="bg-particles"></div>
-      </div>
-
-    </section><!-- /Hero Section -->
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-content">
+            <div class="logo-placeholder">
+                <img src="Images/Logos/HackerFabLogo.png" alt="Team Logo">
+            </div>
+            <h1>India’s first student-built microfabrication lab</h1>
+            <p class="tagline">Creating open-source, student-designed fabrication tools to make hands-on fabrication accessible across India.</p>
+            <!-- <p class="home-description">Creating open-source, student-designed fabrication tools to make hands-on fabrication accessible across India. Join us in spreading this culture of innovation and learning!</p> -->
+            <div class="social-buttons">
+                <a href="#" class="social-btn github"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all" class="social-btn linkedin"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:hackerfabiitb@gmail.com" class="social-btn email"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-btn twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://discord.com/invite/f4WvC2fa9d" class="social-btn discord"><i class="fab fa-discord"></i></a>
+            </div>
+            <!-- <div class="home-stats">
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Members</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Awards</span>
+                </div>
+            </div> -->
+        </div>
+        <div class="scroll-hint">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
     <!-- About Section -->
-    <section id="about" class="about section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-5 align-items-center">
-
-          <div class="col-lg-5" data-aos="fade-right" data-aos-delay="200">
-            <div class="content">
-              <h6 class="subtitle">How we began</h6>
-              <h2>Creating change from student up</h2>
-              <p>
-                Founded in August 2025, we're a group of students determined to make hands-on microfabrication education more accessible and engaging for everyone. Armed with our determination to spread this culture and graced by the support of our mentors and institute, we're building open-source, student-designed fabrication tools that anyone can use.
-              </p>
-
-              <!-- <ul class="features-list">
-                <li><i class="bi bi-check-circle-fill"></i><span>Excepteur sint occaecat cupidatat non proident.</span></li>
-                <li><i class="bi bi-check-circle-fill"></i><span>Nemo enim ipsam voluptatem quia voluptas sit.</span></li>
-                <li><i class="bi bi-check-circle-fill"></i><span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              </ul> -->
-
-              <!-- <a href="#" class="btn btn-primary">Discover More</a> -->
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="team-photo">
+                <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team Photo">
             </div>
-          </div>
-
-          <div class="col-lg-7" data-aos="fade-left" data-aos-delay="300">
-            <div class="image-composition">
-              <div class="image-main">
-                <img src="assets/img/TeamPhotos/SemiX_Booth.jpg" alt="Modern office with a team working" class="img-fluid" loading="lazy">
-              </div>
-              <div class="image-secondary">
-                <img src="assets/img/TeamPhotos/GroupPhoto.jpg" alt="Collaborative discussion" class="img-fluid" loading="lazy">
-              </div>
+            <div class="about-text">
+                <p class="mission">"Making hands-on fabrication accessible across India."</p>
+                <p>Founded in August 2025, we're a group of students determined to democratize technology and foster innovation. We are part of the <a href="https://docs.hackerfab.org/home/" target="_blank" rel="noopener">HackerFab network</a>, aiming to spread this culture of learning throughout the country.</p>
+                
+                <div class="about-pillars">
+                    <div class="pillar">
+                        <i class="fas fa-microchip"></i>
+                        <h4>Fabrication</h4>
+                        <p>Pushing the boundaries of our technical capabilities</p>
+                    </div>
+                    <div class="pillar">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Education</h4>
+                        <p>Keeping the technology budgeted and accessible</p>
+                    </div>
+                    <div class="pillar">
+                        <i class="fas fa-code-branch"></i>
+                        <h4>Open Source</h4>
+                        <p>Sharing tools, documentation and knowledge freely</p>
+                    </div>
+                    <div class="pillar">
+                        <i class="fas fa-users"></i>
+                        <h4>Community</h4>
+                        <p>Expanding the HackerFab network across India</p>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
+    </section>
 
+    <!-- Goals Section -->
+    <section id="goals">
+        <h2>Our Goals</h2>
+
+        <!-- Technical Goals -->
+        <div class="goals-category">
+            <h3><i class="fas fa-microchip"></i> Technical Roadmap</h3>
+            <p class="goals-intro">Check out our journey so far, documentation and resources attached with each step.</p>
+            
+            <div class="tech-goals-grid">
+                <div class="tech-card">
+                    <span class="status completed">Completed</span>
+                    <img src="placeholder-goal1.jpg" alt="Project 1">
+                    <h4>Lithography</h4>
+                    <p>Brief description of this technical milestone or project.</p>
+                </div>
+                <div class="tech-card">
+                    <span class="status in-progress">In Progress</span>
+                    <img src="placeholder-goal2.jpg" alt="Project 2">
+                    <h4>Spincoater</h4>
+                    <p>Brief description of this technical milestone or project.</p>
+                </div>
+                <div class="tech-card">
+                    <span class="status in-progress">In Progress</span>
+                    <img src="placeholder-goal3.jpg" alt="Project 3">
+                    <h4>XYZ Stage</h4>
+                    <p>Brief description of this technical milestone or project.</p>
+                </div>
+                <div class="tech-card">
+                    <span class="status planned">Planned</span>
+                    <img src="placeholder-goal4.jpg" alt="Project 4">
+                    <h4>Tube Furnace</h4>
+                    <p>Brief description of this technical milestone or project.</p>
+                </div>
+            </div>
         </div>
 
-      </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="services section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Goals</h2>
-        <div class="goals-grid">
-          <div class="goal-item">
-            <!-- <h4>Advanced Fabrication</h4> -->
-            <p>Complete toolset to fabricate 2 µm pitch transistors by 2027</p>
-          </div>
-          <div class="goal-item">
-            <!-- <h4>Educational Access</h4> -->
-            <p>Fab-in-Box: cleanroom-free fabrication for colleges</p>
-          </div>
-          <div class="goal-item">
-            <!-- <h4>National Impact</h4> -->
-            <p>Contribute to the Indian Semiconductor Mission</p>
-          </div>
+        <!-- Growth Goals -->
+        <div class="goals-category">
+            <h3><i class="fas fa-seedling"></i> Growth & Outreach</h3>
+            <p class="goals-intro">Constantly trying to expand our community and bring HackerFab to more colleges across India.</p>
+            
+            <div class="growth-goals">
+                <div class="growth-card">
+                    <div class="growth-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="growth-content">
+                        <h4>Community Building</h4>
+                        <p>Growing our network of makers, students, and innovators across colleges in India. We aim to establish chapters and partnerships with institutions nationwide.</p>
+                    </div>
+                </div>
+                <div class="growth-card">
+                    <div class="growth-icon">
+                        <i class="fas fa-chalkboard-user"></i>
+                    </div>
+                    <div class="growth-content">
+                        <h4>Conferences & Talks</h4>
+                        <p>Presenting our work at major technical conferences across India to share knowledge, inspire others, and connect with the broader maker and research community.</p>
+                    </div>
+                </div>
+                <div class="growth-card">
+                    <div class="growth-icon">
+                        <i class="fas fa-map-location-dot"></i>
+                    </div>
+                    <div class="growth-content">
+                        <h4>Pan-India Network</h4>
+                        <p>Establishing HackerFab presence at multiple institutions, creating a collaborative network for sharing resources, expertise, and opportunities.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div><!-- End Section Title -->
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+    </section>
 
-        <div class="row gy-4">
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-card image-background-card">
-              <div class="card-background-image" style="background-image: url('assets/img/Goals/FabInABox.png');">
-                <div class="card-overlay"></div>
-              </div>
-              <div class="card-content-bottom">
-                <h4><a href="service-details.html">Fab-in-Box</a></h4>
-                <!-- <p>Description pending</p> -->
-              </div>
+    <!-- Timeline Section -->
+    <section id="timeline">
+        <h2>Our Journey</h2>
+        <p class="timeline-intro">Key milestones in our story so far.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker technical"><i class="fas fa-microchip"></i></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Dec 2025</div>
+                    <h4>Litho v0 Created</h4>
+                    <p>Brief description of this milestone and its significance.</p>
+                </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-card image-background-card">
-              <div class="card-background-image" style="background-image: url('assets/img/Goals/Litho.png');">
-                <div class="card-overlay"></div>
-              </div>
-              <div class="card-content-bottom">
-                <h4><a href="service-details.html">Litho</a></h4>
-                <!-- <p>Description pending</p> -->
-              </div>
+            <div class="timeline-item">
+                <div class="timeline-marker event"><i class="fas fa-microphone"></i></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Nov 2025</div>
+                    <h4>Presented at SemiX</h4>
+                    <p>Shared our work with the semiconductor community.</p>
+                </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-card image-background-card">
-              <div class="card-background-image" style="background-image: url('assets/img/Goals/FabInABox.png');">
-                <div class="card-overlay"></div>
-              </div>
-              <div class="card-content-bottom">
-                <h4><a href="service-details.html">Spin Coater</a></h4>
-                <!-- <p>Description pending</p> -->
-              </div>
+            <div class="timeline-item">
+                <div class="timeline-marker community"><i class="fas fa-users"></i></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Oct 2025</div>
+                    <h4>Community Grew to 50 Members</h4>
+                    <p>Reached our first major community milestone.</p>
+                </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-card image-background-card">
-              <div class="card-background-image" style="background-image: url('assets/img/Goals/ALD.png');">
-                <div class="card-overlay"></div>
-              </div>
-              <div class="card-content-bottom">
-                <h4><a href="service-details.html">ALD</a></h4>
-                <!-- <p>Description pending</p> -->
-              </div>
+            <div class="timeline-item">
+                <div class="timeline-marker technical"><i class="fas fa-flask"></i></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Sep 2025</div>
+                    <h4>Lab Setup Complete</h4>
+                    <p>First functional fabrication workspace established.</p>
+                </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-card image-background-card">
-              <div class="card-background-image" style="background-image: url('assets/img/Goals/Sputter.png');">
-                <div class="card-overlay"></div>
-              </div>
-              <div class="card-content-bottom">
-                <h4><a href="service-details.html">Sputter</a></h4>
-                <!-- <p>Description pending</p> -->
-              </div>
+            <div class="timeline-item">
+                <div class="timeline-marker milestone"><i class="fas fa-flag"></i></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Aug 2025</div>
+                    <h4>HackerFab IITB Founded</h4>
+                    <p>The beginning of our journey to democratize fabrication.</p>
+                </div>
             </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-card image-background-card">
-              <div class="card-background-image" style="background-image: url('assets/img/Goals/LaserDirectWrite.png');">
-                <div class="card-overlay"></div>
-              </div>
-              <div class="card-content-bottom">
-                <h4><a href="service-details.html">Laser Direct Write</a></h4>
-                <!-- <p>Description pending</p> -->
-              </div>
-            </div>
-          </div>
-
         </div>
 
-        <!-- <div class="row mt-5">
-          <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="400">
-            <div class="services-cta">
-              <h3>Ready to Transform Your Digital Presence?</h3>
-              <p>Let's discuss your project and create something amazing together</p>
-              <a href="service-details.html" class="btn btn-primary">Get Started Today</a>
-            </div>
-          </div>
-        </div> -->
-
-      </div>
-
-    </section><!-- /Services Section -->
+        <div class="timeline-legend">
+            <span><i class="fas fa-microchip technical"></i> Technical</span>
+            <span><i class="fas fa-microphone event"></i> Events</span>
+            <span><i class="fas fa-users community"></i> Community</span>
+            <span><i class="fas fa-flag milestone"></i> Milestone</span>
+        </div>
+    </section>
 
     <!-- Team Section -->
-    <section id="team" class="team section">
+    <section id="team">
+        <h2>Our Team</h2>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Team</h2>
-        <p>7 undergraduates, students of Indian Institute of Technology Bombay</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-4">
-
-          <!-- <div class="col-lg-6">
-            <div class="team-intro" data-aos="fade-right" data-aos-delay="150">
-              <div class="intro-content">
-                <h3>Meet Our Exceptional Team</h3>
-                <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
-                <div class="stats-row">
-                  <div class="stat-item">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Team Members</span>
-                  </div>
-                  <div class="stat-item">
-                    <span class="stat-number">8</span>
-                    <span class="stat-label">Departments</span>
-                  </div>
-                  <div class="stat-item">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Countries</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <div class="col-12">
-            <div class="team-grid" data-aos="fade-left" data-aos-delay="200">
-              <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="250">
-                <div class="hexagon-inner">
-                  <img src="assets/img/TeamPhotos/Aryamman.jpg" alt="Team member">
-                  <div class="member-overlay">
-                    <h5>Aryamman Bhatia</h5>
-                    <!-- <span>Creative Director</span> -->
-                    <!-- <div class="social-icons">
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                      <a href="#"><i class="bi bi-twitter"></i></a>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-
-              <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="300">
-                <div class="hexagon-inner">
-                  <img src="assets/img/TeamPhotos/Abhineet.jpg" alt="Team member">
-                  <div class="member-overlay">
-                    <h5>Abhineet Agarwal</h5>
-                    <!-- <span>Tech Lead</span> -->
-                    <!-- <div class="social-icons">
-                      <a href="#"><i class="bi bi-github"></i></a>
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-              <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="300">
-                <div class="hexagon-inner">
-                  <img src="assets/img/TeamPhotos/Kartik.png" alt="Team member">
-                  <div class="member-overlay">
-                    <h5>Kartik U. C</h5>
-                    <!-- <span>Tech Lead</span> -->
-                    <!-- <div class="social-icons">
-                      <a href="#"><i class="bi bi-github"></i></a>
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-              <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="300">
-                <div class="hexagon-inner">
-                  <img src="assets/img/TeamPhotos/Dhriti.png" alt="Team member">
-                  <div class="member-overlay">
-                    <h5>Dhriti Maniar</h5>
-                    <!-- <span>Tech Lead</span> -->
-                    <!-- <div class="social-icons">
-                      <a href="#"><i class="bi bi-github"></i></a>
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-              <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="300">
-                <div class="hexagon-inner">
-                  <img src="assets/img/TeamPhotos/Shaashvat.jpg" alt="Team member">
-                  <div class="member-overlay">
-                    <h5>Shaashvat Shekhar</h5>
-                    <!-- <span>Tech Lead</span> -->
-                    <!-- <div class="social-icons">
-                      <a href="#"><i class="bi bi-github"></i></a>
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-
-              <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="350">
-                <div class="hexagon-inner">
-                  <img src="assets/img/TeamPhotos/Suchet.jpg" alt="Team member">
-                  <div class="member-overlay">
-                    <h5>Suchet Gopal</h5>
-                    <!-- <span>Product Manager</span> -->
-                    <!-- <div class="social-icons">
-                      <a href="#"><i class="bi bi-instagram"></i></a>
-                      <a href="#"><i class="bi bi-dribbble"></i></a>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-
-              <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="400">
-                <div class="hexagon-inner">
-                  <img src="assets/img/TeamPhotos/Devavrat.png" alt="Team member">
-                  <div class="member-overlay">
-                    <h5>Devavrat Patni</h5>
-                    <!-- <span>UX Architect</span> -->
-                    <!-- <div class="social-icons">
-                      <a href="#"><i class="bi bi-behance"></i></a>
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <h3 class="team-category">Core Members</h3>
+        <div class="team-grid">
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Aryamman.jpg" alt="Aryamman">
+                <h4>Aryamman Bhatia</h4>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Abhineet.jpg" alt="Abhineet Agarwal">
+                <h4>Abhineet Agarwal</h4>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Kartik.png" alt="Kartik U.C">
+                <h4>Kartik U.C</h4>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Shaashvat.jpg" alt="Shaashvat Shekhar">
+                <h4>Shaashvat Shekhar</h4>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Suchet.jpg" alt="Suchet Gopal">
+                <h4>Suchet Gopal</h4>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Dhriti.png" alt="Dhriti Maniar">
+                <h4>Dhriti Maniar</h4>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Devavrat.png" alt="Devavrat Patni">
+                <h4>Devavrat Patni</h4>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Akshat.jpg" alt="Akshat K.">
+                <h4>Akshat K.</h4>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/AbhineetAvhad.jpg" alt="Abhineet Avhad">
+                <h4>Abhineet Avhad</h4>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Rushat.jpg" alt="Rushat Dixit">
+                <h4>Rushat Dixit</h4>
+            </a>
         </div>
 
-        <div class="row mt-5">
-          <div class="col-12">
-            <div class="team-carousel-wrapper" data-aos="fade-up" data-aos-delay="200">
-              <h4 class="carousel-title">Advisors</h4>
-
-              <div class="leadership-slider swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                  {
-                    "loop": true,
-                    "speed": 600,
-                    "autoplay": {
-                      "delay": 4000
-                    },
-                    "slidesPerView": 1,
-                    "spaceBetween": 0,
-                    "pagination": {
-                      "el": ".swiper-pagination",
-                      "clickable": true
-                    },
-                    "breakpoints": {
-                      "768": {
-                        "slidesPerView": 2
-                      },
-                      "1024": {
-                        "slidesPerView": 3
-                      }
-                    }
-                  }
-                </script>
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <a href="https://www.ee.iitb.ac.in/web/people/anil-kottantharayil/" target="_blank" class="leader-link">
-                      <div class="leader-card">
-                        <div class="leader-image">
-                          <img src="assets/img/TeamPhotos/Anil.jpg" alt="Professor">
-                        </div>
-                        <div class="leader-info">
-                          <h5>Anil Kottantharayil</h5>
-                          <!-- <span class="position">Chief Executive Officer</span> -->
-                          <!-- <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id.</p> -->
-                          <!-- <div class="leader-contact">
-                            <i class="bi bi-envelope"></i>
-                            <i class="bi bi-linkedin"></i>
-                          </div> -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <a href="https://www.ee.iitb.ac.in/web/people/veeresh-deshpande/" target="_blank" class="leader-link">
-                      <div class="leader-card">
-                        <div class="leader-image">
-                          <img src="assets/img/TeamPhotos/VeereshDeshpande.jpg" alt="Professor">
-                        </div>
-                        <div class="leader-info">
-                          <h5>Veeresh Deshpande</h5>
-                          <!-- <span class="position">Chief Executive Officer</span> -->
-                          <!-- <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id.</p> -->
-                          <!-- <div class="leader-contact">
-                            <i class="bi bi-envelope"></i>
-                            <i class="bi bi-linkedin"></i>
-                          </div> -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <a href="https://www.ee.iitb.ac.in/web/people/udayan-ganguly/" target="_blank" class="leader-link">
-                      <div class="leader-card">
-                        <div class="leader-image">
-                          <img src="assets/img/TeamPhotos/UdayanGanguly.jpg" alt="Professor">
-                        </div>
-                        <div class="leader-info">
-                          <h5>Udayan Ganguly</h5>
-                          <!-- <span class="position">Chief Executive Officer</span> -->
-                          <!-- <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id.</p> -->
-                          <!-- <div class="leader-contact">
-                            <i class="bi bi-envelope"></i>
-                            <i class="bi bi-linkedin"></i>
-                          </div> -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <a href="https://www.ee.iitb.ac.in/wiki/faculty/sganguly" target="_blank" class="leader-link">
-                      <div class="leader-card">
-                        <div class="leader-image">
-                          <img src="assets/img/TeamPhotos/SwaroopGanguly.jpg" alt="Professor">
-                        </div>
-                        <div class="leader-info">
-                          <h5>Swaroop Ganguly</h5>
-                          <!-- <span class="position">Chief Executive Officer</span> -->
-                          <!-- <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id.</p> -->
-                          <!-- <div class="leader-contact">
-                            <i class="bi bi-envelope"></i>
-                            <i class="bi bi-linkedin"></i>
-                          </div> -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div class="swiper-pagination"></div>
-              </div>
-            </div>
-          </div>
+        <h3 class="team-category">Faculty Advisors</h3>
+        <div class="team-grid advisors">
+            <a href="https://www.ee.iitb.ac.in/web/people/veeresh-deshpande/" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/VeereshDeshpande.jpg" alt="Veeresh Deshpande">
+                <h4>Veeresh Deshpande</h4>
+            </a>
+            <a href="https://www.ee.iitb.ac.in/web/people/udayan-ganguly/" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/UdayanGanguly.jpg" alt="Udayan Ganguly">
+                <h4>Udayan Ganguly</h4>
+            </a>
+            <a href="https://www.ee.iitb.ac.in/web/people/anil-kottantharayil/" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/Anil.jpg" alt="Anil Kottantharayil">
+                <h4>Anil Kottantharayil</h4>
+            </a>
+            <a href="https://www.ee.iitb.ac.in/wiki/faculty/sganguly" class="member-card" target="_blank">
+                <img src="Images/TeamPhotos/SwaroopGanguly.jpg" alt="Swaroop Ganguly">
+                <h4>Swaroop Ganguly</h4>
+            </a>
         </div>
-<!-- 
-        <div class="row mt-4">
-          <div class="col-lg-8 offset-lg-2">
-            <div class="join-team-cta" data-aos="fade-up" data-aos-delay="300">
-              <div class="cta-icon">
-                <i class="bi bi-rocket-takeoff"></i>
-              </div>
-              <div class="cta-content">
-                <h4>Ready to Join Our Mission?</h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.</p>
-                <div class="cta-actions">
-                  <a href="#" class="btn btn-primary">View Open Roles</a>
-                  <a href="#" class="btn btn-outline">Learn Our Culture</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
- -->
-      </div>
 
-    </section><!-- /Team Section -->
+        <!-- <h3 class="team-category">Contributors</h3>
+        <div class="team-grid">
+            <a href="#" class="member-card" target="_blank">
+                <img src="placeholder-contributor.jpg" alt="Name">
+                <h4>Name</h4>
+                <p>Contribution</p>
+            </a>
+            <a href="#" class="member-card" target="_blank">
+                <img src="placeholder-contributor.jpg" alt="Name">
+                <h4>Name</h4>
+                <p>Contribution</p>
+            </a>
+        </div> -->
+    </section>
+
+    <!-- Sponsors Section -->
+    <!-- <section id="sponsors">
+        <h2>Our Sponsors</h2>
+        <div class="sponsors-grid">
+            <img src="placeholder-sponsor1.png" alt="Sponsor 1">
+            <img src="placeholder-sponsor2.png" alt="Sponsor 2">
+            <img src="placeholder-sponsor3.png" alt="Sponsor 3">
+            <img src="placeholder-sponsor4.png" alt="Sponsor 4">
+        </div>
+    </section> -->
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
-      <!-- Section Title -->
-      <div class="container section-title">
-        <h2>Contact</h2>
-        <p>Reach out and become a part of our community!</p>
-      </div><!-- End Section Title -->
-
-      <!-- <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row align-items-center">
-          <div class="col-lg-5" data-aos="fade-right" data-aos-delay="200">
-            <div class="contact-form-card">
-              <div class="form-header">
-                <div class="header-icon">
-                  <i class="bi bi-chat-dots-fill"></i>
-                </div>
-                <h3>Let's Start a Conversation</h3>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.</p>
-              </div>
-
-              <form action="forms/contact.php" method="post" class="php-email-form">
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <input type="email" class="form-control" name="email" placeholder="Email Address" required="">
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <input type="text" class="form-control" name="subject" placeholder="What's this about?" required="">
-                </div>
-
-                <div class="mb-4">
-                  <textarea class="form-control" name="message" rows="4" placeholder="Tell us more about your project..." required=""></textarea>
-                </div>
-
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                  <span>Send Message</span>
-                  <i class="bi bi-send-fill"></i>
-                </button>
-              </form>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i> IIT Bombay, Powai, Mumbai - 400076</p>
+                <p><i class="fas fa-phone"></i> +91 79779 94553</p>
+                <p><i class="fas fa-envelope"></i> hackerfabiitb@gmail.com</p>
             </div>
-          </div>
-
-          <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
-            <div class="contact-info-area">
-              <div class="info-header">
-                <h3>Ready to Transform Your Ideas?</h3>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore.</p>
-              </div>
-
-              <div class="contact-methods">
-                <div class="method-card" data-aos="zoom-in" data-aos-delay="250">
-                  <div class="card-icon">
-                    <i class="bi bi-envelope-at"></i>
-                  </div>
-                  <div class="card-content">
-                    <h5>Email Us</h5>
-                    <p>hello@productdemo.com</p>
-                    <span class="response-time">Response in 2-4 hours</span>
-                  </div>
-                </div>
-
-                <div class="method-card" data-aos="zoom-in" data-aos-delay="300">
-                  <div class="card-icon">
-                    <i class="bi bi-telephone"></i>
-                  </div>
-                  <div class="card-content">
-                    <h5>Call Us</h5>
-                    <p>+1 (555) 987-6543</p>
-                    <span class="response-time">Available 9AM - 6PM EST</span>
-                  </div>
-                </div>
-
-                <div class="method-card" data-aos="zoom-in" data-aos-delay="350">
-                  <div class="card-icon">
-                    <i class="bi bi-geo-alt"></i>
-                  </div>
-                  <div class="card-content">
-                    <h5>Visit Our Office</h5>
-                    <p>4821 Broadway Street, New York, NY 10013</p>
-                    <span class="response-time">Open Monday - Friday</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="additional-info" data-aos="fade-up" data-aos-delay="400">
-                <div class="info-stats">
-                  <div class="stat-item">
-                    <div class="stat-number">24h</div>
-                    <div class="stat-label">Average Response</div>
-                  </div>
-                  <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <div class="stat-label">Client Satisfaction</div>
-                  </div>
-                  <div class="stat-item">
-                    <div class="stat-number">150+</div>
-                    <div class="stat-label">Projects Delivered</div>
-                  </div>
-                </div>
-
-                <div class="social-connect">
-                  <h6>Connect With Us</h6>
-                  <div class="social-links">
-                    <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="social-link"><i class="bi bi-github"></i></a>
-                    <a href="#" class="social-link"><i class="bi bi-discord"></i></a>
-                  </div>
-                </div>
-              </div>
+            <div class="join-us">
+                <a href="mailto:hackerfabiitb@gmail.com?subject=Application%20to%20Join" class="join-link">
+                    Students at IITB: To join us, drop us a mail and join our Discord!
+                </a>
             </div>
-          </div>
+            <div class="social-icons">
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
-      </div> -->
-    </section><!-- /Contact Section -->
+    </section>
 
-  </main>
-
-  <footer id="footer" class="footer position-relative dark-background">
-
-    <div class="container footer-top">
-      <div class="row gy-4 justify-content-between">
-      <!-- <div class="row gy-4"> -->
-        <div class="col-lg-5 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">HackerFab IITB</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>IIT Bombay, Powai</p>
-            <p>Mumbai, Maharashtra 400076</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+91 79779 94553</span></p>
-            <p><strong>Email:</strong> <span>hackerfabiitb@gmail.com</span></p>
-            <p><strong>Students at IITB:</strong> <span> To join us, follow <a href="assets/documents/Email_format.pdf">this format</a> and drop us a mail!</span></p>
-          </div>
-          <div class="social-links d-flex mt-4">
-            <a href="mailto:hackerfabiitb@gmail.com"><i class="bi bi-envelope"></i></a>
-            <a href="https://discord.gg/RB3bTzD7"><i class="bi bi-discord"></i></a>
-            <a href="https://x.com/thehackerfab?lang=en"><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-github"></i></a>
-            <a href="https://www.linkedin.com/company/hackerfab-iitb/"><i class="bi bi-linkedin"></i></a>
-          </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">HackerFab</div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#goals">Goals</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2025 HackerFab, IIT Bombay. All rights reserved.</p>
         </div>
+    </footer>
 
-        <!-- <div class="col-lg-4 col-md-5 footer-links">
-          <h4>For students at IITB</h4>
-          <ul>
-            <li><a href="mailto:hackerfabiitb@gmail.com">Reach out to our mail to join us!</a></li>
-            <li><a href="assets/documents/Email_format.pdf" target="_blank" style="text-decoration: underline;"> Guidelines available here! </a></li>
-          </ul>
-        </div> -->
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <!-- <p>© <span>Copyright</span> <strong class="px-1 sitename">Clarity</strong> <span>All Rights Reserved</span></p> -->
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-      </div>
-    </div>
-
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
