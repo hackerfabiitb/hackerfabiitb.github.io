@@ -31,38 +31,121 @@
     <section id="home">
         <div class="home-content">
             <div class="logo-placeholder">
-                <img src="Images/Logos/HackerFabLogo.png" alt="Team Logo">
+                <img src="Images/Logos/logo-first.jpeg" alt="Team Logo">
             </div>
-            <h1>India’s first student-built microfabrication lab</h1>
+            <h1>India's first student-built microfabrication lab</h1>
             <p class="tagline">Creating open-source, student-designed fabrication tools to make hands-on fabrication accessible across India.</p>
-            <!-- <p class="home-description">Creating open-source, student-designed fabrication tools to make hands-on fabrication accessible across India. Join us in spreading this culture of innovation and learning!</p> -->
+            
+            <!-- Apply Button -->
+            <button class="apply-btn" onclick="openApplyModal()">
+                <i class="fas fa-paper-plane"></i> Apply to Join
+            </button>
+            
             <div class="social-buttons">
-                <a href="#" class="social-btn github"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all" class="social-btn linkedin"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:hackerfabiitb@gmail.com" class="social-btn email"><i class="fas fa-envelope"></i></a>
-                <a href="#" class="social-btn twitter"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://discord.com/invite/f4WvC2fa9d" class="social-btn discord"><i class="fab fa-discord"></i></a>
+                <a href="https://x.com/hackerfabindia" class="social-btn twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/hackerfabiitb/" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://discord.gg/FNUgVRxmef" class="social-btn discord"><i class="fab fa-discord"></i></a>
             </div>
-            <!-- <div class="home-stats">
-                <div class="stat">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Projects</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">Members</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">10+</span>
-                    <span class="stat-label">Awards</span>
-                </div>
-            </div> -->
         </div>
         <div class="scroll-hint">
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
+
+    <!-- Application Modal -->
+    <div id="applyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeApplyModal()">&times;</span>
+            <h2><i class="fas fa-rocket"></i> Apply to Join HackerFab IITB</h2>
+            
+            <div class="modal-body">
+                <div class="apply-intro">
+                    <p>Note: Only IITB students can apply(If you are at another college- join our discord server instead). To apply, please send us an email with the following information:</p>
+                </div>
+
+                <div class="email-details">
+                    <div class="email-info">
+                        <strong><i class="fas fa-envelope"></i> Email:</strong> 
+                        hackerfabiitb@gmail.com
+                    </div>
+                    <div class="email-info">
+                        <strong><i class="fas fa-heading"></i> Subject:</strong> 
+                        <span>Recruitment - Your Name</span>
+                    </div>
+                    <div class="email-info">
+                        <strong><i class="fas fa-file-alt"></i> Length:</strong> 
+                        <span>No longer than 1000 words</span>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-list-check"></i> What to Include</h3>
+                
+                <div class="requirements-list">
+                    <div class="requirement-item">
+                        <div class="req-number">1</div>
+                        <div class="req-content">
+                            <h4>Tell us about yourself</h4>
+                            <p>Who you are, what your story is so far and what are the things you're curious and passionate about? Make sure to include your branch, programme and year of study here - and talk a little about how you've spent your time in college so far.</p>
+                        </div>
+                    </div>
+
+                    <div class="requirement-item">
+                        <div class="req-number">2</div>
+                        <div class="req-content">
+                            <h4>Why do you want to join HackerFab IITB?</h4>
+                        </div>
+                    </div>
+
+                    <div class="requirement-item">
+                        <div class="req-number">3</div>
+                        <div class="req-content">
+                            <h4>Tell us about your goals</h4>
+                            <p>Share your long-term and short-term goals. Short term, within your time in IITB, and long term, beyond. It's alright if they aren't well-formed or definitive.</p>
+                        </div>
+                    </div>
+
+                    <div class="requirement-item">
+                        <div class="req-number">4</div>
+                        <div class="req-content">
+                            <h4>What is your favourite part of the fabrication process and why?</h4>
+                        </div>
+                    </div>
+
+                    <div class="requirement-item">
+                        <div class="req-number">5</div>
+                        <div class="req-content">
+                            <h4>Tell us in short about what technical skills you have</h4>
+                        </div>
+                    </div>
+
+                    <div class="requirement-item">
+                        <div class="req-number">6</div>
+                        <div class="req-content">
+                            <h4>Tell us about something you've built</h4>
+                            <p>Preferably hardware. Also provide links to any work you mention.</p>
+                        </div>
+                    </div>
+
+                    <div class="requirement-item">
+                        <div class="req-number">7</div>
+                        <div class="req-content">
+                            <h4>Tell us about something you dream about building</h4>
+                            <p>Be descriptive. What is it? Why does it matter? How would you go about building it? What skills would you need to acquire to build this and how would you do the same?</p>
+                        </div>
+                    </div>
+
+                    <div class="requirement-item">
+                        <div class="req-number">8</div>
+                        <div class="req-content">
+                            <h4>Anything else you want us to know</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about">
@@ -72,29 +155,29 @@
                 <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team Photo">
             </div>
             <div class="about-text">
-                <p class="mission">"Making hands-on fabrication accessible across India."</p>
-                <p>Founded in August 2025, we're a group of students determined to democratize technology and foster innovation. We are part of the <a href="https://docs.hackerfab.org/home/" target="_blank" rel="noopener">HackerFab network</a>, aiming to spread this culture of learning throughout the country.</p>
+                <p class="mission">"Making hands-on chip fabrication accessible across India."</p>
+                <p>Founded in August 2025, we're a group of students determined to democratize technology and foster innovation. We are part of the <a href="https://docs.hackerfab.org/home/" target="_blank" rel="noopener">HackerFab network</a>, aiming to become a stepping stone to the semiconductor industry.</p>
                 
                 <div class="about-pillars">
                     <div class="pillar">
                         <i class="fas fa-microchip"></i>
-                        <h4>Fabrication</h4>
-                        <p>Pushing the boundaries of our technical capabilities</p>
+                        <h4>Semiconductor Fabrication</h4>
+                        <p>Why should TSMC have all the fun?</p>
                     </div>
                     <div class="pillar">
                         <i class="fas fa-graduation-cap"></i>
                         <h4>Education</h4>
-                        <p>Keeping the technology budgeted and accessible</p>
+                        <p>Integrating our tools with coursework at IITB</p>
                     </div>
                     <div class="pillar">
                         <i class="fas fa-code-branch"></i>
-                        <h4>Open Source</h4>
+                        <h4>Open Source and Affordable</h4>
                         <p>Sharing tools, documentation and knowledge freely</p>
                     </div>
                     <div class="pillar">
                         <i class="fas fa-users"></i>
                         <h4>Community</h4>
-                        <p>Expanding the HackerFab network across India</p>
+                        <p>Join our Discord server! We aim to spread this movement all over India</p>
                     </div>
                 </div>
             </div>
@@ -112,28 +195,28 @@
             
             <div class="tech-goals-grid">
                 <div class="tech-card">
-                    <span class="status completed">Completed</span>
-                    <img src="placeholder-goal1.jpg" alt="Project 1">
-                    <h4>Lithography</h4>
-                    <p>Brief description of this technical milestone or project.</p>
+                    <span class="status in-progress">In-Progress</span>
+                    <img src="Images/Goals/Litho.jpeg" alt="Project 1">
+                    <h4>Maskless Lithography</h4>
+                    <p>Achieved a pattern image of 1um feature size.</p>
                 </div>
                 <div class="tech-card">
                     <span class="status in-progress">In Progress</span>
-                    <img src="placeholder-goal2.jpg" alt="Project 2">
+                    <img src="Images/Goals/spincoater.png" alt="Project 2">
                     <h4>Spincoater</h4>
-                    <p>Brief description of this technical milestone or project.</p>
-                </div>
-                <div class="tech-card">
-                    <span class="status in-progress">In Progress</span>
-                    <img src="placeholder-goal3.jpg" alt="Project 3">
-                    <h4>XYZ Stage</h4>
-                    <p>Brief description of this technical milestone or project.</p>
+                    <p>Demonstrated closed loop control upto 6000rpm</p>
                 </div>
                 <div class="tech-card">
                     <span class="status planned">Planned</span>
-                    <img src="placeholder-goal4.jpg" alt="Project 4">
+                    <img src="Images/Goals/Sputter.png" alt="Project 3">
+                    <h4>RF Sputtering</h4>
+                    <p>Our first deposition tool!</p>
+                </div>
+                <div class="tech-card">
+                    <span class="status planned">Planned</span>
+                    <img src="Images/Goals/tubefurnace.png" alt="Project 4">
                     <h4>Tube Furnace</h4>
-                    <p>Brief description of this technical milestone or project.</p>
+                    <p>±2◦C at target temperatures up to 1100◦C</p>
                 </div>
             </div>
         </div>
@@ -185,35 +268,35 @@
                 <div class="timeline-marker technical"><i class="fas fa-microchip"></i></div>
                 <div class="timeline-content">
                     <div class="timeline-date">Dec 2025</div>
-                    <h4>Litho v0 Created</h4>
-                    <p>Brief description of this milestone and its significance.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-marker event"><i class="fas fa-microphone"></i></div>
-                <div class="timeline-content">
-                    <div class="timeline-date">Nov 2025</div>
-                    <h4>Presented at SemiX</h4>
-                    <p>Shared our work with the semiconductor community.</p>
+                    <h4>Patterns captured on Litho v1</h4>
+                    <p>We captured our first micrometer scale patterns on Litho v1</p>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-marker community"><i class="fas fa-users"></i></div>
                 <div class="timeline-content">
-                    <div class="timeline-date">Oct 2025</div>
-                    <h4>Community Grew to 50 Members</h4>
-                    <p>Reached our first major community milestone.</p>
+                    <div class="timeline-date">Dec 2025</div>
+                    <h4>Community Grew to 40+ Members</h4>
+                    <p>Expanded our outreach beyond IITB, growing to a 40 member strong community on discord</p>
                 </div>
             </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker event"><i class="fas fa-microphone"></i></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Sep 2025</div>
+                    <h4>Presented at SemiX</h4>
+                    <p>Presented proof-of-concepts for spin coater and lithography machine. Part of the panel discussion on "Advancing India's Semiconductor Ecosystem"</p>
+                </div>
+            </div>
+
 
             <div class="timeline-item">
                 <div class="timeline-marker technical"><i class="fas fa-flask"></i></div>
                 <div class="timeline-content">
                     <div class="timeline-date">Sep 2025</div>
                     <h4>Lab Setup Complete</h4>
-                    <p>First functional fabrication workspace established.</p>
                 </div>
             </div>
 
@@ -222,7 +305,6 @@
                 <div class="timeline-content">
                     <div class="timeline-date">Aug 2025</div>
                     <h4>HackerFab IITB Founded</h4>
-                    <p>The beginning of our journey to democratize fabrication.</p>
                 </div>
             </div>
         </div>
@@ -255,7 +337,7 @@
             </a>
             <a href="#" class="member-card" target="_blank">
                 <img src="Images/TeamPhotos/Shaashvat.jpg" alt="Shaashvat Shekhar">
-                <h4>Shaashvat Shekhar</h4>
+                <h4>Shaashvat Sekhar</h4>
             </a>
             <a href="#" class="member-card" target="_blank">
                 <img src="Images/TeamPhotos/Suchet.jpg" alt="Suchet Gopal">
@@ -269,7 +351,7 @@
                 <img src="Images/TeamPhotos/Devavrat.png" alt="Devavrat Patni">
                 <h4>Devavrat Patni</h4>
             </a>
-            <a href="#" class="member-card" target="_blank">
+            <!--<a href="#" class="member-card" target="_blank">
                 <img src="Images/TeamPhotos/Akshat.jpg" alt="Akshat K.">
                 <h4>Akshat K.</h4>
             </a>
@@ -280,7 +362,7 @@
             <a href="#" class="member-card" target="_blank">
                 <img src="Images/TeamPhotos/Rushat.jpg" alt="Rushat Dixit">
                 <h4>Rushat Dixit</h4>
-            </a>
+            </a>-->
         </div>
 
         <h3 class="team-category">Faculty Advisors</h3>
@@ -302,32 +384,7 @@
                 <h4>Swaroop Ganguly</h4>
             </a>
         </div>
-
-        <!-- <h3 class="team-category">Contributors</h3>
-        <div class="team-grid">
-            <a href="#" class="member-card" target="_blank">
-                <img src="placeholder-contributor.jpg" alt="Name">
-                <h4>Name</h4>
-                <p>Contribution</p>
-            </a>
-            <a href="#" class="member-card" target="_blank">
-                <img src="placeholder-contributor.jpg" alt="Name">
-                <h4>Name</h4>
-                <p>Contribution</p>
-            </a>
-        </div> -->
     </section>
-
-    <!-- Sponsors Section -->
-    <!-- <section id="sponsors">
-        <h2>Our Sponsors</h2>
-        <div class="sponsors-grid">
-            <img src="placeholder-sponsor1.png" alt="Sponsor 1">
-            <img src="placeholder-sponsor2.png" alt="Sponsor 2">
-            <img src="placeholder-sponsor3.png" alt="Sponsor 3">
-            <img src="placeholder-sponsor4.png" alt="Sponsor 4">
-        </div>
-    </section> -->
 
     <!-- Contact Section -->
     <section id="contact">
@@ -338,14 +395,9 @@
                 <p><i class="fas fa-phone"></i> +91 79779 94553</p>
                 <p><i class="fas fa-envelope"></i> hackerfabiitb@gmail.com</p>
             </div>
-            <div class="join-us">
-                <a href="mailto:hackerfabiitb@gmail.com?subject=Application%20to%20Join" class="join-link">
-                    Students at IITB: To join us, drop us a mail and join our Discord!
-                </a>
-            </div>
             <div class="social-icons">
                 <a href="#"><i class="fas fa-envelope"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="https://discord.gg/FNUgVRxmef"><i class="fab fa-discord"></i></a>
                 <a href="#"><i class="fab fa-x-twitter"></i></a>
                 <a href="#"><i class="fab fa-github"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -370,5 +422,24 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function openApplyModal() {
+            document.getElementById('applyModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeApplyModal() {
+            document.getElementById('applyModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('applyModal');
+            if (event.target == modal) {
+                closeApplyModal();
+            }
+        }
+    </script>
 </body>
 </html>
