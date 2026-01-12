@@ -480,5 +480,24 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function openApplyModal() {
+            document.getElementById('applyModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeApplyModal() {
+            document.getElementById('applyModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('applyModal');
+            if (event.target == modal) {
+                closeApplyModal();
+            }
+        }
+    </script>
 </body>
 </html>
