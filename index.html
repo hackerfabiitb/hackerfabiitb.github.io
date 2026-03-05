@@ -1,970 +1,202 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap');
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --ink:    #0d0d0d;
-  --paper:  #f4f1e8;
-  --paper2: #ece8db;
-  --paper3: #e2ddd0;
-  --red:    #b82a2a;
-  --muted:  #5c5449;
-  --rule:   rgba(13,13,13,0.1);
-  --rulem:  rgba(13,13,13,0.25);
-  --ruleh:  rgba(13,13,13,0.65);
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'IBM Plex Sans', sans-serif;
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.6;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── NAV ── */
-#navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 52px;
-  background: var(--ink);
-  padding: 0 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1000;
-}
-
-.nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 0.1em;
-  color: var(--paper);
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 0;
-}
-
-.nav-links a {
-  display: block;
-  height: 52px;
-  line-height: 52px;
-  padding: 0 1rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(244,241,232,0.55);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover,
-.nav-links a.active { color: var(--paper); }
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--paper);
-  transition: all 0.3s;
-}
-
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* ── SECTIONS ── */
-section {
-  padding: 5rem 10%;
-  min-height: 100vh;
-}
-
-section:nth-child(even) { background: var(--paper2); }
-
-h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  letter-spacing: 0.05em;
-  text-align: center;
-  color: var(--ink);
-  line-height: 1;
-  margin-bottom: 0.4rem;
-}
-
-h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--red);
-  margin: 0.6rem auto 2.4rem;
-}
-
-h3.team-category {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-align: center;
-  margin: 2.5rem 0 1.5rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--rulem);
-}
-
-/* ── REVEAL ANIMATIONS ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── HOME ── */
-#home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  background: var(--paper);
-  border-bottom: 3px double var(--ruleh);
-  padding-top: 6rem;
-}
-
-#home::before {
-  content: 'IIT BOMBAY · FOUNDED AUG 2025 · INDIA\'S FIRST STUDENT CHIP FAB';
-  position: absolute;
-  top: 52px;
-  left: 0; right: 0;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  color: var(--muted);
-  text-align: center;
-  background: var(--paper2);
-  border-top: 1px solid var(--rulem);
-  border-bottom: 1px solid var(--rulem);
-  padding: 0.45rem 0;
-}
-
-.logo-placeholder img {
-  width: 480px;
-  max-width: 90vw;
-  height: auto;
-  object-fit: contain;
-  filter: grayscale(15%) contrast(1.05);
-}
-
-#home h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2rem, 4.5vw, 3.6rem);
-  letter-spacing: 0.03em;
-  line-height: 1.05;
-  color: var(--ink);
-  margin: 1.2rem 0 0;
-  max-width: 700px;
-}
-
-.tagline {
-  font-size: 1rem;
-  font-weight: 300;
-  font-style: italic;
-  color: var(--muted);
-  max-width: 520px;
-  margin: 0.8rem 0 2rem;
-  border-top: 1px solid var(--rulem);
-  border-bottom: 1px solid var(--rulem);
-  padding: 0.55rem 0;
-}
-
-.apply-btn {
-  background: var(--ink);
-  color: var(--paper);
-  border: 2px solid var(--ink);
-  padding: 0.75rem 2rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 3px 3px 0 var(--ruleh);
-  transition: all 0.2s;
-}
-
-.apply-btn:hover {
-  background: var(--red);
-  border-color: var(--red);
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 rgba(184,42,42,0.35);
-}
-
-.social-buttons {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-
-.social-btn {
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  text-decoration: none;
-  color: var(--paper);
-  background: var(--ink);
-  border: 1.5px solid var(--ink);
-  transition: all 0.2s;
-}
-
-.social-btn:hover {
-  background: var(--paper);
-  color: var(--ink);
-  transform: translateY(-2px);
-}
-
-.scroll-hint {
-  position: absolute;
-  bottom: 2rem;
-  color: var(--muted);
-  font-size: 1.2rem;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-8px); }
-  60% { transform: translateY(-4px); }
-}
-
-/* ── MODAL ── */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  background: rgba(13,13,13,0.75);
-  overflow-y: auto;
-  animation: fadeIn 0.25s;
-}
-
-.modal.open { display: block; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-.modal-content {
-  background: var(--paper);
-  margin: 3% auto;
-  width: 90%;
-  max-width: 760px;
-  border: 2px solid var(--ink);
-  box-shadow: 6px 6px 0 var(--ink);
-  animation: slideIn 0.25s;
-}
-
-@keyframes slideIn {
-  from { transform: translateY(-24px); opacity: 0; }
-  to   { transform: translateY(0);     opacity: 1; }
-}
-
-.modal-header {
-  background: var(--ink);
-  padding: 1.4rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.modal-header h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.08em;
-  color: var(--paper);
-  text-align: left;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin: 0;
-}
-
-.modal-header h2::after { display: none; }
-.modal-header h2 i { color: var(--paper); font-size: 1.1rem; }
-
-.close {
-  color: rgba(244,241,232,0.7);
-  font-size: 2rem;
-  font-weight: 300;
-  cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s;
-  background: none;
-  border: none;
-}
-
-.close:hover { color: var(--paper); }
-
-.modal-body { padding: 2rem; }
-
-.apply-intro {
-  background: var(--paper2);
-  padding: 1.1rem 1.4rem;
-  border-left: 4px solid var(--ink);
-  margin-bottom: 1.6rem;
-}
-
-.apply-intro p { color: var(--muted); font-size: 0.88rem; margin: 0; font-weight: 300; }
-
-.email-details {
-  background: var(--paper3);
-  border: 1px solid var(--rulem);
-  padding: 1.1rem 1.4rem;
-  margin-bottom: 1.6rem;
-}
-
-.email-info {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.88rem;
-  color: var(--muted);
-}
-
-.email-info:last-child { margin-bottom: 0; }
-
-.email-info strong {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--ink);
-  min-width: 90px;
-  flex-shrink: 0;
-}
-
-.modal-body h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.3rem;
-  letter-spacing: 0.08em;
-  color: var(--ink);
-  border-bottom: 2px solid var(--ink);
-  padding-bottom: 0.35rem;
-  margin: 1.6rem 0 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.modal-body h3 i { color: var(--red); }
-
-.requirements-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--rulem);
-}
-
-.requirement-item {
-  display: flex;
-  gap: 1.1rem;
-  padding: 1rem 1.1rem;
-  background: var(--paper);
-  transition: background 0.15s;
-}
-
-.requirement-item:hover { background: var(--paper2); }
-
-.req-number {
-  min-width: 30px;
-  width: 30px;
-  height: 30px;
-  background: var(--ink);
-  color: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.82rem;
-  flex-shrink: 0;
-}
-
-.req-content h4 {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 0.25rem;
-}
-
-.req-content p {
-  font-size: 0.82rem;
-  color: var(--muted);
-  font-weight: 300;
-  margin: 0;
-}
-
-/* ── ABOUT ── */
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: start;
-}
-
-.team-photo img {
-  width: 100%;
-  filter: grayscale(20%) contrast(1.05);
-  border: 1px solid var(--rulem);
-  box-shadow: 4px 4px 0 var(--rulem);
-  display: block;
-}
-
-.about-text p {
-  color: var(--muted);
-  font-weight: 300;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
-
-.about-text a {
-  color: var(--red);
-  text-decoration: none;
-  font-weight: 500;
-  border-bottom: 1px solid var(--red);
-  transition: opacity 0.2s;
-}
-
-.about-text a:hover { opacity: 0.7; }
-
-.mission {
-  font-size: 1.1rem !important;
-  font-style: italic;
-  color: var(--ink) !important;
-  font-weight: 400 !important;
-  border-left: 4px solid var(--ink);
-  padding-left: 1rem;
-  margin-bottom: 1.4rem !important;
-  line-height: 1.5;
-}
-
-.about-pillars {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--rulem);
-  margin-top: 2rem;
-}
-
-.pillar {
-  background: var(--paper);
-  padding: 1.2rem;
-  transition: background 0.2s;
-}
-
-.pillar:hover { background: var(--paper3); }
-
-.pillar i {
-  font-size: 1.2rem;
-  color: var(--red);
-  display: block;
-  margin-bottom: 0.4rem;
-}
-
-.pillar h4 {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 0.3rem;
-}
-
-.pillar p {
-  font-size: 0.82rem;
-  color: var(--muted);
-  font-weight: 300;
-  margin: 0;
-}
-
-/* ── GOALS ── */
-.goals-category { margin-bottom: 4rem; }
-.goals-category:last-child { margin-bottom: 0; }
-
-.goals-category h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 0.06em;
-  color: var(--ink);
-  text-align: center;
-  border-bottom: 2px solid var(--ink);
-  padding-bottom: 0.4rem;
-  max-width: 440px;
-  margin: 0 auto 0.4rem;
-}
-
-.goals-category h3 i { color: var(--red); margin-right: 0.4rem; }
-
-.goals-intro {
-  text-align: center;
-  color: var(--muted);
-  font-style: italic;
-  font-size: 0.88rem;
-  font-weight: 300;
-  max-width: 560px;
-  margin: 0 auto 2rem;
-}
-
-.tech-goals-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1px;
-  background: var(--rulem);
-}
-
-.tech-card {
-  background: var(--paper);
-  overflow: hidden;
-  position: relative;
-  transition: background 0.2s;
-  cursor: default;
-}
-
-.tech-card:hover { background: var(--paper2); }
-
-.tech-card img {
-  width: 100%;
-  height: 155px;
-  object-fit: cover;
-  filter: grayscale(25%) contrast(1.05);
-  border-bottom: 1px solid var(--rulem);
-  display: block;
-}
-
-.tech-card h4 {
-  padding: 0.85rem 1.1rem 0.3rem;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.tech-card p {
-  padding: 0 1.1rem 1.1rem;
-  font-size: 0.82rem;
-  color: var(--muted);
-  font-weight: 300;
-}
-
-.status {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 0.2rem 0.55rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 1px solid;
-}
-
-.status.in-progress { background: var(--paper); color: var(--ink); border-color: var(--ink); }
-.status.planned     { background: var(--paper); color: var(--muted); border-color: var(--rulem); }
-.status.completed   { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-
-.growth-goals {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--rulem);
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.growth-card {
-  display: flex;
-  gap: 1.4rem;
-  align-items: flex-start;
-  padding: 1.3rem;
-  background: var(--paper);
-  transition: background 0.2s;
-}
-
-.growth-card:hover { background: var(--paper2); }
-
-.growth-icon {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  background: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.growth-icon i { font-size: 1.1rem; color: var(--paper); }
-
-.growth-content h4 {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 0.35rem;
-}
-
-.growth-content p {
-  font-size: 0.85rem;
-  color: var(--muted);
-  font-weight: 300;
-  margin: 0;
-}
-
-/* ── TIMELINE ── */
-.timeline-intro {
-  text-align: center;
-  color: var(--muted);
-  font-style: italic;
-  font-size: 0.88rem;
-  font-weight: 300;
-  margin-bottom: 3rem;
-}
-
-.timeline {
-  position: relative;
-  max-width: 660px;
-  margin: 0 auto;
-  padding-left: 60px;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 0; bottom: 0;
-  width: 2px;
-  background: var(--ink);
-}
-
-.timeline-item { position: relative; padding-bottom: 2.2rem; }
-.timeline-item:last-child { padding-bottom: 0; }
-
-.timeline-date {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.4rem;
-}
-
-.timeline-marker {
-  position: absolute;
-  left: -60px;
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--paper);
-  font-size: 0.82rem;
-}
-
-.timeline-marker.technical { background: var(--ink); }
-.timeline-marker.event     { background: var(--red); }
-.timeline-marker.community { background: #3a6e3a; }
-.timeline-marker.milestone { background: var(--ink); }
-
-.timeline-content {
-  background: var(--paper);
-  padding: 1.1rem 1.3rem;
-  border: 1px solid var(--rulem);
-  border-left: 3px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--rulem);
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.timeline-content:hover {
-  transform: translateX(3px);
-  box-shadow: 4px 4px 0 var(--ruleh);
-}
-
-.timeline-content h4 {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 0.3rem;
-}
-
-.timeline-content p {
-  font-size: 0.83rem;
-  color: var(--muted);
-  font-weight: 300;
-  margin: 0;
-}
-
-.timeline-legend {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.timeline-legend span {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.timeline-legend i {
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--paper);
-  font-size: 0.62rem;
-}
-
-.timeline-legend i.technical { background: var(--ink); }
-.timeline-legend i.event     { background: var(--red); }
-.timeline-legend i.community { background: #3a6e3a; }
-.timeline-legend i.milestone { background: var(--ink); }
-
-/* ── TEAM ── */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 1px;
-  background: var(--rule);
-  max-width: 900px;
-  margin: 0 auto 2rem;
-}
-
-.member-card {
-  background: var(--paper);
-  text-align: center;
-  text-decoration: none;
-  padding: 1.4rem 1rem;
-  transition: background 0.2s;
-  display: block;
-}
-
-.member-card:hover { background: var(--paper2); }
-
-.member-card img {
-  width: 88px;
-  height: 88px;
-  object-fit: cover;
-  border: 2px solid transparent;
-  filter: grayscale(15%);
-  transition: filter 0.2s, border-color 0.2s;
-  display: block;
-  margin: 0 auto 0.8rem;
-}
-
-.team-grid.advisors .member-card img {
-  width: 120px;
-  height: 120px;
-}
-
-.member-card:hover img {
-  border-color: var(--ink);
-  filter: grayscale(0%);
-}
-
-.member-card h4 {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-/* ── CONTACT ── */
-.contact-content {
-  text-align: center;
-  max-width: 540px;
-  margin: 0 auto;
-}
-
-.contact-info { margin-bottom: 2rem; }
-
-.contact-info p {
-  margin: 0.65rem 0;
-  color: var(--muted);
-  font-weight: 300;
-}
-
-.contact-info i { color: var(--red); margin-right: 0.5rem; }
-
-.join-us { margin: 2rem 0; }
-
-.join-link {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  color: var(--ink);
-  font-weight: 500;
-  text-decoration: none;
-  border-bottom: 2px solid var(--ink);
-  padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.join-link:hover { color: var(--red); border-color: var(--red); }
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.social-icons a {
-  width: 40px;
-  height: 40px;
-  background: var(--ink);
-  color: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 1rem;
-  border: 1.5px solid var(--ink);
-  transition: all 0.2s;
-}
-
-.social-icons a:hover {
-  background: var(--paper);
-  color: var(--ink);
-  transform: translateY(-2px);
-}
-
-/* ── FOOTER ── */
-footer {
-  background: var(--ink);
-  color: var(--paper);
-  padding: 2rem 10%;
-  text-align: center;
-}
-
-.footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.12em;
-  margin-bottom: 1rem;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.footer-links a {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(244,241,232,0.5);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover { color: var(--paper); }
-
-.copyright {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  opacity: 0.35;
-  letter-spacing: 0.04em;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 52px;
-    left: 0; right: 0;
-    background: var(--ink);
-    flex-direction: column;
-  }
-
-  .nav-links.open { display: flex; }
-
-  .nav-links a {
-    height: auto;
-    line-height: 1;
-    padding: 0.9rem 1.4rem;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .hamburger { display: flex; }
-
-  section { padding: 4rem 5%; }
-
-  .logo-placeholder img { width: 260px; }
-
-  #home h1 { font-size: 1.9rem; }
-
-  h2 { font-size: 2.1rem; }
-
-  .about-content { grid-template-columns: 1fr; }
-
-  .about-pillars { grid-template-columns: 1fr; }
-
-  .growth-card { flex-direction: column; }
-
-  .growth-icon { width: 38px; height: 38px; min-width: 38px; }
-
-  .timeline { padding-left: 48px; }
-  .timeline::before { left: 14px; }
-  .timeline-marker { left: -48px; width: 28px; height: 28px; font-size: 0.72rem; }
-
-  .timeline-legend { gap: 1rem; }
-
-  .team-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
-
-  .modal-content { width: 95%; margin: 5% auto; box-shadow: 3px 3px 0 var(--ink); }
-  .modal-body { padding: 1.3rem; }
-  .modal-header { padding: 1.1rem 1.3rem; }
-  .modal-header h2 { font-size: 1.1rem; }
-
-  .requirement-item { flex-direction: column; }
-
-  footer { padding: 2rem 5%; }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HackerFab | IIT Bombay</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-logo">HackerFab</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#goals">Goals</a></li>
+      <li><a href="#timeline">Journey</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <section id="home">
+    <div class="home-content">
+      <div class="logo-placeholder reveal">
+        <img src="Images/Logos/logo-first.jpeg" alt="HackerFab Logo">
+      </div>
+      <h1 class="reveal">India's first student-built microfabrication lab</h1>
+      <p class="tagline reveal">Creating open-source, student-designed fabrication tools to make hands-on fabrication accessible across India.</p>
+      <button class="apply-btn reveal" id="openModal">
+        <i class="fas fa-paper-plane"></i> Apply to Join
+      </button>
+      <div class="social-buttons reveal">
+        <a href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all" class="social-btn linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:hackerfabiitb@gmail.com" class="social-btn email"><i class="fas fa-envelope"></i></a>
+        <a href="https://x.com/hackerfabindia" class="social-btn twitter" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/hackerfabiitb/" class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.gg/FNUgVRxmef" class="social-btn discord" target="_blank"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+    <div class="scroll-hint"><i class="fas fa-chevron-down"></i></div>
+  </section>
+
+  <div id="applyModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-rocket"></i> Apply to Join HackerFab IITB</h2>
+        <span class="close" id="closeModal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="apply-intro">
+          <p>Note: Only IITB students can apply. If you are at another college, join our Discord server instead. Send an email with the following:</p>
+        </div>
+        <div class="email-details">
+          <div class="email-info"><strong><i class="fas fa-envelope"></i> Email:</strong> hackerfabiitb@gmail.com</div>
+          <div class="email-info"><strong><i class="fas fa-heading"></i> Subject:</strong> Recruitment - Your Name</div>
+          <div class="email-info"><strong><i class="fas fa-file-alt"></i> Length:</strong> No longer than 1000 words</div>
+        </div>
+        <h3><i class="fas fa-list-check"></i> What to Include</h3>
+        <div class="requirements-list">
+          <div class="requirement-item"><div class="req-number">1</div><div class="req-content"><h4>Tell us about yourself</h4><p>Who you are, your story, what you're curious and passionate about. Include your branch, programme and year of study.</p></div></div>
+          <div class="requirement-item"><div class="req-number">2</div><div class="req-content"><h4>Why do you want to join HackerFab IITB?</h4></div></div>
+          <div class="requirement-item"><div class="req-number">3</div><div class="req-content"><h4>Tell us about your goals</h4><p>Long-term and short-term. It's alright if they aren't well-formed or definitive.</p></div></div>
+          <div class="requirement-item"><div class="req-number">4</div><div class="req-content"><h4>What is your favourite part of the fabrication process and why?</h4></div></div>
+          <div class="requirement-item"><div class="req-number">5</div><div class="req-content"><h4>Tell us about your technical skills</h4></div></div>
+          <div class="requirement-item"><div class="req-number">6</div><div class="req-content"><h4>Tell us about something you've built</h4><p>Preferably hardware. Provide links to any work you mention.</p></div></div>
+          <div class="requirement-item"><div class="req-number">7</div><div class="req-content"><h4>Tell us about something you dream about building</h4><p>What is it? Why does it matter? How would you go about it?</p></div></div>
+          <div class="requirement-item"><div class="req-number">8</div><div class="req-content"><h4>Anything else you want us to know</h4></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2 class="reveal">About Us</h2>
+    <div class="about-content">
+      <div class="team-photo reveal">
+        <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team at SemiX">
+      </div>
+      <div class="about-text reveal">
+        <p class="mission">"Making hands-on chip fabrication accessible across India."</p>
+        <p>Founded in August 2025, we're a group of students determined to democratize technology and foster innovation. We are part of the <a href="https://docs.hackerfab.org/home/" target="_blank" rel="noopener">HackerFab network</a>, aiming to become a stepping stone to the semiconductor industry.</p>
+        <div class="about-pillars">
+          <div class="pillar"><i class="fas fa-microchip"></i><h4>Semiconductor Fabrication</h4><p>Why should TSMC have all the fun?</p></div>
+          <div class="pillar"><i class="fas fa-graduation-cap"></i><h4>Education</h4><p>Integrating our tools with coursework at IITB</p></div>
+          <div class="pillar"><i class="fas fa-code-branch"></i><h4>Open Source</h4><p>Sharing tools, documentation and knowledge freely</p></div>
+          <div class="pillar"><i class="fas fa-users"></i><h4>Community</h4><p>Join our Discord! Spreading this movement all over India</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="goals">
+    <h2 class="reveal">Our Goals</h2>
+    <div class="goals-category">
+      <h3 class="reveal"><i class="fas fa-microchip"></i> Technical Roadmap</h3>
+      <p class="goals-intro reveal">Check out our journey so far, documentation and resources attached with each step.</p>
+      <div class="tech-goals-grid">
+        <div class="tech-card reveal"><span class="status in-progress">In-Progress</span><img src="Images/Goals/Litho.jpeg" alt="Lithography"><h4>Maskless Lithography</h4><p>Achieved a pattern image of 1um feature size.</p></div>
+        <div class="tech-card reveal"><span class="status in-progress">In Progress</span><img src="Images/Goals/spincoater.png" alt="Spin Coater"><h4>Spincoater</h4><p>Demonstrated closed loop control upto 6000rpm</p></div>
+        <div class="tech-card reveal"><span class="status planned">Planned</span><img src="Images/Goals/Sputter.png" alt="RF Sputtering"><h4>RF Sputtering</h4><p>Our first deposition tool!</p></div>
+        <div class="tech-card reveal"><span class="status planned">Planned</span><img src="Images/Goals/tubefurnace.png" alt="Tube Furnace"><h4>Tube Furnace</h4><p>&#177;2&#176;C at target temperatures up to 1100&#176;C</p></div>
+      </div>
+    </div>
+    <div class="goals-category">
+      <h3 class="reveal"><i class="fas fa-seedling"></i> Growth &amp; Outreach</h3>
+      <p class="goals-intro reveal">Constantly trying to expand our community and bring HackerFab to more colleges across India.</p>
+      <div class="growth-goals">
+        <div class="growth-card reveal"><div class="growth-icon"><i class="fas fa-users"></i></div><div class="growth-content"><h4>Community Building</h4><p>Growing our network of makers, students, and innovators across colleges in India.</p></div></div>
+        <div class="growth-card reveal"><div class="growth-icon"><i class="fas fa-chalkboard-user"></i></div><div class="growth-content"><h4>Conferences &amp; Talks</h4><p>Presenting our work at major technical conferences across India to share knowledge and connect with the broader community.</p></div></div>
+        <div class="growth-card reveal"><div class="growth-icon"><i class="fas fa-map-location-dot"></i></div><div class="growth-content"><h4>Pan-India Network</h4><p>Establishing HackerFab presence at multiple institutions, creating a collaborative network for sharing resources and expertise.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <h2 class="reveal">Our Journey</h2>
+    <p class="timeline-intro reveal">Key milestones in our story so far.</p>
+    <div class="timeline">
+      <div class="timeline-item reveal"><div class="timeline-marker technical"><i class="fas fa-microchip"></i></div><div class="timeline-content"><div class="timeline-date">Dec 2025</div><h4>Patterns captured on Litho v1</h4><p>We captured our first micrometer scale patterns on Litho v1</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-marker community"><i class="fas fa-users"></i></div><div class="timeline-content"><div class="timeline-date">Dec 2025</div><h4>Community Grew to 40+ Members</h4><p>Expanded our outreach beyond IITB, growing to a 40 member strong community on Discord</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-marker event"><i class="fas fa-microphone"></i></div><div class="timeline-content"><div class="timeline-date">Sep 2025</div><h4>Presented at SemiX</h4><p>Presented proof-of-concepts for spin coater and lithography machine. Panel discussion on "Advancing India's Semiconductor Ecosystem"</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-marker community"><i class="fas fa-users"></i></div><div class="timeline-content"><div class="timeline-date">Oct 2025</div><h4>Community Grew to 50 Members</h4><p>Reached our first major community milestone.</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-marker technical"><i class="fas fa-flask"></i></div><div class="timeline-content"><div class="timeline-date">Sep 2025</div><h4>Lab Setup Complete</h4><p>First functional fabrication workspace established.</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-marker milestone"><i class="fas fa-flag"></i></div><div class="timeline-content"><div class="timeline-date">Aug 2025</div><h4>HackerFab IITB Founded</h4><p>The beginning of our journey to democratize fabrication.</p></div></div>
+    </div>
+    <div class="timeline-legend reveal">
+      <span><i class="fas fa-microchip technical"></i> Technical</span>
+      <span><i class="fas fa-microphone event"></i> Events</span>
+      <span><i class="fas fa-users community"></i> Community</span>
+      <span><i class="fas fa-flag milestone"></i> Milestone</span>
+    </div>
+  </section>
+
+  <section id="team">
+    <h2 class="reveal">Our Team</h2>
+    <h3 class="team-category reveal">Core Members</h3>
+    <div class="team-grid">
+      <a href="https://www.linkedin.com/in/aryamman-bhatia-2818b1280/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Aryamman.jpg" alt="Aryamman"><h4>Aryamman Bhatia</h4></a>
+      <a href="https://www.linkedin.com/in/abhineet-agarwal/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Abhineet.jpg" alt="Abhineet Agarwal"><h4>Abhineet Agarwal</h4></a>
+      <a href="https://www.linkedin.com/in/kartik-u-chikkanagoudar-082267224/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Kartik.png" alt="Kartik U.C"><h4>Kartik U.C</h4></a>
+      <a href="https://www.linkedin.com/in/shaashvat-sekhar-b903a629b/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Shaashvat.jpg" alt="Shaashvat Sekhar"><h4>Shaashvat Sekhar</h4></a>
+      <a href="https://www.linkedin.com/in/suchet-gopal/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Suchet.jpg" alt="Suchet Gopal"><h4>Suchet Gopal</h4></a>
+      <a href="https://www.linkedin.com/in/devavrat-patni/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Devavrat.png" alt="Devavrat Patni"><h4>Devavrat Patni</h4></a>
+      <a href="https://www.linkedin.com/in/akshat-kushwah-06074b282/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Akshat.jpeg" alt="Akshat K."><h4>Akshat K.</h4></a>
+      <a href="https://www.linkedin.com/in/abhineet-avhad/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/AbhineetAvhad.jpeg" alt="Abhineet Avhad"><h4>Abhineet Avhad</h4></a>
+      <a href="https://www.linkedin.com/in/rushatdixit/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Rushat.jpeg" alt="Rushat Dixit"><h4>Rushat Dixit</h4></a>
+      <a href="https://linkedin.com/in/jai-bellare" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Jai.jpeg" alt="Jai Bellare"><h4>Jai Bellare</h4></a>
+      <a href="https://www.linkedin.com/in/dhriti-maniar/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Dhriti.png" alt="Dhriti Maniar"><h4>Dhriti Maniar</h4></a>
+    </div>
+    <h3 class="team-category reveal">Faculty Advisors</h3>
+    <div class="team-grid advisors">
+      <a href="https://www.ee.iitb.ac.in/web/people/veeresh-deshpande/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/VeereshDeshpande.jpg" alt="Veeresh Deshpande"><h4>Veeresh Deshpande</h4></a>
+      <a href="https://www.ee.iitb.ac.in/web/people/udayan-ganguly/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/UdayanGanguly.jpg" alt="Udayan Ganguly"><h4>Udayan Ganguly</h4></a>
+      <a href="https://www.ee.iitb.ac.in/web/people/anil-kottantharayil/" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/Anil.jpg" alt="Anil Kottantharayil"><h4>Anil Kottantharayil</h4></a>
+      <a href="https://www.ee.iitb.ac.in/wiki/faculty/sganguly" class="member-card reveal" target="_blank"><img src="Images/TeamPhotos/SwaroopGanguly.jpg" alt="Swaroop Ganguly"><h4>Swaroop Ganguly</h4></a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="reveal">Contact Us</h2>
+    <div class="contact-content">
+      <div class="contact-info reveal">
+        <p><i class="fas fa-map-marker-alt"></i> IIT Bombay, Powai, Mumbai - 400076</p>
+        <p><i class="fas fa-phone"></i> +91 79779 94553</p>
+        <p><i class="fas fa-envelope"></i> hackerfabiitb@gmail.com</p>
+      </div>
+      <div class="join-us reveal">
+        <a href="mailto:hackerfabiitb@gmail.com?subject=Application%20to%20Join" class="join-link">Students at IITB: To join us, drop us a mail and join our Discord!</a>
+      </div>
+      <div class="social-icons reveal">
+        <a href="mailto:hackerfabiitb@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://discord.gg/FNUgVRxmef" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://x.com/hackerfabindia" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/hackerfabiitb" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/hackerfabiitb/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">HackerFab</div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#goals">Goals</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="copyright">&copy; 2025 HackerFab, IIT Bombay. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
