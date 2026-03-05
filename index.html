@@ -41,7 +41,7 @@
             
             <div class="social-buttons">
                 <a href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all" class="social-btn linkedin"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:hackerfabiitb@gmail.com" class="social-btn email"><i class="fas fa-envelope"></i></a>
+                <a href="/cdn-cgi/l/email-protection#c0a8a1a3aba5b2a6a1a2a9a9b4a280a7ada1a9aceea3afad" class="social-btn email"><i class="fas fa-envelope"></i></a>
                 <a href="https://x.com/hackerfabindia" class="social-btn twitter"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://www.instagram.com/hackerfabiitb/" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://discord.gg/FNUgVRxmef" class="social-btn discord"><i class="fab fa-discord"></i></a>
@@ -66,7 +66,7 @@
                 <div class="email-details">
                     <div class="email-info">
                         <strong><i class="fas fa-envelope"></i> Email:</strong> 
-                        hackerfabiitb@gmail.com
+                        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e666f6d656b7c686f6c67677a6c4e69636f6762206d6163">[email&#160;protected]</a>
                     </div>
                     <div class="email-info">
                         <strong><i class="fas fa-heading"></i> Subject:</strong> 
@@ -385,15 +385,15 @@
             <div class="contact-info">
                 <p><i class="fas fa-map-marker-alt"></i> IIT Bombay, Powai, Mumbai - 400076</p>
                 <p><i class="fas fa-phone"></i> +91 79779 94553</p>
-                <p><i class="fas fa-envelope"></i> hackerfabiitb@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f59d94969e90879394979c9c8197b59298949c99db969a98">[email&#160;protected]</a></p>
             </div>
             <div class="join-us">
-                <a href="mailto:hackerfabiitb@gmail.com?subject=Application%20to%20Join" class="join-link">
+                <a href="/cdn-cgi/l/email-protection#365e57555d53445057545f5f425476515b575f5a1855595b094543545c5355420b7746465a5f5557425f595813040642591304067c595f58" class="join-link">
                     Students at IITB: To join us, drop us a mail and join our Discord!
                 </a>
             </div>
             <div class="social-icons">
-                <a href="mailto:hackerfabiitb@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="/cdn-cgi/l/email-protection#147c75777f71667275767d7d6076547379757d783a777b79"><i class="fas fa-envelope"></i></a>
                 <a href="https://discord.gg/FNUgVRxmef"><i class="fab fa-discord"></i></a>
                 <a href="https://x.com/hackerfabindia"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://github.com/hackerfabiitb"><i class="fab fa-github"></i></a>
@@ -418,7 +418,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    
     <script>
         function openApplyModal() {
             document.getElementById('applyModal').style.display = 'block';
@@ -432,6 +432,14 @@
             const modal = document.getElementById('applyModal');
             if (event.target == modal) closeApplyModal();
         }
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
