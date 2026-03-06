@@ -66,17 +66,32 @@ body::after {
     transition: width 0.18s cubic-bezier(.23,1,.32,1),
                 height 0.18s cubic-bezier(.23,1,.32,1),
                 background 0.18s,
-                opacity 0.15s;
+                opacity 0.12s;
     mix-blend-mode: normal;
+    opacity: 0; /* starts hidden, shown on first mousemove */
 }
+/* Buttons / interactive: expand + colour-invert everything beneath */
 #cursor.hovering {
     width: 27px; height: 27px;
     background: #fff;
     mix-blend-mode: difference;
 }
-#cursor.on-red-btn { width: 18px; height: 18px; background: var(--red); mix-blend-mode: normal; }
-#cursor.clicking { width: 6px; height: 6px; }
-#cursor.hidden { opacity: 0; }
+/* Images: stay small solid dot — no blend mode change */
+#cursor.on-image {
+    width: 10px; height: 10px;
+    background: var(--ink);
+    mix-blend-mode: normal;
+}
+/* Apply / CTA button special red state */
+#cursor.on-red-btn {
+    width: 18px; height: 18px;
+    background: var(--red);
+    mix-blend-mode: normal;
+}
+#cursor.clicking { width: 6px !important; height: 6px !important; }
+#cursor.hidden   { opacity: 0 !important; }
+/* Remove hidden once mouse is inside */
+#cursor:not(.hidden) { opacity: 1; }
 
 /* ── NAV ── */
 #navbar {
