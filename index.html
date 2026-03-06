@@ -13,9 +13,6 @@
     <div id="cursor"></div>
     <div id="cursor-trail"></div>
 
-    <!-- Background canvas for decorative texture -->
-    <canvas id="bg-canvas"></canvas>
-
     <nav id="navbar">
         <div class="nav-logo" data-page="home" id="navLogoBtn">hackerfabiitb</div>
         <ul class="nav-links" id="navLinks">
@@ -283,48 +280,6 @@
         el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
-
-    // ── BACKGROUND CANVAS — tech dot grid ──
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-
-    function drawBg() {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // tight dot grid — circuit board feel
-        const spacing = 32;
-        ctx.fillStyle = 'rgba(10,10,10,0.09)';
-        for (let x = 0; x < canvas.width; x += spacing) {
-            for (let y = 0; y < canvas.height; y += spacing) {
-                ctx.beginPath();
-                ctx.arc(x, y, 1, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        // sparse cross-hairs at grid intersections (every 4th)
-        ctx.strokeStyle = 'rgba(10,10,10,0.06)';
-        ctx.lineWidth = 1;
-        const cross = 5;
-        for (let x = 0; x < canvas.width; x += spacing * 4) {
-            for (let y = 0; y < canvas.height; y += spacing * 4) {
-                ctx.beginPath(); ctx.moveTo(x - cross, y); ctx.lineTo(x + cross, y); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(x, y - cross); ctx.lineTo(x, y + cross); ctx.stroke();
-            }
-        }
-
-        // vertical margin lines
-        const m = canvas.width * 0.035;
-        ctx.strokeStyle = 'rgba(10,10,10,0.1)';
-        [m, canvas.width - m].forEach(x => {
-            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
-        });
-    }
-
-    drawBg();
-    window.addEventListener('resize', drawBg);
 
     // ── PAGE SWITCHING with fade ──
     let isTransitioning = false;
