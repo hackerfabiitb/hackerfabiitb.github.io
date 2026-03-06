@@ -50,7 +50,7 @@
             </button>
             <div class="social-buttons">
                 <a href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all" class="social-btn linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:hackerfabiitb@gmail.com" class="social-btn email"><i class="fas fa-envelope"></i></a>
+                <a href="/cdn-cgi/l/email-protection#b8d0d9dbd3ddcaded9dad1d1ccdaf8dfd5d9d1d496dbd7d5" class="social-btn email"><i class="fas fa-envelope"></i></a>
                 <a href="https://x.com/hackerfabindia" class="social-btn twitter" target="_blank"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://www.instagram.com/hackerfabiitb/" class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://discord.gg/FNUgVRxmef" class="social-btn discord" target="_blank"><i class="fab fa-discord"></i></a>
@@ -204,15 +204,15 @@
                 <div class="contact-info">
                     <p><i class="fas fa-map-marker-alt"></i> IIT Bombay, Powai, Mumbai - 400076</p>
                     <p><i class="fas fa-phone"></i> +91 79779 94553</p>
-                    <p><i class="fas fa-envelope"></i> hackerfabiitb@gmail.com</p>
+                    <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd3dad8d0dec9dddad9d2d2cfd9fbdcd6dad2d795d8d4d6">[email&#160;protected]</a></p>
                 </div>
                 <div class="join-us">
-                    <a href="mailto:hackerfabiitb@gmail.com?subject=Application%20to%20Join" class="join-link">
+                    <a href="/cdn-cgi/l/email-protection#4e262f2d252b3c282f2c27273a2c0e29232f2722602d2123713d3b2c242b2d3a730f3e3e22272d2f3a2721206b7c7e3a216b7c7e04212720" class="join-link">
                         Students at IITB: To join us, drop us a mail and join our Discord!
                     </a>
                 </div>
                 <div class="social-icons">
-                    <a href="mailto:hackerfabiitb@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="/cdn-cgi/l/email-protection#b4dcd5d7dfd1c6d2d5d6ddddc0d6f4d3d9d5ddd89ad7dbd9"><i class="fas fa-envelope"></i></a>
                     <a href="https://discord.gg/FNUgVRxmef" target="_blank"><i class="fab fa-discord"></i></a>
                     <a href="https://x.com/hackerfabindia" target="_blank"><i class="fab fa-x-twitter"></i></a>
                     <a href="https://github.com/hackerfabiitb" target="_blank"><i class="fab fa-github"></i></a>
@@ -248,7 +248,7 @@
                     <p>Note: Only IITB students can apply. If you are at another college, join our Discord server instead. Send an email with the following:</p>
                 </div>
                 <div class="email-details">
-                    <div class="email-info"><strong><i class="fas fa-envelope"></i> Email:</strong> hackerfabiitb@gmail.com</div>
+                    <div class="email-info"><strong><i class="fas fa-envelope"></i> Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6800090b030d1a0e090a01011c0a280f05090104460b0705">[email&#160;protected]</a></div>
                     <div class="email-info"><strong><i class="fas fa-heading"></i> Subject:</strong> Recruitment - Your Name</div>
                     <div class="email-info"><strong><i class="fas fa-file-alt"></i> Length:</strong> No longer than 1000 words</div>
                 </div>
@@ -267,33 +267,24 @@
         </div>
     </div>
 
-    <script>
-    // ── CUSTOM CURSOR ──
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ── CUSTOM CURSOR — small dot → big inverting blob ──
     const cursor = document.getElementById('cursor');
-    const trail  = document.getElementById('cursor-trail');
-    let mx = -100, my = -100, tx = -100, ty = -100;
+    let mx = -200, my = -200;
 
     document.addEventListener('mousemove', e => {
         mx = e.clientX; my = e.clientY;
-        cursor.style.transform = `translate(${mx}px,${my}px)`;
+        cursor.style.left = mx + 'px';
+        cursor.style.top  = my + 'px';
     });
 
-    // smooth trail
-    (function animTrail() {
-        tx += (mx - tx) * 0.12;
-        ty += (my - ty) * 0.12;
-        trail.style.transform = `translate(${tx}px,${ty}px)`;
-        requestAnimationFrame(animTrail);
-    })();
-
-    // invert on hoverable elements
-    const hoverables = 'a, button, .nav-link, .nav-logo, .member-card, .pillar, .tech-card, .growth-card, .timeline-content';
+    const hoverables = 'a, button, .nav-link, .nav-logo, .member-card, .pillar, .tech-card, .growth-card, .timeline-content, .requirement-item';
     document.querySelectorAll(hoverables).forEach(el => {
-        el.addEventListener('mouseenter', () => { cursor.classList.add('inverted'); trail.classList.add('inverted'); });
-        el.addEventListener('mouseleave', () => { cursor.classList.remove('inverted'); trail.classList.remove('inverted'); });
+        el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
 
-    // ── BACKGROUND CANVAS — faint ruled lines + halftone dots ──
+    // ── BACKGROUND CANVAS — tech dot grid ──
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -302,35 +293,33 @@
         canvas.height = window.innerHeight;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // horizontal ruled lines (newspaper feel)
-        ctx.strokeStyle = 'rgba(13,13,13,0.045)';
-        ctx.lineWidth = 1;
-        const lineSpacing = 28;
-        for (let y = 0; y < canvas.height; y += lineSpacing) {
-            ctx.beginPath();
-            ctx.moveTo(0, y); ctx.lineTo(canvas.width, y);
-            ctx.stroke();
-        }
-
-        // subtle dot grid
-        ctx.fillStyle = 'rgba(13,13,13,0.055)';
-        for (let x = 0; x < canvas.width; x += 56) {
-            for (let y = 14; y < canvas.height; y += 28) {
+        // tight dot grid — circuit board feel
+        const spacing = 32;
+        ctx.fillStyle = 'rgba(10,10,10,0.09)';
+        for (let x = 0; x < canvas.width; x += spacing) {
+            for (let y = 0; y < canvas.height; y += spacing) {
                 ctx.beginPath();
                 ctx.arc(x, y, 1, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        // vertical column lines — the "gutter" feel
-        const gutterX1 = canvas.width * 0.08;
-        const gutterX2 = canvas.width * 0.92;
-        ctx.strokeStyle = 'rgba(13,13,13,0.07)';
+        // sparse cross-hairs at grid intersections (every 4th)
+        ctx.strokeStyle = 'rgba(10,10,10,0.06)';
         ctx.lineWidth = 1;
-        [gutterX1, gutterX2].forEach(x => {
-            ctx.beginPath();
-            ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height);
-            ctx.stroke();
+        const cross = 5;
+        for (let x = 0; x < canvas.width; x += spacing * 4) {
+            for (let y = 0; y < canvas.height; y += spacing * 4) {
+                ctx.beginPath(); ctx.moveTo(x - cross, y); ctx.lineTo(x + cross, y); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(x, y - cross); ctx.lineTo(x, y + cross); ctx.stroke();
+            }
+        }
+
+        // vertical margin lines
+        const m = canvas.width * 0.035;
+        ctx.strokeStyle = 'rgba(10,10,10,0.1)';
+        [m, canvas.width - m].forEach(x => {
+            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
         });
     }
 
@@ -392,18 +381,4 @@
     });
 
     // ── MODAL ──
-    const modal = document.getElementById('applyModal');
-    document.getElementById('openModal').addEventListener('click', () => {
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    });
-    document.getElementById('closeModal').addEventListener('click', () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    });
-    window.addEventListener('click', e => {
-        if (e.target === modal) { modal.style.display = 'none'; document.body.style.overflow = ''; }
-    });
-    </script>
-</body>
-</html>
+    const modal = document.getElementById('app
