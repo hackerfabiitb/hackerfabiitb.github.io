@@ -49,7 +49,7 @@
         </button>
         <div class="social-buttons">
             <a href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all" class="social-btn linkedin magnetic" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:hackerfabiitb@gmail.com" class="social-btn email magnetic"><i class="fas fa-envelope"></i></a>
+            <a href="/cdn-cgi/l/email-protection#c3aba2a0a8a6b1a5a2a1aaaab7a183a4aea2aaafeda0acae" class="social-btn email magnetic"><i class="fas fa-envelope"></i></a>
             <a href="https://x.com/hackerfabindia" class="social-btn twitter magnetic" target="_blank"><i class="fab fa-x-twitter"></i></a>
             <a href="https://www.instagram.com/hackerfabiitb/" class="social-btn instagram magnetic" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://discord.gg/FNUgVRxmef" class="social-btn discord magnetic" target="_blank"><i class="fab fa-discord"></i></a>
@@ -153,7 +153,7 @@
             <a href="https://www.linkedin.com/in/abhineet-avhad/" class="member-card reveal magnetic" target="_blank"><img src="Images/TeamPhotos/AbhineetAvhad.jpeg" alt="Abhineet Avhad"><h4>Abhineet Avhad</h4></a>
             <a href="https://www.linkedin.com/in/rushatdixit/" class="member-card reveal magnetic" target="_blank"><img src="Images/TeamPhotos/Rushat.jpeg" alt="Rushat Dixit"><h4>Rushat Dixit</h4></a>
             <a href="https://linkedin.com/in/jai-bellare" class="member-card reveal magnetic" target="_blank"><img src="Images/TeamPhotos/Jai.jpeg" alt="Jai Bellare"><h4>Jai Bellare</h4></a>
-            <a href="https://www.linkedin.com/in/dhriti-maniar/" class="member-card reveal magnetic" target="_blank"><img src="Images/TeamPhotos/Dhriti.png" alt="Dhriti Maniar"><h4>Dhriti Maniar</h4></a>
+            <div class="member-card member-card--open reveal magnetic" id="openSpotCard"><div class="open-spot-avatar">?</div><h4>This could be you.</h4><span class="open-spot-link">Reach out to us</span></div>
         </div>
         <h3 class="team-category reveal">Faculty Advisors</h3>
         <div class="team-grid advisors">
@@ -183,7 +183,7 @@
                 </a>
             </div>
             <div class="social-icons reveal">
-                <a href="mailto:hackerfabiitb@gmail.com" class="magnetic"><i class="fas fa-envelope"></i></a>
+                <a href="/cdn-cgi/l/email-protection#375f56545c52455156555e5e435577505a565e5b1954585a" class="magnetic"><i class="fas fa-envelope"></i></a>
                 <a href="https://discord.gg/FNUgVRxmef" target="_blank" class="magnetic"><i class="fab fa-discord"></i></a>
                 <a href="https://x.com/hackerfabindia" target="_blank" class="magnetic"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://github.com/hackerfabiitb" target="_blank" class="magnetic"><i class="fab fa-github"></i></a>
@@ -240,7 +240,7 @@
 
 <script>
 // ═══════════════════════════════════════════════
-// CURSOR — simple dot, no sparkles or particle trail
+// CURSOR — hides when leaving window, mix-blend invert on buttons
 // ═══════════════════════════════════════════════
 const cursor = document.getElementById('cursor');
 let mouseX = 0, mouseY = 0;
@@ -251,17 +251,32 @@ document.addEventListener('mousemove', e => {
     cursor.style.top  = mouseY + 'px';
 });
 
+// Hide cursor when mouse leaves the page, show when it returns
+document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
+document.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
+
 document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
 document.addEventListener('mouseup',   () => cursor.classList.remove('clicking'));
 
-// Hover state
-function addHover(selector, cls = 'hovering') {
+// Hover states: buttons/links get invert mode, images stay small solid
+function addHover(selector, cls) {
     document.querySelectorAll(selector).forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add(cls));
         el.addEventListener('mouseleave', () => cursor.classList.remove(cls));
     });
 }
-addHover('a, button, .nav-logo, .member-card, .pillar, .tech-card, .growth-card, .timeline-content, .requirement-item');
+// Buttons/interactive elements → invert blend mode
+addHover('a, button, .nav-logo, .pillar, .tech-card, .growth-card, .timeline-content, .requirement-item', 'hovering');
+// Images → stay small dot (no extra class needed, just remove hovering if it was added)
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('mouseenter', () => cursor.classList.remove('hovering'));
+});
+
+// Open spot card — opens modal
+document.getElementById('openSpotCard').addEventListener('click', () => {
+    document.getElementById('applyModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+});
 
 // ═══════════════════════════════════════════════
 // MAGNETIC BUTTONS
@@ -522,13 +537,4 @@ document.querySelectorAll('.member-card').forEach(card => {
     card.addEventListener('mouseleave', () => { tag.style.opacity = '0'; });
 });
 
-// ═══════════════════════════════════════════════
-// CURSOR on red button
-// ═══════════════════════════════════════════════
-document.querySelectorAll('.apply-btn').forEach(btn => {
-    btn.addEventListener('mouseenter', () => cursor.classList.add('on-red-btn'));
-    btn.addEventListener('mouseleave', () => cursor.classList.remove('on-red-btn'));
-});
-</script>
-</body>
-</html>
+// ═══════════�
