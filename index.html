@@ -13,22 +13,13 @@
 
 <div id="scanlines"></div>
 <div id="cursor"></div>
-<div id="cursor-trail-container"></div>
 <div id="toast-container"></div>
-<div id="chip-counter">🔬 chips_etched: <span id="chip-count">0</span></div>
-<div id="secret-counter"></div>
 
-<!-- KONAMI EASTER EGG -->
-<div id="konami-overlay">
-    <div id="konami-chip">🔬</div>
-    <h2>UNLIMITED CHIPS!</h2>
-    <p>↑↑↓↓←→←→BA — You found it. Legend.</p>
-    <p style="font-size:0.65rem;opacity:0.4;margin-bottom:2rem;">India's first student chip fab salutes you.</p>
-    <button id="konami-close-btn"><i class="fas fa-microchip"></i> BACK TO REALITY</button>
-</div>
+<!-- REMOVED: chip-counter, secret-counter, konami-overlay -->
 
 <nav id="navbar">
-    <div class="nav-logo" id="navLogoBtn">hackerfabiitb<span class="logo-cursor"></span></div>
+    <!-- REMOVED: blinking logo-cursor span -->
+    <div class="nav-logo" id="navLogoBtn">hackerfabiitb</div>
     <ul class="nav-links" id="navLinks">
         <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
         <li><a href="#" class="nav-link" data-page="about">About</a></li>
@@ -48,9 +39,10 @@
         <div class="col-rule right"></div>
         <div class="home-dateline">IIT Bombay &nbsp;·&nbsp; Founded Aug 2025 &nbsp;·&nbsp; India's First Student Chip Fab</div>
         <div class="logo-placeholder">
-            <img src="Images/Logos/logo-first.jpeg" alt="HackerFab Logo" id="homeLogoImg" title="🤫 click me 7 times">
+            <img src="Images/Logos/logo-first.jpeg" alt="HackerFab Logo" id="homeLogoImg">
         </div>
-        <h1 class="glitch-text" data-text="India's first student-built microfabrication lab" id="homeH1">India's first student-built<br>microfabrication lab</h1>
+        <!-- REMOVED: glitch-text class and data-text attr from h1, keeping h1 plain -->
+        <h1 id="homeH1">India's first student-built<br>microfabrication lab</h1>
         <p class="tagline">Creating open-source, student-designed fabrication tools to make hands-on fabrication accessible across India.</p>
         <button class="apply-btn ripple-container magnetic" id="openModal">
             <i class="fas fa-paper-plane"></i> <span>Apply to Join</span>
@@ -62,7 +54,8 @@
             <a href="https://www.instagram.com/hackerfabiitb/" class="social-btn instagram magnetic" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://discord.gg/FNUgVRxmef" class="social-btn discord magnetic" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
-        <div class="home-issue" id="homeIssue">Vol. I &nbsp;·&nbsp; Est. 2025 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; IIT Bombay</div>
+        <!-- REMOVED: homeIssue cycling status bar -->
+        <div class="home-issue">Vol. I &nbsp;·&nbsp; Est. 2025 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; IIT Bombay</div>
     </div>
 </section>
 
@@ -247,42 +240,19 @@
 
 <script>
 // ═══════════════════════════════════════════════
-// CURSOR
+// CURSOR — simple dot, no sparkles or particle trail
 // ═══════════════════════════════════════════════
 const cursor = document.getElementById('cursor');
-const trailContainer = document.getElementById('cursor-trail-container');
 let mouseX = 0, mouseY = 0;
-let lastTrailTime = 0;
-let isClicking = false;
 
 document.addEventListener('mousemove', e => {
     mouseX = e.clientX; mouseY = e.clientY;
     cursor.style.left = mouseX + 'px';
     cursor.style.top  = mouseY + 'px';
-
-    // Subtle trail particles
-    const now = Date.now();
-    if (now - lastTrailTime > 40) {
-        lastTrailTime = now;
-        spawnTrailParticle(mouseX, mouseY);
-    }
 });
 
-document.addEventListener('mousedown', () => { cursor.classList.add('clicking'); isClicking = true; });
-document.addEventListener('mouseup',   () => { cursor.classList.remove('clicking'); isClicking = false; });
-
-function spawnTrailParticle(x, y) {
-    const p = document.createElement('div');
-    p.className = 'cursor-particle';
-    const dx = (Math.random() - 0.5) * 16;
-    const dy = -Math.random() * 20 - 5;
-    p.style.left = x + 'px';
-    p.style.top  = y + 'px';
-    p.style.setProperty('--dx', dx + 'px');
-    p.style.setProperty('--dy', dy + 'px');
-    trailContainer.appendChild(p);
-    setTimeout(() => p.remove(), 600);
-}
+document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+document.addEventListener('mouseup',   () => cursor.classList.remove('clicking'));
 
 // Hover state
 function addHover(selector, cls = 'hovering') {
@@ -292,27 +262,6 @@ function addHover(selector, cls = 'hovering') {
     });
 }
 addHover('a, button, .nav-logo, .member-card, .pillar, .tech-card, .growth-card, .timeline-content, .requirement-item');
-
-// ═══════════════════════════════════════════════
-// SPARKLES on click
-// ═══════════════════════════════════════════════
-const sparkleChars = ['✦','★','⬡','◈','◇','✧','⌬','⬟'];
-document.addEventListener('click', e => {
-    for (let i = 0; i < 5; i++) {
-        const s = document.createElement('div');
-        s.className = 'sparkle';
-        s.textContent = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
-        const sx = (Math.random() - 0.5) * 80;
-        const sy = -Math.random() * 60 - 20;
-        s.style.left = e.clientX + 'px';
-        s.style.top  = e.clientY + 'px';
-        s.style.setProperty('--sx', sx + 'px');
-        s.style.setProperty('--sy', sy + 'px');
-        s.style.animationDelay = (Math.random() * 0.1) + 's';
-        document.body.appendChild(s);
-        setTimeout(() => s.remove(), 900);
-    }
-});
 
 // ═══════════════════════════════════════════════
 // MAGNETIC BUTTONS
@@ -367,7 +316,6 @@ function showPage(pageId) {
         requestAnimationFrame(() => requestAnimationFrame(() => {
             next.classList.add('visible');
             transitioning = false;
-            // Trigger reveals on new page
             setTimeout(triggerReveals, 80);
         }));
     }, 240);
@@ -377,7 +325,6 @@ function showPage(pageId) {
     history.replaceState(null, '', '#' + pageId);
     document.getElementById('navLinks').classList.remove('active');
 
-    // Toast on first visit to each page
     toastOnFirstVisit(pageId);
 }
 
@@ -403,7 +350,6 @@ function triggerReveals() {
     });
 }
 
-// Also trigger on scroll
 document.querySelectorAll('.page').forEach(page => {
     page.addEventListener('scroll', () => {
         page.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
@@ -453,98 +399,6 @@ setInterval(spawnHomeParticle, 800);
 for (let i = 0; i < 6; i++) setTimeout(spawnHomeParticle, i * 300);
 
 // ═══════════════════════════════════════════════
-// EASTER EGG 1: Logo click 7 times = chip shower
-// ═══════════════════════════════════════════════
-let logoClicks = 0;
-const logoImg = document.getElementById('homeLogoImg');
-logoImg.addEventListener('click', () => {
-    logoClicks++;
-    document.getElementById('chip-count').textContent = logoClicks;
-    document.getElementById('chip-counter').classList.add('visible');
-
-    if (logoClicks === 3)  showToast('3 chips... keep going 🔬');
-    if (logoClicks === 5)  showToast('5 chips! Almost there 👀');
-    if (logoClicks === 7) {
-        showToast('🎉 CHIP SHOWER UNLOCKED!');
-        chipShower();
-        logoClicks = 0;
-        setTimeout(() => { document.getElementById('chip-count').textContent = '0'; }, 3000);
-    }
-});
-
-function chipShower() {
-    const emojis = ['🔬','⚡','💡','🧪','⬡','◈','✦'];
-    for (let i = 0; i < 30; i++) {
-        setTimeout(() => {
-            const s = document.createElement('div');
-            s.className = 'sparkle';
-            s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-            s.style.left = Math.random() * window.innerWidth + 'px';
-            s.style.top  = Math.random() * window.innerHeight * 0.7 + 'px';
-            s.style.fontSize = (1 + Math.random()) + 'rem';
-            const sx = (Math.random() - 0.5) * 100;
-            const sy = -Math.random() * 150 - 50;
-            s.style.setProperty('--sx', sx + 'px');
-            s.style.setProperty('--sy', sy + 'px');
-            s.style.animationDuration = '1.2s';
-            document.body.appendChild(s);
-            setTimeout(() => s.remove(), 1300);
-        }, i * 60);
-    }
-}
-
-// ═══════════════════════════════════════════════
-// EASTER EGG 2: KONAMI CODE
-// ═══════════════════════════════════════════════
-const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-let konamiIdx = 0;
-
-document.addEventListener('keydown', e => {
-    if (e.key === konami[konamiIdx]) {
-        konamiIdx++;
-        if (konamiIdx === konami.length) {
-            konamiIdx = 0;
-            document.getElementById('konami-overlay').classList.add('active');
-            document.getElementById('navbar').classList.add('konami');
-            setTimeout(() => document.getElementById('navbar').classList.remove('konami'), 1200);
-            chipShower();
-        }
-    } else {
-        konamiIdx = 0;
-    }
-});
-document.getElementById('konami-close-btn').addEventListener('click', () => {
-    document.getElementById('konami-overlay').classList.remove('active');
-    showToast('Back to the lab 🧪');
-});
-
-// ═══════════════════════════════════════════════
-// EASTER EGG 3: Title glitch on idle
-// ═══════════════════════════════════════════════
-const glitchTitles = [
-    'HackerFab | IITB', 'H4ck3rF4b | IIT8', 'HackerFab | 🔬', 
-    'Fab > Sleep | IITB', 'Why study? CHIP.', '01001000 01000110',
-    'HackerFab | ₿uild', 'TSMC who? | IITB'
-];
-let glitchInterval;
-let idleTimer;
-function resetIdle() {
-    clearTimeout(idleTimer);
-    clearInterval(glitchInterval);
-    document.title = 'HackerFab | IIT Bombay';
-    idleTimer = setTimeout(() => {
-        let gi = 0;
-        glitchInterval = setInterval(() => {
-            document.title = glitchTitles[gi % glitchTitles.length];
-            gi++;
-        }, 900);
-    }, 8000);
-}
-document.addEventListener('mousemove', resetIdle);
-document.addEventListener('keydown', resetIdle);
-resetIdle();
-
-// ═══════════════════════════════════════════════
 // EASTER EGG 4: Mission text typewriter on click
 // ═══════════════════════════════════════════════
 const missionVariants = [
@@ -569,16 +423,6 @@ function typewrite(el, text) {
         if (i >= text.length) clearInterval(iv);
     }, 22);
 }
-
-// ═══════════════════════════════════════════════
-// EASTER EGG 5: Cursor trail changes on nav page
-// ═══════════════════════════════════════════════
-const pageEmojis = { home:'◈', about:'👥', goals:'🔬', timeline:'📅', team:'⚡', contact:'📡' };
-let currentPage = 'home';
-
-document.querySelectorAll('.nav-link').forEach(l => {
-    l.addEventListener('click', () => { currentPage = l.dataset.page; });
-});
 
 // ═══════════════════════════════════════════════
 // TOAST NOTIFICATIONS
@@ -618,10 +462,10 @@ document.addEventListener('keydown', e => {
     keyBuffer += e.key.toLowerCase();
     if (keyBuffer.length > 10) keyBuffer = keyBuffer.slice(-10);
     if (keyBuffer.endsWith('tsmc'))  showToast('😂 TSMC has 65,000 employees. We have 11. Same thing.');
-    if (keyBuffer.endsWith('iitb'))  { showToast('🏛️ Powai represent!'); chipShower(); }
+    if (keyBuffer.endsWith('iitb'))  showToast('🏛️ Powai represent!');
     if (keyBuffer.endsWith('chip'))  showToast('🔬 That\'s what we\'re building, buddy.');
-    if (keyBuffer.endsWith('help'))  showToast('💡 Try: konami code, click logo 7x, click the mission quote...');
-    if (keyBuffer.endsWith('india')) { showToast('🇮🇳 Jai Hind! Semiconductor sovereignty loading...'); }
+    if (keyBuffer.endsWith('help'))  showToast('💡 Try: click the mission quote...');
+    if (keyBuffer.endsWith('india')) showToast('🇮🇳 Jai Hind! Semiconductor sovereignty loading...');
     if (keyBuffer.endsWith('nano'))  showToast('⚗️ 1 nanometre = 10 angstroms = our current braincell size at 3am.');
 });
 
@@ -647,17 +491,15 @@ document.getElementById('navLogoBtn').addEventListener('click', () => {
     navLogoClicks++;
     if (navLogoClicks >= 5) {
         navLogoClicks = 0;
-        document.getElementById('navLogoBtn').style.animation = 'none';
-        void document.getElementById('navLogoBtn').offsetWidth;
         showToast('🤖 Logo.exe has crashed. Rebooting...');
         const logo = document.getElementById('navLogoBtn');
         const original = 'hackerfabiitb';
         const chars = '!@#$%^&*01';
         let count = 0;
         const scramble = setInterval(() => {
-            logo.childNodes[0].textContent = original.split('').map(c => Math.random() > 0.5 ? chars[Math.floor(Math.random()*chars.length)] : c).join('');
+            logo.textContent = original.split('').map(c => Math.random() > 0.5 ? chars[Math.floor(Math.random()*chars.length)] : c).join('');
             count++;
-            if (count > 15) { clearInterval(scramble); logo.childNodes[0].textContent = original; }
+            if (count > 15) { clearInterval(scramble); logo.textContent = original; }
         }, 60);
     }
     showPage('home');
@@ -681,36 +523,12 @@ document.querySelectorAll('.member-card').forEach(card => {
 });
 
 // ═══════════════════════════════════════════════
-// CURSOR SPARKLE ON RED BUTTON HOVER
+// CURSOR on red button
 // ═══════════════════════════════════════════════
 document.querySelectorAll('.apply-btn').forEach(btn => {
     btn.addEventListener('mouseenter', () => cursor.classList.add('on-red-btn'));
     btn.addEventListener('mouseleave', () => cursor.classList.remove('on-red-btn'));
 });
-
-// ═══════════════════════════════════════════════
-// STATUS BAR: random chip-fab messages cycle
-// ═══════════════════════════════════════════════
-const homeIssue = document.getElementById('homeIssue');
-const statusCycle = [
-    'Vol. I · Est. 2025 · Open Source · IIT Bombay',
-    'Status: Actively etching patterns at 1µm',
-    'Build mode: ON · Sleep mode: OFF · Chai: FULL',
-    'Current process node: "ambitious undergraduate"',
-    'Yield: TBD · Motivation: HIGH · Funding: lol',
-    'Spin speed: 6000 RPM · Coffee speed: faster',
-];
-let statusIdx = 0;
-setInterval(() => {
-    if (document.getElementById('page-home').classList.contains('active')) {
-        statusIdx = (statusIdx + 1) % statusCycle.length;
-        homeIssue.style.opacity = '0';
-        setTimeout(() => {
-            homeIssue.textContent = statusCycle[statusIdx];
-            homeIssue.style.opacity = '0.5';
-        }, 300);
-    }
-}, 4000);
 </script>
 </body>
 </html>
