@@ -33,7 +33,7 @@
 <!-- HOME -->
 <section id="page-home" class="page active">
     <div id="home-particles"></div>
-    <div class="page-inner home-inner">
+    <div class="home-inner">
         <div class="home-dateline">IIT Bombay &nbsp;·&nbsp; Founded Aug 2025 &nbsp;·&nbsp; India's First Student Chip Fab</div>
         <div class="logo-placeholder">
             <img src="Images/Logos/logo-first.jpeg" alt="HackerFab Logo" id="homeLogoImg">
@@ -59,34 +59,41 @@
         <h2 class="reveal">About Us</h2>
         <div class="about-content">
 
-            <!-- Photo Collage -->
+            <!-- 7-photo collage, viewport-height constrained -->
             <div class="photo-collage reveal">
-                <div class="collage-item" data-desc="Team at SemiX 2025 — presenting our lithography and spin coater prototypes to the semiconductor community." data-label="SemiX 2025">
-                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team at SemiX">
-                    <div class="flip-overlay">
-                        <p>Team at SemiX 2025 — presenting our lithography and spin coater prototypes to the semiconductor community.</p>
-                        <span>tap again to close</span>
-                    </div>
+                <div class="collage-item ci-tall" data-desc="Team at SemiX 2025 — presenting our lithography and spin coater prototypes to the semiconductor community.">
+                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX 2025">
+                    <div class="flip-overlay"><p>Team at SemiX 2025 — presenting our lithography and spin coater prototypes to the semiconductor community.</p><span>click again to close</span></div>
                 </div>
-                <div class="collage-item" data-desc="Our first micrometer-scale patterns captured using Litho v1. Feature size: 1 micron." data-label="Litho v1 results">
-                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Lithography results — placeholder">
-                    <div class="flip-overlay">
-                        <p>Our first micrometer-scale patterns captured using Litho v1. Feature size: 1 micron.</p>
-                        <span>tap again to close</span>
-                    </div>
+                <div class="collage-item" data-desc="Our first micrometer-scale patterns captured using Litho v1. Feature size: 1 micron.">
+                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Litho v1 — placeholder">
+                    <div class="flip-overlay"><p>Our first micrometer-scale patterns captured using Litho v1. Feature size: 1 micron.</p><span>click again to close</span></div>
                 </div>
-                <div class="collage-item" data-desc="The spin coater in action — demonstrating closed-loop control at 6000 RPM." data-label="Spin Coater">
+                <div class="collage-item" data-desc="The spin coater demonstrating closed-loop control at 6000 RPM.">
                     <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Spin coater — placeholder">
-                    <div class="flip-overlay">
-                        <p>The spin coater in action — demonstrating closed-loop control at 6000 RPM.</p>
-                        <span>tap again to close</span>
-                    </div>
+                    <div class="flip-overlay"><p>The spin coater demonstrating closed-loop control at 6000 RPM.</p><span>click again to close</span></div>
+                </div>
+                <div class="collage-item ci-wide" data-desc="Lab workspace at IIT Bombay — where the chips get made.">
+                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Lab — placeholder">
+                    <div class="flip-overlay"><p>Lab workspace at IIT Bombay — where the chips get made.</p><span>click again to close</span></div>
+                </div>
+                <div class="collage-item" data-desc="VLSID 2026 — Best Presentation award for our work on student-built chip fabrication tools.">
+                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="VLSID — placeholder">
+                    <div class="flip-overlay"><p>VLSID 2026 — Best Presentation award for our work on student-built chip fabrication tools.</p><span>click again to close</span></div>
+                </div>
+                <div class="collage-item" data-desc="Open-source documentation — every build, every process, shared freely.">
+                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Docs — placeholder">
+                    <div class="flip-overlay"><p>Open-source documentation — every build, every process, shared freely.</p><span>click again to close</span></div>
+                </div>
+                <div class="collage-item ci-wide" data-desc="The team — building India's first student microfab, one late night at a time.">
+                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team photo — placeholder">
+                    <div class="flip-overlay"><p>The team — building India's first student microfab, one late night at a time.</p><span>click again to close</span></div>
                 </div>
             </div>
 
             <!-- Text content -->
             <div class="about-text reveal">
-                <p class="mission" id="missionText">"Making hands-on chip fabrication accessible across India."</p>
+                <p class="mission">"Making hands-on chip fabrication accessible across India."</p>
                 <p>Founded in August 2025, we're a group of students determined to democratize technology and foster innovation. We are part of the <a href="https://docs.hackerfab.org/home/" target="_blank" rel="noopener">HackerFab network</a>, aiming to become a stepping stone to the semiconductor industry.</p>
                 <div class="about-pillars">
                     <div class="pillar reveal"><i class="fas fa-microchip"></i><h4>Semiconductor Fabrication</h4><p>Why should TSMC have all the fun?</p></div>
@@ -131,10 +138,11 @@
         <h2 class="reveal">Our Journey</h2>
         <p class="timeline-intro reveal">Key milestones in our story so far.</p>
         <div class="timeline">
+            <div class="timeline-item reveal"><div class="timeline-marker event"><i class="fas fa-trophy"></i></div><div class="timeline-content"><div class="timeline-date">Jan 2026</div><h4>Best Presentation at VLSID</h4><p>Presented at the VLSI Design conference and won Best Presentation for our work on student-built chip fabrication tools.</p></div></div>
             <div class="timeline-item reveal"><div class="timeline-marker technical"><i class="fas fa-microchip"></i></div><div class="timeline-content"><div class="timeline-date">Dec 2025</div><h4>Patterns captured on Litho v1</h4><p>We captured our first micrometer scale patterns on Litho v1</p></div></div>
             <div class="timeline-item reveal"><div class="timeline-marker community"><i class="fas fa-users"></i></div><div class="timeline-content"><div class="timeline-date">Dec 2025</div><h4>Community Grew to 40+ Members</h4><p>Expanded our outreach beyond IITB, growing to a 40 member strong community on Discord</p></div></div>
-            <div class="timeline-item reveal"><div class="timeline-marker event"><i class="fas fa-microphone"></i></div><div class="timeline-content"><div class="timeline-date">Sep 2025</div><h4>Presented at SemiX</h4><p>Presented proof-of-concepts for spin coater and lithography machine. Part of the panel discussion on "Advancing India's Semiconductor Ecosystem"</p></div></div>
             <div class="timeline-item reveal"><div class="timeline-marker community"><i class="fas fa-users"></i></div><div class="timeline-content"><div class="timeline-date">Oct 2025</div><h4>Community Grew to 50 Members</h4><p>Reached our first major community milestone.</p></div></div>
+            <div class="timeline-item reveal"><div class="timeline-marker event"><i class="fas fa-microphone"></i></div><div class="timeline-content"><div class="timeline-date">Sep 2025</div><h4>Presented at SemiX</h4><p>Presented proof-of-concepts for spin coater and lithography machine. Part of the panel discussion on "Advancing India's Semiconductor Ecosystem"</p></div></div>
             <div class="timeline-item reveal"><div class="timeline-marker technical"><i class="fas fa-flask"></i></div><div class="timeline-content"><div class="timeline-date">Sep 2025</div><h4>Lab Setup Complete</h4><p>First functional fabrication workspace established.</p></div></div>
             <div class="timeline-item reveal"><div class="timeline-marker milestone"><i class="fas fa-flag"></i></div><div class="timeline-content"><div class="timeline-date">Aug 2025</div><h4>HackerFab IITB Founded</h4><p>The beginning of our journey to democratize fabrication.</p></div></div>
         </div>
@@ -187,7 +195,7 @@
             <div class="contact-info reveal">
                 <p><i class="fas fa-map-marker-alt"></i> IIT Bombay, Powai, Mumbai - 400076</p>
                 <p><i class="fas fa-phone"></i> +91 79779 94553</p>
-                <p><i class="fas fa-envelope"></i> hackerfabiitb@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> hackerfabiitb [at] gmail.com</p>
             </div>
             <div class="join-us reveal">
                 <a href="mailto:hackerfabiitb@gmail.com?subject=Application%20to%20Join" class="join-link">
@@ -214,7 +222,7 @@
                 <a href="#" data-page="team">Team</a>
                 <a href="#" data-page="contact">Contact</a>
             </div>
-            <p class="copyright">&copy; 2025 HackerFab, IIT Bombay. All rights reserved. &nbsp;|&nbsp; <span id="footer-secret" style="cursor:none;opacity:0.4;">↑↑↓↓←→←→BA</span></p>
+            <p class="copyright">&copy; 2025 HackerFab, IIT Bombay. All rights reserved. &nbsp;|&nbsp; <span id="footer-secret" style="cursor:none;opacity:0.4;">&#x2191;&#x2191;&#x2193;&#x2193;&#x2190;&#x2192;&#x2190;&#x2192;BA</span></p>
         </div>
     </footer>
 </section>
@@ -231,7 +239,7 @@
                 <p>Note: Only IITB students can apply. If you are at another college, join our Discord server instead. Send an email with the following:</p>
             </div>
             <div class="email-details">
-                <div class="email-info"><strong><i class="fas fa-envelope"></i> Email:</strong>&nbsp; hackerfabiitb@gmail.com</div>
+                <div class="email-info"><strong><i class="fas fa-envelope"></i> Email:</strong>&nbsp; hackerfabiitb [at] gmail.com</div>
                 <div class="email-info"><strong><i class="fas fa-heading"></i> Subject:</strong>&nbsp; Recruitment - Your Name</div>
                 <div class="email-info"><strong><i class="fas fa-file-alt"></i> Length:</strong>&nbsp; No longer than 1000 words</div>
             </div>
@@ -252,7 +260,7 @@
 
 <script>
 // ═══════════════════════════════════════════════
-// CURSOR
+// CURSOR — uses clientX/Y directly, resize-safe
 // ═══════════════════════════════════════════════
 const cursor = document.getElementById('cursor');
 cursor.classList.add('hidden');
@@ -267,30 +275,28 @@ document.addEventListener('mouseenter',  () => cursor.classList.remove('hidden')
 document.addEventListener('mousedown',   () => cursor.classList.add('clicking'));
 document.addEventListener('mouseup',     () => cursor.classList.remove('clicking'));
 
-document.querySelectorAll('a, button, .nav-logo, .pillar, .tech-card, .growth-card, .timeline-content, .requirement-item, .member-card--open, .collage-item').forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.classList.add('hovering'); cursor.classList.remove('on-image'); });
-    el.addEventListener('mouseleave', () => { cursor.classList.remove('hovering'); });
+// Hover states — delegated so they survive DOM changes and resizes
+document.body.addEventListener('mouseover', e => {
+    const el = e.target.closest('a, button, .nav-logo, .pillar, .tech-card, .growth-card, .timeline-content, .requirement-item, .member-card--open, .collage-item');
+    const isImg = e.target.closest('img') && !e.target.closest('a');
+    const isRedBtn = e.target.closest('.apply-btn');
+
+    cursor.classList.remove('hovering', 'on-image', 'on-red-btn');
+    if (isImg)    cursor.classList.add('on-image');
+    else if (isRedBtn) { cursor.classList.add('hovering'); cursor.classList.add('on-red-btn'); }
+    else if (el)  cursor.classList.add('hovering');
 });
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('mouseenter', () => { cursor.classList.remove('hovering'); cursor.classList.add('on-image'); });
-    img.addEventListener('mouseleave', () => { cursor.classList.remove('on-image'); });
-});
-document.querySelectorAll('.apply-btn').forEach(btn => {
-    btn.addEventListener('mouseenter', () => cursor.classList.add('on-red-btn'));
-    btn.addEventListener('mouseleave', () => cursor.classList.remove('on-red-btn'));
+document.body.addEventListener('mouseout', e => {
+    const leaving = !e.relatedTarget || e.relatedTarget === document.documentElement;
+    if (leaving) cursor.classList.remove('hovering','on-image','on-red-btn');
 });
 
 // ═══════════════════════════════════════════════
-// HAMBURGER — fixed: use button element, toggle class
+// HAMBURGER
 // ═══════════════════════════════════════════════
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('navLinks');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Close nav when a link is clicked on mobile
+hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => navLinks.classList.remove('active'));
 });
@@ -303,7 +309,7 @@ document.querySelectorAll('.magnetic').forEach(el => {
         const rect = el.getBoundingClientRect();
         const dx = (e.clientX - (rect.left + rect.width  / 2)) * 0.25;
         const dy = (e.clientY - (rect.top  + rect.height / 2)) * 0.25;
-        el.style.transform = `translate(${dx}px, ${dy}px)`;
+        el.style.transform = `translate(${dx}px,${dy}px)`;
     });
     el.addEventListener('mouseleave', () => { el.style.transform = ''; });
 });
@@ -314,12 +320,12 @@ document.querySelectorAll('.magnetic').forEach(el => {
 document.querySelectorAll('.ripple-container').forEach(btn => {
     btn.addEventListener('click', e => {
         const r = btn.getBoundingClientRect();
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        ripple.style.left = (e.clientX - r.left - 5) + 'px';
-        ripple.style.top  = (e.clientY - r.top  - 5) + 'px';
-        btn.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
+        const rip = document.createElement('span');
+        rip.className = 'ripple';
+        rip.style.left = (e.clientX - r.left - 5) + 'px';
+        rip.style.top  = (e.clientY - r.top  - 5) + 'px';
+        btn.appendChild(rip);
+        setTimeout(() => rip.remove(), 600);
     });
 });
 
@@ -333,12 +339,10 @@ function showPage(pageId) {
     const current = document.querySelector('.page.active');
     const next    = document.getElementById('page-' + pageId);
     if (!next || current === next) return;
-
     transitioning = true;
     current.classList.add('leaving');
-
     setTimeout(() => {
-        current.classList.remove('active', 'leaving', 'visible');
+        current.classList.remove('active','leaving','visible');
         next.scrollTop = 0;
         next.classList.add('active');
         requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -347,7 +351,6 @@ function showPage(pageId) {
             setTimeout(triggerReveals, 80);
         }));
     }, 240);
-
     document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
     document.querySelectorAll('.nav-link[data-page="' + pageId + '"]').forEach(a => a.classList.add('active'));
     history.replaceState(null, '', '#' + pageId);
@@ -366,16 +369,16 @@ document.querySelectorAll('.footer-links a[data-page]').forEach(l => {
 });
 document.getElementById('navLogoBtn').addEventListener('click', () => showPage('home'));
 
-const hash = window.location.hash.replace('#', '');
+const hash = window.location.hash.replace('#','');
 if (['about','goals','timeline','team','contact'].includes(hash)) showPage(hash);
 
 // ═══════════════════════════════════════════════
 // SCROLL REVEAL
 // ═══════════════════════════════════════════════
 function triggerReveals() {
-    const activePage = document.querySelector('.page.active');
-    if (!activePage) return;
-    activePage.querySelectorAll('.reveal:not(.revealed)').forEach((el, i) => {
+    const ap = document.querySelector('.page.active');
+    if (!ap) return;
+    ap.querySelectorAll('.reveal:not(.revealed)').forEach((el, i) => {
         el.style.transitionDelay = (i * 0.06) + 's';
         el.classList.add('revealed');
     });
@@ -393,10 +396,8 @@ document.querySelectorAll('.page').forEach(page => {
 // MODAL
 // ═══════════════════════════════════════════════
 const modal = document.getElementById('applyModal');
-
-function openModal() { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
-function closeModal() { modal.style.display = 'none'; document.body.style.overflow = ''; }
-
+function openModal()  { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+function closeModal() { modal.style.display = 'none';  document.body.style.overflow = '';       }
 document.getElementById('openModal').addEventListener('click', openModal);
 document.getElementById('closeModal').addEventListener('click', closeModal);
 document.getElementById('openSpotCard').addEventListener('click', openModal);
@@ -406,9 +407,7 @@ window.addEventListener('click', e => { if (e.target === modal) closeModal(); })
 // PHOTO COLLAGE FLIP
 // ═══════════════════════════════════════════════
 document.querySelectorAll('.collage-item').forEach(item => {
-    item.addEventListener('click', () => {
-        item.classList.toggle('flipped');
-    });
+    item.addEventListener('click', () => item.classList.toggle('flipped'));
 });
 
 // ═══════════════════════════════════════════════
@@ -416,48 +415,23 @@ document.querySelectorAll('.collage-item').forEach(item => {
 // ═══════════════════════════════════════════════
 const homeSymbols = ['01','Si','Cu','NPN','um','GaN','EUV','CMOS','SiO2','HF','CVD','PVD','//','{}','>>','nm','TiN','W','Al','SEM','AFM','XRD'];
 const homeParticles = document.getElementById('home-particles');
-
 function spawnHomeParticle() {
     const el = document.createElement('div');
     el.className = 'home-particle';
     el.textContent = homeSymbols[Math.floor(Math.random() * homeSymbols.length)];
     el.style.left   = (Math.random() * 100) + '%';
     el.style.bottom = '-30px';
-    const duration = 6 + Math.random() * 8;
-    const delay    = Math.random() * 3;
-    el.style.animationDuration = duration + 's';
-    el.style.animationDelay   = delay + 's';
+    const dur = 6 + Math.random() * 8, del = Math.random() * 3;
+    el.style.animationDuration = dur + 's';
+    el.style.animationDelay   = del + 's';
     homeParticles.appendChild(el);
-    setTimeout(() => el.remove(), (duration + delay) * 1000 + 500);
+    setTimeout(() => el.remove(), (dur + del) * 1000 + 500);
 }
 setInterval(spawnHomeParticle, 800);
-for (let i = 0; i < 6; i++) setTimeout(spawnHomeParticle, i * 300);
+for (let i = 0; i < 8; i++) setTimeout(spawnHomeParticle, i * 200);
 
 // ═══════════════════════════════════════════════
-// MISSION TYPEWRITER
-// ═══════════════════════════════════════════════
-const missionVariants = [
-    '"Making hands-on chip fabrication accessible across India."',
-    '"TSMC: scared. Us: on our way. Probably."',
-    '"We etch patterns. We also etch dreams."',
-    '"Spin coat. Expose. Develop. Repeat. Sleep optional."',
-    '"1um today. 7nm someday. Maybe. Hopefully."',
-    '"Democratizing fabrication one broken spinner at a time."'
-];
-let missionIdx = 0;
-document.getElementById('missionText').addEventListener('click', () => {
-    missionIdx = (missionIdx + 1) % missionVariants.length;
-    const el = document.getElementById('missionText');
-    el.textContent = '';
-    let i = 0;
-    const iv = setInterval(() => {
-        el.textContent += missionVariants[missionIdx][i++];
-        if (i >= missionVariants[missionIdx].length) clearInterval(iv);
-    }, 22);
-});
-
-// ═══════════════════════════════════════════════
-// TOAST NOTIFICATIONS
+// TOAST
 // ═══════════════════════════════════════════════
 const visitedPages = new Set();
 const pageToasts = {
@@ -467,23 +441,19 @@ const pageToasts = {
     team:     '⚡ These are the chip people.',
     contact:  '📡 Ping us. We don\'t bite.'
 };
-
 function toastOnFirstVisit(page) {
     if (!visitedPages.has(page) && pageToasts[page]) {
         visitedPages.add(page);
         setTimeout(() => showToast(pageToasts[page]), 600);
     }
 }
-
 function showToast(msg) {
     const t = document.createElement('div');
-    t.className = 'toast';
-    t.textContent = msg;
+    t.className = 'toast'; t.textContent = msg;
     document.getElementById('toast-container').appendChild(t);
     setTimeout(() => t.remove(), 3200);
 }
-
-setTimeout(() => showToast('👋 Welcome to HackerFab IITB. Try clicking things.'), 1500);
+setTimeout(() => showToast('Welcome to HackerFab IITB. Try clicking things.'), 1500);
 
 // ═══════════════════════════════════════════════
 // SECRET KEY COMBOS
@@ -500,7 +470,7 @@ document.addEventListener('keydown', e => {
 });
 
 // ═══════════════════════════════════════════════
-// H2 GLITCH
+// H2 GLITCH DATA-TEXT
 // ═══════════════════════════════════════════════
 document.querySelectorAll('h2').forEach(h => h.setAttribute('data-text', h.textContent));
 
@@ -508,7 +478,7 @@ document.querySelectorAll('h2').forEach(h => h.setAttribute('data-text', h.textC
 // FOOTER HINT
 // ═══════════════════════════════════════════════
 document.getElementById('footer-secret').addEventListener('click', () => {
-    showToast('↑↑↓↓←→←→BA — try it on your keyboard!');
+    showToast('Try the arrow keys: up up down down left right left right B A');
 });
 
 // ═══════════════════════════════════════════════
@@ -521,14 +491,11 @@ document.getElementById('navLogoBtn').addEventListener('click', () => {
         navLogoClicks = 0;
         showToast('🤖 Logo.exe has crashed. Rebooting...');
         const logo = document.getElementById('navLogoBtn');
-        const original = 'hackerfabiitb';
-        const chars = '!@#$%^&*01';
+        const original = 'hackerfabiitb', chars = '!@#$%^&*01';
         let count = 0;
-        const scramble = setInterval(() => {
-            logo.textContent = original.split('').map(c =>
-                Math.random() > 0.5 ? chars[Math.floor(Math.random() * chars.length)] : c
-            ).join('');
-            if (++count > 15) { clearInterval(scramble); logo.textContent = original; }
+        const sc = setInterval(() => {
+            logo.textContent = original.split('').map(c => Math.random() > 0.5 ? chars[Math.floor(Math.random()*chars.length)] : c).join('');
+            if (++count > 15) { clearInterval(sc); logo.textContent = original; }
         }, 60);
     }
     showPage('home');
@@ -537,11 +504,7 @@ document.getElementById('navLogoBtn').addEventListener('click', () => {
 // ═══════════════════════════════════════════════
 // MEMBER CARD COMPLIMENTS
 // ═══════════════════════════════════════════════
-const compliments = [
-    '🔬 chip wizard', '⚡ solder lord', '🧪 etch master',
-    '💡 photon wrangler', '🤓 definitely sleeping', '⬡ silicon sorcerer',
-    '📐 tolerances: ±vibes', '🚀 will found a startup', '☕ runs on chai'
-];
+const compliments = ['🔬 chip wizard','⚡ solder lord','🧪 etch master','💡 photon wrangler','🤓 definitely sleeping','⬡ silicon sorcerer','📐 tolerances: ±vibes','🚀 will found a startup','☕ runs on chai'];
 document.querySelectorAll('.member-card:not(.member-card--open)').forEach(card => {
     const tag = document.createElement('div');
     tag.style.cssText = 'position:absolute;bottom:4px;left:0;right:0;font-size:0.5rem;color:rgba(240,240,240,0.7);letter-spacing:0.06em;font-family:Space Mono,monospace;z-index:2;opacity:0;transition:opacity 0.3s;text-align:center;';
