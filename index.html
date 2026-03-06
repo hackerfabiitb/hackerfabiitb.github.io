@@ -15,10 +15,7 @@
 <div id="cursor"></div>
 <div id="toast-container"></div>
 
-<!-- REMOVED: chip-counter, secret-counter, konami-overlay -->
-
 <nav id="navbar">
-    <!-- REMOVED: blinking logo-cursor span -->
     <div class="nav-logo" id="navLogoBtn">hackerfabiitb</div>
     <ul class="nav-links" id="navLinks">
         <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
@@ -31,7 +28,7 @@
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- ── HOME ── -->
+<!-- HOME -->
 <section id="page-home" class="page active">
     <div id="home-particles"></div>
     <div class="page-inner home-inner">
@@ -41,7 +38,6 @@
         <div class="logo-placeholder">
             <img src="Images/Logos/logo-first.jpeg" alt="HackerFab Logo" id="homeLogoImg">
         </div>
-        <!-- REMOVED: glitch-text class and data-text attr from h1, keeping h1 plain -->
         <h1 id="homeH1">India's first student-built<br>microfabrication lab</h1>
         <p class="tagline">Creating open-source, student-designed fabrication tools to make hands-on fabrication accessible across India.</p>
         <button class="apply-btn ripple-container magnetic" id="openModal">
@@ -49,17 +45,16 @@
         </button>
         <div class="social-buttons">
             <a href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all" class="social-btn linkedin magnetic" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="/cdn-cgi/l/email-protection#c3aba2a0a8a6b1a5a2a1aaaab7a183a4aea2aaafeda0acae" class="social-btn email magnetic"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:hackerfabiitb@gmail.com" class="social-btn email magnetic"><i class="fas fa-envelope"></i></a>
             <a href="https://x.com/hackerfabindia" class="social-btn twitter magnetic" target="_blank"><i class="fab fa-x-twitter"></i></a>
             <a href="https://www.instagram.com/hackerfabiitb/" class="social-btn instagram magnetic" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://discord.gg/FNUgVRxmef" class="social-btn discord magnetic" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
-        <!-- REMOVED: homeIssue cycling status bar -->
         <div class="home-issue">Vol. I &nbsp;·&nbsp; Est. 2025 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; IIT Bombay</div>
     </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section id="page-about" class="page">
     <div class="page-inner">
         <div class="col-rule left"></div>
@@ -83,7 +78,7 @@
     </div>
 </section>
 
-<!-- ── GOALS ── -->
+<!-- GOALS -->
 <section id="page-goals" class="page">
     <div class="page-inner">
         <div class="col-rule left"></div>
@@ -96,7 +91,7 @@
                 <div class="tech-card reveal"><span class="status in-progress">In-Progress</span><img src="Images/Goals/Litho.jpeg" alt="Lithography"><h4>Maskless Lithography</h4><p>Achieved a pattern image of 1µm feature size.</p></div>
                 <div class="tech-card reveal"><span class="status in-progress">In Progress</span><img src="Images/Goals/spincoater.png" alt="Spin Coater"><h4>Spincoater</h4><p>Demonstrated closed loop control up to 6000rpm</p></div>
                 <div class="tech-card reveal"><span class="status planned">Planned</span><img src="Images/Goals/Sputter.png" alt="RF Sputtering"><h4>RF Sputtering</h4><p>Our first deposition tool!</p></div>
-                <div class="tech-card reveal"><span class="status planned">Planned</span><img src="Images/Goals/tubefurnace.png" alt="Tube Furnace"><h4>Tube Furnace</h4><p>±2°C at target temperatures up to 1100°C</p></div>
+                <div class="tech-card reveal"><span class="status planned">Planned</span><img src="Images/Goals/tubefurnace.png" alt="Tube Furnace"><h4>Tube Furnace</h4><p>+/-2 degrees C at target temperatures up to 1100 degrees C</p></div>
             </div>
         </div>
         <div class="goals-category">
@@ -111,7 +106,7 @@
     </div>
 </section>
 
-<!-- ── TIMELINE ── -->
+<!-- TIMELINE -->
 <section id="page-timeline" class="page">
     <div class="page-inner">
         <div class="col-rule left"></div>
@@ -135,7 +130,7 @@
     </div>
 </section>
 
-<!-- ── TEAM ── -->
+<!-- TEAM -->
 <section id="page-team" class="page">
     <div class="page-inner">
         <div class="col-rule left"></div>
@@ -153,7 +148,11 @@
             <a href="https://www.linkedin.com/in/abhineet-avhad/" class="member-card reveal magnetic" target="_blank"><img src="Images/TeamPhotos/AbhineetAvhad.jpeg" alt="Abhineet Avhad"><h4>Abhineet Avhad</h4></a>
             <a href="https://www.linkedin.com/in/rushatdixit/" class="member-card reveal magnetic" target="_blank"><img src="Images/TeamPhotos/Rushat.jpeg" alt="Rushat Dixit"><h4>Rushat Dixit</h4></a>
             <a href="https://linkedin.com/in/jai-bellare" class="member-card reveal magnetic" target="_blank"><img src="Images/TeamPhotos/Jai.jpeg" alt="Jai Bellare"><h4>Jai Bellare</h4></a>
-            <div class="member-card member-card--open reveal magnetic" id="openSpotCard"><div class="open-spot-avatar">?</div><h4>This could be you.</h4><span class="open-spot-link">Reach out to us</span></div>
+            <div class="member-card member-card--open reveal magnetic" id="openSpotCard">
+                <div class="open-spot-avatar">?</div>
+                <h4>This could be you.</h4>
+                <span class="open-spot-link">Reach out to us</span>
+            </div>
         </div>
         <h3 class="team-category reveal">Faculty Advisors</h3>
         <div class="team-grid advisors">
@@ -165,7 +164,7 @@
     </div>
 </section>
 
-<!-- ── CONTACT ── -->
+<!-- CONTACT -->
 <section id="page-contact" class="page">
     <div class="page-inner">
         <div class="col-rule left"></div>
@@ -183,7 +182,7 @@
                 </a>
             </div>
             <div class="social-icons reveal">
-                <a href="/cdn-cgi/l/email-protection#375f56545c52455156555e5e435577505a565e5b1954585a" class="magnetic"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:hackerfabiitb@gmail.com" class="magnetic"><i class="fas fa-envelope"></i></a>
                 <a href="https://discord.gg/FNUgVRxmef" target="_blank" class="magnetic"><i class="fab fa-discord"></i></a>
                 <a href="https://x.com/hackerfabindia" target="_blank" class="magnetic"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://github.com/hackerfabiitb" target="_blank" class="magnetic"><i class="fab fa-github"></i></a>
@@ -202,12 +201,12 @@
                 <a href="#" data-page="team">Team</a>
                 <a href="#" data-page="contact">Contact</a>
             </div>
-            <p class="copyright">&copy; 2025 HackerFab, IIT Bombay. All rights reserved. &nbsp;|&nbsp; <span id="footer-secret" style="cursor:none;opacity:0.4;" title="try the konami code">↑↑↓↓←→←→BA</span></p>
+            <p class="copyright">&copy; 2025 HackerFab, IIT Bombay. All rights reserved. &nbsp;|&nbsp; <span id="footer-secret" style="cursor:none;opacity:0.4;" title="try the konami code">up up down down left right left right B A</span></p>
         </div>
     </footer>
 </section>
 
-<!-- ── APPLY MODAL ── -->
+<!-- APPLY MODAL -->
 <div id="applyModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -240,42 +239,53 @@
 
 <script>
 // ═══════════════════════════════════════════════
-// CURSOR — hides when leaving window, mix-blend invert on buttons
+// CURSOR
 // ═══════════════════════════════════════════════
 const cursor = document.getElementById('cursor');
-let mouseX = 0, mouseY = 0;
+
+// Start hidden — only show once mouse moves inside the window
+cursor.classList.add('hidden');
 
 document.addEventListener('mousemove', e => {
-    mouseX = e.clientX; mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top  = mouseY + 'px';
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+    cursor.classList.remove('hidden');
 });
 
-// Hide cursor when mouse leaves the page, show when it returns
 document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
 document.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
+document.addEventListener('mousedown',  () => cursor.classList.add('clicking'));
+document.addEventListener('mouseup',    () => cursor.classList.remove('clicking'));
 
-document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
-document.addEventListener('mouseup',   () => cursor.classList.remove('clicking'));
-
-// Hover states: buttons/links get invert mode, images stay small solid
-function addHover(selector, cls) {
-    document.querySelectorAll(selector).forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add(cls));
-        el.addEventListener('mouseleave', () => cursor.classList.remove(cls));
+// Hover states
+// Buttons/links → expand + invert blend mode
+const interactiveSelector = 'a, button, .nav-logo, .pillar, .tech-card, .growth-card, .timeline-content, .requirement-item, .member-card--open';
+document.querySelectorAll(interactiveSelector).forEach(el => {
+    // Don't trigger on member-card images (they ARE inside an <a> but we want to override)
+    el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hovering');
+        cursor.classList.remove('on-image');
     });
-}
-// Buttons/interactive elements → invert blend mode
-addHover('a, button, .nav-logo, .pillar, .tech-card, .growth-card, .timeline-content, .requirement-item', 'hovering');
-// Images → stay small dot (no extra class needed, just remove hovering if it was added)
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('mouseenter', () => cursor.classList.remove('hovering'));
+    el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hovering');
+    });
 });
 
-// Open spot card — opens modal
-document.getElementById('openSpotCard').addEventListener('click', () => {
-    document.getElementById('applyModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
+// Images stay small solid dot — override hovering state
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('mouseenter', () => {
+        cursor.classList.remove('hovering');
+        cursor.classList.add('on-image');
+    });
+    img.addEventListener('mouseleave', () => {
+        cursor.classList.remove('on-image');
+    });
+});
+
+// Red button special state
+document.querySelectorAll('.apply-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => cursor.classList.add('on-red-btn'));
+    btn.addEventListener('mouseleave', () => cursor.classList.remove('on-red-btn'));
 });
 
 // ═══════════════════════════════════════════════
@@ -284,19 +294,15 @@ document.getElementById('openSpotCard').addEventListener('click', () => {
 document.querySelectorAll('.magnetic').forEach(el => {
     el.addEventListener('mousemove', e => {
         const rect = el.getBoundingClientRect();
-        const cx = rect.left + rect.width  / 2;
-        const cy = rect.top  + rect.height / 2;
-        const dx = (e.clientX - cx) * 0.25;
-        const dy = (e.clientY - cy) * 0.25;
+        const dx = (e.clientX - (rect.left + rect.width  / 2)) * 0.25;
+        const dy = (e.clientY - (rect.top  + rect.height / 2)) * 0.25;
         el.style.transform = `translate(${dx}px, ${dy}px)`;
     });
-    el.addEventListener('mouseleave', () => {
-        el.style.transform = '';
-    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
 });
 
 // ═══════════════════════════════════════════════
-// RIPPLE on apply button
+// RIPPLE
 // ═══════════════════════════════════════════════
 document.querySelectorAll('.ripple-container').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -336,22 +342,26 @@ function showPage(pageId) {
     }, 240);
 
     document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
-    document.querySelectorAll(`.nav-link[data-page="${pageId}"]`).forEach(a => a.classList.add('active'));
+    document.querySelectorAll('.nav-link[data-page="' + pageId + '"]').forEach(a => a.classList.add('active'));
     history.replaceState(null, '', '#' + pageId);
     document.getElementById('navLinks').classList.remove('active');
-
     toastOnFirstVisit(pageId);
 }
 
+// Initial page visible state
 document.querySelector('.page.active').classList.add('visible');
 setTimeout(triggerReveals, 200);
 
-document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', e => { e.preventDefault(); showPage(l.dataset.page); }));
-document.querySelectorAll('.footer-links a[data-page]').forEach(l => l.addEventListener('click', e => { e.preventDefault(); showPage(l.dataset.page); }));
+document.querySelectorAll('.nav-link').forEach(l => {
+    l.addEventListener('click', e => { e.preventDefault(); showPage(l.dataset.page); });
+});
+document.querySelectorAll('.footer-links a[data-page]').forEach(l => {
+    l.addEventListener('click', e => { e.preventDefault(); showPage(l.dataset.page); });
+});
 document.getElementById('navLogoBtn').addEventListener('click', () => showPage('home'));
 
-const hash = window.location.hash.replace('#','');
-if (['home','about','goals','timeline','team','contact'].includes(hash) && hash !== 'home') showPage(hash);
+const hash = window.location.hash.replace('#', '');
+if (['about','goals','timeline','team','contact'].includes(hash)) showPage(hash);
 
 // ═══════════════════════════════════════════════
 // SCROLL REVEAL
@@ -368,8 +378,8 @@ function triggerReveals() {
 document.querySelectorAll('.page').forEach(page => {
     page.addEventListener('scroll', () => {
         page.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.9) el.classList.add('revealed');
+            if (el.getBoundingClientRect().top < window.innerHeight * 0.9)
+                el.classList.add('revealed');
         });
     });
 });
@@ -385,43 +395,52 @@ document.getElementById('hamburger').addEventListener('click', () => {
 // MODAL
 // ═══════════════════════════════════════════════
 const modal = document.getElementById('applyModal');
-document.getElementById('openModal').addEventListener('click', () => { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; });
-document.getElementById('closeModal').addEventListener('click', () => { modal.style.display = 'none'; document.body.style.overflow = ''; });
-window.addEventListener('click', e => { if (e.target === modal) { modal.style.display = 'none'; document.body.style.overflow = ''; } });
+
+function openModal() {
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+document.getElementById('openModal').addEventListener('click', openModal);
+document.getElementById('closeModal').addEventListener('click', closeModal);
+document.getElementById('openSpotCard').addEventListener('click', openModal);
+window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 
 // ═══════════════════════════════════════════════
-// HOME FLOATING PARTICLES (chip-related symbols)
+// HOME FLOATING PARTICLES
 // ═══════════════════════════════════════════════
-const homeSymbols = ['01','Si','Cu','NPN','μm','GaN','EUV','CMOS','SiO₂','HF','CVD','PVD','⬡','◈','//','{}','>>','nm','TiN','W','Al','SEM','AFM','XRD'];
+const homeSymbols = ['01','Si','Cu','NPN','um','GaN','EUV','CMOS','SiO2','HF','CVD','PVD','//','{}','>>','nm','TiN','W','Al','SEM','AFM','XRD'];
 const homeParticles = document.getElementById('home-particles');
 
 function spawnHomeParticle() {
     const el = document.createElement('div');
     el.className = 'home-particle';
     el.textContent = homeSymbols[Math.floor(Math.random() * homeSymbols.length)];
-    const startX = Math.random() * 100;
-    el.style.left = startX + '%';
+    el.style.left = (Math.random() * 100) + '%';
     el.style.bottom = '-30px';
     const duration = 6 + Math.random() * 8;
-    const delay = Math.random() * 3;
+    const delay    = Math.random() * 3;
     el.style.animationDuration = duration + 's';
-    el.style.animationDelay = delay + 's';
+    el.style.animationDelay   = delay + 's';
     homeParticles.appendChild(el);
     setTimeout(() => el.remove(), (duration + delay) * 1000 + 500);
 }
-
 setInterval(spawnHomeParticle, 800);
 for (let i = 0; i < 6; i++) setTimeout(spawnHomeParticle, i * 300);
 
 // ═══════════════════════════════════════════════
-// EASTER EGG 4: Mission text typewriter on click
+// MISSION TEXT TYPEWRITER (easter egg)
 // ═══════════════════════════════════════════════
 const missionVariants = [
     '"Making hands-on chip fabrication accessible across India."',
     '"TSMC: scared. Us: on our way. Probably."',
     '"We etch patterns. We also etch dreams."',
     '"Spin coat. Expose. Develop. Repeat. Sleep optional."',
-    '"1µm today. 7nm someday. Maybe. Hopefully."',
+    '"1um today. 7nm someday. Maybe. Hopefully."',
     '"Democratizing fabrication one broken spinner at a time."'
 ];
 let missionIdx = 0;
@@ -433,8 +452,7 @@ function typewrite(el, text) {
     el.textContent = '';
     let i = 0;
     const iv = setInterval(() => {
-        el.textContent += text[i];
-        i++;
+        el.textContent += text[i++];
         if (i >= text.length) clearInterval(iv);
     }, 22);
 }
@@ -444,11 +462,11 @@ function typewrite(el, text) {
 // ═══════════════════════════════════════════════
 const visitedPages = new Set();
 const pageToasts = {
-    about: '👀 Stalking us? We appreciate it.',
-    goals: '🔬 1µm and counting...',
+    about:    '👀 Stalking us? We appreciate it.',
+    goals:    '🔬 1um and counting...',
     timeline: '📅 We move fast for undergrads.',
-    team: '⚡ These are the chip people.',
-    contact: '📡 Ping us. We don\'t bite.'
+    team:     '⚡ These are the chip people.',
+    contact:  '📡 Ping us. We don\'t bite.'
 };
 
 function toastOnFirstVisit(page) {
@@ -466,16 +484,14 @@ function showToast(msg) {
     setTimeout(() => t.remove(), 3200);
 }
 
-// Welcome toast
 setTimeout(() => showToast('👋 Welcome to HackerFab IITB. Try clicking things.'), 1500);
 
 // ═══════════════════════════════════════════════
-// EASTER EGG 6: Secret key combos
+// SECRET KEY COMBOS (easter egg)
 // ═══════════════════════════════════════════════
 let keyBuffer = '';
 document.addEventListener('keydown', e => {
-    keyBuffer += e.key.toLowerCase();
-    if (keyBuffer.length > 10) keyBuffer = keyBuffer.slice(-10);
+    keyBuffer = (keyBuffer + e.key.toLowerCase()).slice(-10);
     if (keyBuffer.endsWith('tsmc'))  showToast('😂 TSMC has 65,000 employees. We have 11. Same thing.');
     if (keyBuffer.endsWith('iitb'))  showToast('🏛️ Powai represent!');
     if (keyBuffer.endsWith('chip'))  showToast('🔬 That\'s what we\'re building, buddy.');
@@ -485,21 +501,19 @@ document.addEventListener('keydown', e => {
 });
 
 // ═══════════════════════════════════════════════
-// EASTER EGG 7: h2 headers glitch on hover (JS-enhanced)
+// H2 GLITCH DATA-TEXT (easter egg)
 // ═══════════════════════════════════════════════
-document.querySelectorAll('h2').forEach(h => {
-    h.setAttribute('data-text', h.textContent);
-});
+document.querySelectorAll('h2').forEach(h => h.setAttribute('data-text', h.textContent));
 
 // ═══════════════════════════════════════════════
-// FOOTER SECRET HINT
+// FOOTER HINT
 // ═══════════════════════════════════════════════
 document.getElementById('footer-secret').addEventListener('click', () => {
-    showToast('↑↑↓↓←→←→BA — try it on your keyboard 😉');
+    showToast('up up down down left right left right B A — try it on your keyboard!');
 });
 
 // ═══════════════════════════════════════════════
-// NAV logo: rapid clicks = glitch
+// NAV LOGO SCRAMBLE (easter egg)
 // ═══════════════════════════════════════════════
 let navLogoClicks = 0;
 document.getElementById('navLogoBtn').addEventListener('click', () => {
@@ -512,29 +526,31 @@ document.getElementById('navLogoBtn').addEventListener('click', () => {
         const chars = '!@#$%^&*01';
         let count = 0;
         const scramble = setInterval(() => {
-            logo.textContent = original.split('').map(c => Math.random() > 0.5 ? chars[Math.floor(Math.random()*chars.length)] : c).join('');
-            count++;
-            if (count > 15) { clearInterval(scramble); logo.textContent = original; }
+            logo.textContent = original.split('').map(c =>
+                Math.random() > 0.5 ? chars[Math.floor(Math.random() * chars.length)] : c
+            ).join('');
+            if (++count > 15) { clearInterval(scramble); logo.textContent = original; }
         }, 60);
     }
     showPage('home');
 });
 
 // ═══════════════════════════════════════════════
-// MEMBER CARD: random compliment on hover
+// MEMBER CARD COMPLIMENTS (easter egg)
 // ═══════════════════════════════════════════════
 const compliments = [
     '🔬 chip wizard', '⚡ solder lord', '🧪 etch master',
     '💡 photon wrangler', '🤓 definitely sleeping', '⬡ silicon sorcerer',
     '📐 tolerances: ±vibes', '🚀 will found a startup', '☕ runs on chai'
 ];
-document.querySelectorAll('.member-card').forEach(card => {
+document.querySelectorAll('.member-card:not(.member-card--open)').forEach(card => {
     const tag = document.createElement('div');
-    tag.style.cssText = 'position:absolute;bottom:4px;left:0;right:0;font-size:0.5rem;color:rgba(240,240,240,0.7);letter-spacing:0.06em;font-family:Space Mono,monospace;z-index:2;opacity:0;transition:opacity 0.3s;';
+    tag.style.cssText = 'position:absolute;bottom:4px;left:0;right:0;font-size:0.5rem;color:rgba(240,240,240,0.7);letter-spacing:0.06em;font-family:Space Mono,monospace;z-index:2;opacity:0;transition:opacity 0.3s;text-align:center;';
     tag.textContent = compliments[Math.floor(Math.random() * compliments.length)];
     card.appendChild(tag);
     card.addEventListener('mouseenter', () => { tag.style.opacity = '1'; });
     card.addEventListener('mouseleave', () => { tag.style.opacity = '0'; });
 });
-
-// ═══════════�
+</script>
+</body>
+</html>
