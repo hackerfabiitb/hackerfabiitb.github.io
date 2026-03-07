@@ -61,6 +61,7 @@ body::after {
                 height 0.18s cubic-bezier(.23,1,.32,1),
                 background 0.18s, opacity 0.12s;
     mix-blend-mode: normal; opacity: 0;
+    will-change: left, top;
 }
 #cursor.hovering  { width: 27px; height: 27px; background: #fff; mix-blend-mode: difference; }
 #cursor.on-image  { width: 10px; height: 10px; background: var(--ink); mix-blend-mode: normal; }
