@@ -382,7 +382,8 @@ document.querySelectorAll('.page').forEach(page => {
 // ═══════════════════════════════════════════════
 // HAMBURGER
 // ═══════════════════════════════════════════════
-document.getElementById('hamburger').addEventListener('click', () => {
+document.getElementById('hamburger').addEventListener('click', (e) => {
+    e.stopPropagation();
     document.getElementById('navLinks').classList.toggle('active');
 });
 
