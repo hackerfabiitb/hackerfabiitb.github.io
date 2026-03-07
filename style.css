@@ -96,6 +96,9 @@ body::after {
 .hamburger {
     display: none; flex-direction: column; cursor: pointer;
     gap: 5px; padding: 8px; background: none; border: none; z-index: 1001;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    pointer-events: auto;
 }
 .hamburger span { width: 22px; height: 2px; background: #f0f0f0; display: block; transition: 0.3s; }
 
@@ -528,7 +531,7 @@ footer { background: var(--ink); color: var(--bg); padding: 1.8rem 8%; text-alig
 @media (max-width: 768px) {
     html, body { cursor: auto; }
     #cursor { display: none; }
-    a, button, .nav-logo, .hamburger { cursor: pointer; }
+    a, button, .nav-logo, .hamburger { cursor: pointer; pointer-events: auto; }
     .nav-links { display: none; position: absolute; top: var(--nav-h); left: 0; width: 100%; background: var(--ink); flex-direction: column; padding: 0.4rem 0; box-shadow: 0 6px 20px rgba(0,0,0,0.4); z-index: 999; }
     .nav-links.active { display: flex; }
     .nav-links a { height: auto; line-height: 1; padding: 0.85rem 1.4rem; border-bottom: 1px solid rgba(240,240,240,0.06); }
