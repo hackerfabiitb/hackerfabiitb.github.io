@@ -206,7 +206,7 @@ body::after {
 .page-inner { position: relative; max-width: 1100px; margin: 0 auto; padding: 1.5rem 5% 3rem; }
 
 /* ── ABOUT PAGE — special full-height layout ── */
-#page-about { overflow: hidden; }
+#page-about { overflow: hidden; display: flex; flex-direction: column; }
 
 .about-page-inner {
     position: relative;
