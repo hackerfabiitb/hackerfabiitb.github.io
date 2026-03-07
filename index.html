@@ -266,7 +266,7 @@ document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top  = e.clientY + 'px';
     cursor.classList.remove('hidden');
-});
+}, { passive: true });
 document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
 document.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
 document.addEventListener('mousedown',  () => cursor.classList.add('clicking'));
