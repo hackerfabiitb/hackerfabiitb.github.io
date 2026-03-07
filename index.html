@@ -56,17 +56,35 @@
 
 <!-- ABOUT -->
 <section id="page-about" class="page">
-    <div class="page-inner">
+    <div class="page-inner about-page-inner">
         <div class="col-rule left"></div>
         <div class="col-rule right"></div>
         <h2 class="reveal">About Us</h2>
         <div class="about-content">
-            <div class="team-photo reveal">
-                <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team at SemiX">
+
+            <!-- LEFT: 5-photo collage -->
+            <div class="photo-collage reveal">
+                <div class="collage-item collage-main">
+                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team at SemiX">
+                </div>
+                <div class="collage-item">
+                    <img src="Images/Goals/Litho.jpeg" alt="Lithography">
+                </div>
+                <div class="collage-item">
+                    <img src="Images/Goals/spincoater.png" alt="Spin Coater">
+                </div>
+                <div class="collage-item">
+                    <img src="Images/Goals/Sputter.png" alt="RF Sputtering">
+                </div>
+                <div class="collage-item">
+                    <img src="Images/Goals/tubefurnace.png" alt="Tube Furnace">
+                </div>
             </div>
-            <div class="about-text reveal">
-                <p class="mission" id="missionText">"Making hands-on chip fabrication accessible across India."</p>
-                <p>Founded in August 2025, we're a group of students determined to democratize technology and foster innovation. We are part of the <a href="https://docs.hackerfab.org/home/" target="_blank" rel="noopener">HackerFab network</a>, aiming to become a stepping stone to the semiconductor industry.</p>
+
+            <!-- RIGHT: text -->
+            <div class="about-text">
+                <p class="mission reveal" id="missionText">"Making hands-on chip fabrication accessible across India."</p>
+                <p class="reveal">Founded in August 2025, we're a group of students determined to democratize technology and foster innovation. We are part of the <a href="https://docs.hackerfab.org/home/" target="_blank" rel="noopener">HackerFab network</a>, aiming to become a stepping stone to the semiconductor industry.</p>
                 <div class="about-pillars">
                     <div class="pillar reveal"><i class="fas fa-microchip"></i><h4>Semiconductor Fabrication</h4><p>Why should TSMC have all the fun?</p></div>
                     <div class="pillar reveal"><i class="fas fa-graduation-cap"></i><h4>Education</h4><p>Integrating our tools with coursework at IITB</p></div>
@@ -74,6 +92,7 @@
                     <div class="pillar reveal"><i class="fas fa-users"></i><h4>Community</h4><p>Join our Discord! Spreading this movement all over India</p></div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -242,47 +261,26 @@
 // CURSOR
 // ═══════════════════════════════════════════════
 const cursor = document.getElementById('cursor');
-
-// Start hidden — only show once mouse moves inside the window
 cursor.classList.add('hidden');
-
 document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top  = e.clientY + 'px';
     cursor.classList.remove('hidden');
 });
-
 document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
 document.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
 document.addEventListener('mousedown',  () => cursor.classList.add('clicking'));
 document.addEventListener('mouseup',    () => cursor.classList.remove('clicking'));
 
-// Hover states
-// Buttons/links → expand + invert blend mode
 const interactiveSelector = 'a, button, .nav-logo, .pillar, .tech-card, .growth-card, .timeline-content, .requirement-item, .member-card--open';
 document.querySelectorAll(interactiveSelector).forEach(el => {
-    // Don't trigger on member-card images (they ARE inside an <a> but we want to override)
-    el.addEventListener('mouseenter', () => {
-        cursor.classList.add('hovering');
-        cursor.classList.remove('on-image');
-    });
-    el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hovering');
-    });
+    el.addEventListener('mouseenter', () => { cursor.classList.add('hovering'); cursor.classList.remove('on-image'); });
+    el.addEventListener('mouseleave', () => { cursor.classList.remove('hovering'); });
 });
-
-// Images stay small solid dot — override hovering state
 document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('mouseenter', () => {
-        cursor.classList.remove('hovering');
-        cursor.classList.add('on-image');
-    });
-    img.addEventListener('mouseleave', () => {
-        cursor.classList.remove('on-image');
-    });
+    img.addEventListener('mouseenter', () => { cursor.classList.remove('hovering'); cursor.classList.add('on-image'); });
+    img.addEventListener('mouseleave', () => { cursor.classList.remove('on-image'); });
 });
-
-// Red button special state
 document.querySelectorAll('.apply-btn').forEach(btn => {
     btn.addEventListener('mouseenter', () => cursor.classList.add('on-red-btn'));
     btn.addEventListener('mouseleave', () => cursor.classList.remove('on-red-btn'));
@@ -326,10 +324,8 @@ function showPage(pageId) {
     const current = document.querySelector('.page.active');
     const next    = document.getElementById('page-' + pageId);
     if (!next || current === next) return;
-
     transitioning = true;
     current.classList.add('leaving');
-
     setTimeout(() => {
         current.classList.remove('active', 'leaving', 'visible');
         next.scrollTop = 0;
@@ -340,7 +336,6 @@ function showPage(pageId) {
             setTimeout(triggerReveals, 80);
         }));
     }, 240);
-
     document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
     document.querySelectorAll('.nav-link[data-page="' + pageId + '"]').forEach(a => a.classList.add('active'));
     history.replaceState(null, '', '#' + pageId);
@@ -348,7 +343,6 @@ function showPage(pageId) {
     toastOnFirstVisit(pageId);
 }
 
-// Initial page visible state
 document.querySelector('.page.active').classList.add('visible');
 setTimeout(triggerReveals, 200);
 
@@ -374,7 +368,6 @@ function triggerReveals() {
         el.classList.add('revealed');
     });
 }
-
 document.querySelectorAll('.page').forEach(page => {
     page.addEventListener('scroll', () => {
         page.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
@@ -395,16 +388,8 @@ document.getElementById('hamburger').addEventListener('click', () => {
 // MODAL
 // ═══════════════════════════════════════════════
 const modal = document.getElementById('applyModal');
-
-function openModal() {
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-}
-
+function openModal() { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+function closeModal() { modal.style.display = 'none'; document.body.style.overflow = ''; }
 document.getElementById('openModal').addEventListener('click', openModal);
 document.getElementById('closeModal').addEventListener('click', closeModal);
 document.getElementById('openSpotCard').addEventListener('click', openModal);
@@ -415,7 +400,6 @@ window.addEventListener('click', e => { if (e.target === modal) closeModal(); })
 // ═══════════════════════════════════════════════
 const homeSymbols = ['01','Si','Cu','NPN','um','GaN','EUV','CMOS','SiO2','HF','CVD','PVD','//','{}','>>','nm','TiN','W','Al','SEM','AFM','XRD'];
 const homeParticles = document.getElementById('home-particles');
-
 function spawnHomeParticle() {
     const el = document.createElement('div');
     el.className = 'home-particle';
@@ -468,14 +452,12 @@ const pageToasts = {
     team:     '⚡ These are the chip people.',
     contact:  '📡 Ping us. We don\'t bite.'
 };
-
 function toastOnFirstVisit(page) {
     if (!visitedPages.has(page) && pageToasts[page]) {
         visitedPages.add(page);
         setTimeout(() => showToast(pageToasts[page]), 600);
     }
 }
-
 function showToast(msg) {
     const t = document.createElement('div');
     t.className = 'toast';
@@ -483,7 +465,6 @@ function showToast(msg) {
     document.getElementById('toast-container').appendChild(t);
     setTimeout(() => t.remove(), 3200);
 }
-
 setTimeout(() => showToast('👋 Welcome to HackerFab IITB. Try clicking things.'), 1500);
 
 // ═══════════════════════════════════════════════
