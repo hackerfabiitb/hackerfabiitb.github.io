@@ -205,6 +205,168 @@ body::after {
 /* ── PAGE INNER ── */
 .page-inner { position: relative; max-width: 1100px; margin: 0 auto; padding: 1.5rem 5% 3rem; }
 
+/* ── ABOUT PAGE — special full-height layout ── */
+#page-about { overflow: hidden; }
+
+.about-page-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 4% 0;
+    /* fill the viewport below the nav */
+    height: calc(100vh - var(--nav-h));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.about-page-inner h2 {
+    flex-shrink: 0;
+    margin-bottom: 0.6rem;
+}
+
+/* Two-column layout that fills remaining height */
+.about-content {
+    display: grid;
+    grid-template-columns: 48% 1fr;
+    gap: 2.2rem;
+    flex: 1;
+    min-height: 0; /* critical — lets grid children shrink */
+    align-items: start;
+    padding-bottom: 1rem;
+}
+
+/* ── 5-PHOTO COLLAGE ── */
+/*
+  Layout:
+    [  main (tall)  ] [ img2 ]
+    [  main (tall)  ] [ img3 ]
+    [    img4       ] [ img5 ]
+*/
+.photo-collage {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 2fr 1.4fr;
+    gap: 3px;
+    min-height: 0;
+}
+
+/* big left image spans rows 1+2 */
+.collage-item.collage-main {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+/* img2 */
+.photo-collage .collage-item:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* img3 */
+.photo-collage .collage-item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* img4 */
+.photo-collage .collage-item:nth-child(4) {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+/* img5 */
+.photo-collage .collage-item:nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.collage-item {
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    background: var(--ink);
+    min-height: 0;
+}
+
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+.collage-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.85);
+}
+
+/* thin red accent on hover */
+.collage-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--red);
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+    z-index: 2;
+}
+.collage-item:hover::after { opacity: 1; }
+
+/* ── ABOUT TEXT (right column) ── */
+.about-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    overflow-y: auto;
+    height: 100%;
+    padding-right: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+/* subtle scrollbar */
+.about-text::-webkit-scrollbar { width: 3px; }
+.about-text::-webkit-scrollbar-track { background: transparent; }
+.about-text::-webkit-scrollbar-thumb { background: var(--rule-heavy); }
+
+.about-text p { color: var(--ink-mid); line-height: 1.8; font-size: 0.82rem; }
+.about-text a { color: var(--red); text-decoration: none; border-bottom: 1px solid var(--red); transition: opacity 0.2s; cursor: none; }
+.about-text a:hover { opacity: 0.7; }
+
+.mission {
+    font-size: 0.88rem !important;
+    font-style: italic;
+    color: var(--ink) !important;
+    border-left: 3px solid var(--ink);
+    padding-left: 1rem;
+    line-height: 1.7;
+    font-weight: 700 !important;
+    transition: border-color 0.3s;
+    cursor: none;
+    margin-bottom: 0 !important;
+}
+.mission:hover { border-color: var(--red); }
+
+.about-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-top: 0.4rem;
+    background: var(--rule-mid);
+}
+.pillar {
+    text-align: left; padding: 1rem; background: var(--bg);
+    transition: background 0.15s, transform 0.2s; cursor: none;
+}
+.pillar:hover { background: var(--bg2); transform: translateY(-2px); }
+.pillar i { font-size: 1rem; color: var(--red); margin-bottom: 0.4rem; display: block; }
+.pillar h4 { color: var(--ink); margin-bottom: 0.25rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.pillar p  { font-size: 0.72rem; margin: 0; color: var(--ink-muted); }
+
 /* ── HEADINGS ── */
 h2 {
     font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 700;
@@ -252,59 +414,6 @@ h3.team-category {
 .requirement-item:hover .req-number { background: var(--red); }
 .req-content h4 { color: var(--ink); margin-bottom: 0.2rem; font-size: 0.8rem; font-weight: 700; }
 .req-content p  { color: var(--ink-muted); font-size: 0.75rem; margin: 0; }
-
-/* ── ABOUT ── */
-.about-content { display: grid; grid-template-columns: 48% 1fr; gap: 2.5rem; align-items: start; }
-
-/* Photo Collage */
-.photo-collage {
-    position: sticky; top: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 3px;
-}
-.photo-collage .collage-item:first-child { grid-column: 1 / 3; }
-
-.collage-item {
-    position: relative; overflow: hidden;
-    cursor: none; background: var(--ink);
-}
-.collage-item img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    transition: transform 0.5s ease, opacity 0.4s ease;
-    backface-visibility: hidden;
-}
-.collage-item:hover img { transform: scale(1.04); }
-.collage-item .flip-overlay {
-    position: absolute; inset: 0;
-    background: var(--ink);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 1rem; opacity: 0;
-    transform: rotateY(90deg);
-    transition: opacity 0.3s ease, transform 0.35s ease;
-    pointer-events: none;
-}
-.collage-item.flipped .flip-overlay {
-    opacity: 1; transform: rotateY(0deg); pointer-events: auto;
-}
-.collage-item.flipped img { opacity: 0.1; transform: scale(1.06); }
-.flip-overlay p { color: #f0f0f0; font-size: 0.68rem; line-height: 1.6; text-align: center; font-style: italic; margin: 0; }
-.flip-overlay span { display: block; font-size: 0.56rem; color: rgba(240,240,240,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.6rem; }
-
-.about-text p { margin-bottom: 1rem; color: var(--ink-mid); line-height: 1.8; font-size: 0.82rem; }
-.about-text a { color: var(--red); text-decoration: none; border-bottom: 1px solid var(--red); transition: opacity 0.2s; cursor: none; }
-.about-text a:hover { opacity: 0.7; }
-.mission { font-size: 0.88rem !important; font-style: italic; color: var(--ink) !important; border-left: 3px solid var(--ink); padding-left: 1rem; margin-bottom: 1.4rem !important; line-height: 1.7; font-weight: 700 !important; transition: border-color 0.3s; cursor: none; }
-.mission:hover { border-color: var(--red); }
-
-.about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 1.2rem; background: var(--rule-mid); }
-.pillar { text-align: left; padding: 1.1rem; background: var(--bg); transition: background 0.15s, transform 0.2s; cursor: none; }
-.pillar:hover { background: var(--bg2); transform: translateY(-2px); }
-.pillar i { font-size: 1rem; color: var(--red); margin-bottom: 0.4rem; display: block; }
-.pillar h4 { color: var(--ink); margin-bottom: 0.25rem; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-.pillar p  { font-size: 0.73rem; margin: 0; color: var(--ink-muted); }
 
 /* ── GOALS ── */
 .goals-category { margin-bottom: 3rem; }
@@ -428,10 +537,30 @@ footer { background: var(--ink); color: var(--bg); padding: 1.8rem 8%; text-alig
     .home-inner { height: auto; min-height: 100%; padding: 2rem 5%; justify-content: flex-start; gap: 0.8rem; }
     .logo-placeholder img { width: 200px; height: auto; }
     .home-inner h1 { font-size: 1.2rem; }
-    .page-inner { padding: 1.2rem 5% 2.5rem; }
-    .about-content { grid-template-columns: 1fr; }
-    .photo-collage { position: static; }
+
+    /* About: stack vertically on mobile */
+    #page-about { overflow-y: auto; }
+    .about-page-inner {
+        height: auto;
+        overflow: visible;
+        padding-bottom: 2rem;
+    }
+    .about-content {
+        grid-template-columns: 1fr;
+        flex: none;
+    }
+    .photo-collage {
+        height: 60vw;
+        min-height: 260px;
+        max-height: 420px;
+    }
+    .about-text {
+        height: auto;
+        overflow: visible;
+    }
     .about-pillars { grid-template-columns: 1fr; }
+
+    .page-inner { padding: 1.2rem 5% 2.5rem; }
     .growth-card { flex-direction: column; }
     .timeline { padding-left: 46px; }
     .timeline::before { left: 14px; }
