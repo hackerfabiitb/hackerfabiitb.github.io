@@ -131,6 +131,7 @@ body::after {
     gap: 2.5rem;
     width: 100%;
     max-width: 860px;
+    margin-top: 2rem;
 }
 
 .home-text {
@@ -147,13 +148,14 @@ body::after {
     border-bottom: 1px solid var(--rule-mid); padding: 0.35rem 1.5rem;
     width: 100%; background: rgba(239,239,239,0.7);
     animation: slideDown 0.6s ease 0.1s both;
+    position: absolute; top: 0; left: 0;
 }
 @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
 .logo-placeholder { animation: fadeZoom 0.7s cubic-bezier(.23,1,.32,1) 0.2s both; }
 @keyframes fadeZoom { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
 .logo-placeholder img {
-    width: 300px; max-width: 70vw; height: 110px; object-fit: contain;
+    width: 280px; max-width: 38vw; height: auto; object-fit: contain;
     transition: transform 0.4s cubic-bezier(.23,1,.32,1), filter 0.4s; cursor: none;
 }
 .logo-placeholder img:hover { transform: scale(1.04) rotate(-0.5deg); filter: drop-shadow(0 4px 24px rgba(192,57,43,0.18)); }
