@@ -346,6 +346,8 @@ function showPage(pageId) {
 document.querySelector('.page.active').classList.add('visible');
 setTimeout(triggerReveals, 200);
 
+document.getElementById('navbar').addEventListener('mouseenter', () => cursor.style.background = '#fff');
+document.getElementById('navbar').addEventListener('mouseleave', () => cursor.style.background = '');
 document.querySelectorAll('.nav-link').forEach(l => {
     l.addEventListener('click', e => { e.preventDefault(); showPage(l.dataset.page); });
 });
