@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -36,9 +37,12 @@
         <div class="col-rule right"></div>
         <div class="home-dateline">IIT Bombay &nbsp;·&nbsp; Founded Aug 2025 &nbsp;·&nbsp; India's First Student Chip Fab</div>
         <div class="home-main">
-            <div class="logo-placeholder">
-                <img src="Images/Logos/logo-first.jpeg" alt="HackerFab Logo" id="homeLogoImg">
-            </div>
+        <div class="wafer-wrap" id="waferWrap">
+          <canvas id="waferCanvas"></canvas>
+          <div id="waferLogoReveal">
+            <img src="Images/Logos/logo-first.jpeg" alt="HackerFab Logo" id="homeLogoImg">
+          </div>
+        </div>
             <div class="home-text">
                 <h1 id="homeH1">India's first student-built<br>microfabrication lab</h1>
                 <p class="tagline">Creating open-source, student-designed fabrication tools to make hands-on fabrication accessible across India.</p>
@@ -538,6 +542,312 @@ document.querySelectorAll('.member-card:not(.member-card--open)').forEach(card =
     card.addEventListener('mouseenter', () => { tag.style.opacity = '1'; });
     card.addEventListener('mouseleave', () => { tag.style.opacity = '0'; });
 });
+</script>
+    <script>
+(function () {
+
+const LOGO_PATHS = [[[-0.56,-0.344],[-0.556,-0.344],[-0.552,-0.344],[-0.548,-0.344],[-0.544,-0.344]],[[-0.536,-0.312],[-0.532,-0.312]],[[-0.748,-0.28],[-0.744,-0.28],[-0.74,-0.28],[-0.736,-0.28],[-0.732,-0.28],[-0.728,-0.28],[-0.724,-0.28]],[[-0.508,-0.264],[-0.504,-0.264]],[[-0.5,-0.248],[-0.496,-0.248]],[[0.516,-0.248],[0.536,-0.248],[0.54,-0.248]],[[-0.496,-0.232],[-0.492,-0.232],[-0.484,-0.232],[-0.48,-0.232]],[[0.164,-0.232],[0.168,-0.232]],[[0.652,-0.232],[0.656,-0.232],[0.676,-0.232],[0.68,-0.232]],[[-0.2,-0.216],[-0.196,-0.216]],[[0.524,-0.216],[0.56,-0.216],[0.564,-0.216],[0.568,-0.216],[0.572,-0.216],[0.576,-0.216]],[[-0.74,-0.2],[-0.736,-0.2]],[[-0.476,-0.2],[-0.472,-0.2]],[[0.136,-0.2],[0.276,-0.2],[0.308,-0.2],[0.34,-0.2],[0.424,-0.2]],[[0.664,-0.2],[0.708,-0.2],[0.712,-0.2]],[[-0.468,-0.184],[-0.464,-0.184],[-0.424,-0.184]],[[0.152,-0.184],[0.176,-0.184],[0.18,-0.184],[0.184,-0.184],[0.188,-0.184],[0.192,-0.184]],[[0.664,-0.184],[0.736,-0.184],[0.764,-0.184],[0.792,-0.184],[0.82,-0.184]],[[-0.46,-0.168],[-0.456,-0.168],[-0.424,-0.168]],[[0.452,-0.168],[0.456,-0.168],[0.46,-0.168]],[[0.664,-0.168],[0.728,-0.168],[0.736,-0.168],[0.816,-0.168],[0.824,-0.168]],[[-0.448,-0.152],[-0.444,-0.152]],[[0.56,-0.152],[0.564,-0.152],[0.568,-0.152],[0.576,-0.152],[0.58,-0.152]],[[0.8,-0.152],[0.804,-0.152],[0.82,-0.152],[0.824,-0.152]],[[-0.444,-0.136],[-0.44,-0.136],[-0.436,-0.136],[-0.38,-0.136],[-0.368,-0.136],[-0.364,-0.136]],[[0.664,-0.136],[0.668,-0.136]],[[-0.792,-0.12],[-0.74,-0.12],[-0.724,-0.12],[-0.716,-0.12]],[[-0.432,-0.12],[-0.428,-0.12]],[[-0.048,-0.12],[-0.044,-0.12],[-0.04,-0.12],[-0.036,-0.12]],[[0.456,-0.12],[0.46,-0.12],[0.464,-0.12],[0.496,-0.12],[0.5,-0.12],[0.504,-0.12],[0.512,-0.12]],[[0.796,-0.12],[0.8,-0.12],[0.804,-0.12],[0.82,-0.12],[0.824,-0.12]],[[-0.72,-0.104],[-0.716,-0.104],[-0.692,-0.104]],[[-0.432,-0.104],[-0.428,-0.104],[-0.416,-0.104]],[[-0.244,-0.104],[-0.2,-0.104],[-0.196,-0.104],[-0.18,-0.104],[-0.176,-0.104]],[[0.028,-0.104],[0.032,-0.104],[0.036,-0.104]],[[0.452,-0.104],[0.492,-0.104],[0.516,-0.104],[0.532,-0.104],[0.552,-0.104]],[[0.796,-0.104],[0.8,-0.104],[0.804,-0.104],[0.82,-0.104],[0.824,-0.104]],[[-0.512,-0.088],[-0.508,-0.088],[-0.496,-0.088]],[[0.54,-0.088],[0.544,-0.088],[0.552,-0.088]],[[0.8,-0.088],[0.804,-0.088],[0.82,-0.088],[0.824,-0.088]],[[0.024,-0.072],[0.028,-0.072],[0.032,-0.072],[0.072,-0.072],[0.076,-0.072]],[[0.412,-0.072],[0.416,-0.072],[0.42,-0.072]],[[-0.792,-0.056],[-0.74,-0.056],[-0.72,-0.056],[-0.688,-0.056],[-0.68,-0.056]],[[-0.244,-0.056],[-0.184,-0.056],[-0.18,-0.056],[-0.176,-0.056],[-0.172,-0.056],[-0.168,-0.056]],[[0.06,-0.056],[0.104,-0.056],[0.132,-0.056],[0.152,-0.056],[0.18,-0.056]],[[0.468,-0.056],[0.476,-0.056],[0.524,-0.056],[0.532,-0.056],[0.552,-0.056]],[[-0.8,-0.04],[-0.788,-0.04],[-0.74,-0.04],[-0.72,-0.04],[-0.684,-0.04],[-0.676,-0.04]],[[-0.504,-0.04],[-0.496,-0.04]],[[0.072,-0.04],[0.076,-0.04]],[[0.436,-0.04],[0.448,-0.04]],[[0.74,-0.04],[0.748,-0.04],[0.752,-0.04],[0.8,-0.04],[0.804,-0.04],[0.82,-0.04],[0.824,-0.04]],[[-0.616,-0.024],[-0.612,-0.024],[-0.604,-0.024],[-0.556,-0.024],[-0.552,-0.024],[-0.504,-0.024]],[[-0.068,-0.024],[-0.02,-0.024],[0.02,-0.024],[0.044,-0.024],[0.064,-0.024]],[[0.436,-0.024],[0.448,-0.024],[0.496,-0.024],[0.5,-0.024],[0.548,-0.024],[0.552,-0.024]],[[0.8,-0.024],[0.804,-0.024],[0.82,-0.024],[0.824,-0.024]],[[-0.612,-0.008],[-0.596,-0.008],[-0.552,-0.008],[-0.508,-0.008],[-0.5,-0.008]],[[-0.248,-0.008],[-0.244,-0.008]],[[0.436,-0.008],[0.452,-0.008],[0.496,-0.008],[0.516,-0.008],[0.548,-0.008]],[[0.72,-0.008],[0.728,-0.008],[0.732,-0.008]],[[-0.74,0.008],[-0.72,0.008],[-0.684,0.008],[-0.676,0.008]],[[-0.368,0.008],[-0.364,0.008],[-0.36,0.008],[-0.356,0.008]],[[-0.016,0.008],[-0.012,0.008],[-0.008,0.008],[-0.004,0.008]],[[0.452,0.008],[0.468,0.008],[0.484,0.008],[0.5,0.008],[0.552,0.008]],[[0.8,0.008],[0.804,0.008],[0.82,0.008],[0.824,0.008]],[[-0.2,0.024],[-0.18,0.024],[-0.176,0.024]],[[0.664,0.024],[0.668,0.024]],[[-0.74,0.04],[-0.736,0.04],[-0.716,0.04],[-0.712,0.04],[-0.708,0.04],[-0.68,0.04]],[[-0.2,0.04],[-0.18,0.04],[-0.176,0.04]],[[0.664,0.04],[0.668,0.04]],[[-0.736,0.056],[-0.732,0.056],[-0.7,0.056],[-0.696,0.056]],[[-0.2,0.056],[-0.18,0.056],[-0.176,0.056]],[[0.664,0.056],[0.668,0.056]],[[-0.72,0.072],[-0.6,0.072],[-0.508,0.072],[-0.416,0.072],[-0.324,0.072]],[[0.16,0.072],[0.164,0.072],[0.176,0.072],[0.18,0.072],[0.184,0.072],[0.188,0.072]],[[-0.704,0.088],[-0.624,0.088],[-0.552,0.088],[-0.448,0.088],[-0.336,0.088]],[[0.16,0.088],[0.164,0.088],[0.18,0.088],[0.184,0.088]],[[0.752,0.088],[0.756,0.088],[0.76,0.088]],[[0.064,0.104],[0.116,0.104],[0.128,0.104],[0.192,0.104],[0.204,0.104]],[[0.376,0.104],[0.38,0.104],[0.388,0.104],[0.392,0.104]],[[-0.312,0.12],[-0.308,0.12]],[[0.112,0.12],[0.116,0.12],[0.132,0.12],[0.136,0.12],[0.196,0.12],[0.2,0.12]],[[0.552,0.12],[0.556,0.12]],[[0.032,0.136],[0.06,0.136],[0.068,0.136],[0.076,0.136],[0.084,0.136]],[[0.552,0.136],[0.556,0.136]],[[0.296,0.152],[0.3,0.152]],[[0.036,0.168],[0.04,0.168],[0.084,0.168],[0.088,0.168]],[[0.552,0.168],[0.556,0.168],[0.58,0.168],[0.584,0.168],[0.588,0.168],[0.592,0.168],[0.644,0.168]],[[0.296,0.184],[0.3,0.184]],[[0.296,0.2],[0.3,0.2]],[[0.66,0.216],[0.672,0.216],[0.676,0.216]],[[0.296,0.232],[0.3,0.232]],[[0.652,0.232],[0.656,0.232]],[[0.288,0.248],[0.292,0.248],[0.296,0.248],[0.3,0.248],[0.304,0.248]],[[0.548,0.248],[0.552,0.248],[0.556,0.248],[0.56,0.248]]];
+
+const LOGO_SCALE = 1.55;
+const LOGO_OX    = 0.025;
+const LOGO_OY    = -0.05;
+
+const wrap   = document.getElementById('waferWrap');
+const canvas = document.getElementById('waferCanvas');
+const logoEl = document.getElementById('waferLogoReveal');
+
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+
+const scene  = new THREE.Scene();
+scene.background = new THREE.Color(0xefefef);
+const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+
+function resize() {
+  const w = wrap.clientWidth  || 500;
+  const h = wrap.clientHeight || 500;
+  renderer.setSize(w, h);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+resize();
+window.addEventListener('resize', resize);
+
+scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+const sun = new THREE.DirectionalLight(0xffffff, 0.85);
+sun.position.set(3, 10, 4); sun.castShadow = true;
+scene.add(sun);
+scene.add(Object.assign(new THREE.DirectionalLight(0xfff0e0, 0.3), { position: new THREE.Vector3(-5, 2, -2) }));
+const redLight = new THREE.PointLight(0xdd2200, 0, 4);
+redLight.position.set(0, 2.5, 0);
+scene.add(redLight);
+
+const R = 1.65, T = 0.07;
+const waferMat = new THREE.MeshStandardMaterial({ color: 0xd0d0d8, metalness: 0.7, roughness: 0.22 });
+const wafer = new THREE.Mesh(new THREE.CylinderGeometry(R, R, T, 128), waferMat);
+wafer.receiveShadow = true;
+scene.add(wafer);
+
+const ringMat = new THREE.MeshStandardMaterial({ color: 0x999999, metalness: 0.9, roughness: 0.12 });
+wafer.add(new THREE.Mesh(new THREE.TorusGeometry(R, 0.014, 16, 128), ringMat));
+
+const gridMat = new THREE.LineBasicMaterial({ color: 0xc0c0c0, transparent: true, opacity: 0.3 });
+const gridGroup = new THREE.Group();
+for (let x = -R + 0.3; x < R; x += 0.3) {
+  gridGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(x, T/2+0.001, -R), new THREE.Vector3(x, T/2+0.001, R)
+  ]), gridMat.clone()));
+}
+for (let z = -R + 0.3; z < R; z += 0.3) {
+  gridGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-R, T/2+0.001, z), new THREE.Vector3(R, T/2+0.001, z)
+  ]), gridMat.clone()));
+}
+wafer.add(gridGroup);
+
+const notchMat = new THREE.MeshStandardMaterial({ color: 0xe0e0e0 });
+const notchMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, T+0.01, 12), notchMat);
+notchMesh.position.set(0, 0, R - 0.03);
+wafer.add(notchMesh);
+
+wafer.position.y = -8;
+wafer.rotation.x = 1.45;
+
+const ec = document.createElement('canvas');
+ec.width = 512; ec.height = 512;
+const ectx = ec.getContext('2d');
+const etchTex = new THREE.CanvasTexture(ec);
+const etchMat = new THREE.MeshBasicMaterial({ map: etchTex, transparent: true, opacity: 0, depthWrite: false });
+const etchMesh = new THREE.Mesh(new THREE.CircleGeometry(R - 0.05, 128), etchMat);
+etchMesh.rotation.x = -Math.PI / 2;
+etchMesh.position.y = T/2 + 0.004;
+wafer.add(etchMesh);
+
+const etchedPaths = new Array(LOGO_PATHS.length).fill(0);
+let totalEtchProgress = 0;
+
+function logoToCanvas(nx, ny) {
+  const cx = 256 + (nx - LOGO_OX) / LOGO_SCALE * 256;
+  const cy = 256 + (ny - LOGO_OY) / LOGO_SCALE * 256;
+  return [cx, cy];
+}
+
+function logoToWaferLocal(nx, ny) {
+  return new THREE.Vector3(
+    (nx - LOGO_OX) * LOGO_SCALE,
+    T/2 + 0.005,
+    (ny - LOGO_OY) * LOGO_SCALE
+  );
+}
+
+function redrawEtch() {
+  ectx.clearRect(0, 0, 512, 512);
+  ectx.save();
+  ectx.beginPath(); ectx.arc(256, 256, 250, 0, Math.PI*2); ectx.clip();
+
+  if (totalEtchProgress > 0) {
+    const ra = Math.min(totalEtchProgress * 3, 1);
+    ectx.strokeStyle = `rgba(180,60,35,${ra*0.5})`;
+    ectx.lineWidth = 2;
+    ectx.beginPath();
+    ectx.arc(256, 256, 238, -Math.PI/2, -Math.PI/2 + Math.PI*2*Math.min(totalEtchProgress*2,1));
+    ectx.stroke();
+    ectx.strokeStyle = `rgba(180,60,35,${ra*0.22})`;
+    ectx.lineWidth = 1;
+    ectx.beginPath();
+    ectx.arc(256, 256, 196, -Math.PI/2, -Math.PI/2 + Math.PI*2*Math.min(totalEtchProgress*2.5,1));
+    ectx.stroke();
+  }
+
+  LOGO_PATHS.forEach((path, pi) => {
+    const prog = etchedPaths[pi];
+    if (prog <= 0 || path.length < 1) return;
+    const numPts = Math.max(1, Math.ceil(prog * path.length));
+    const pts = path.slice(0, numPts);
+    if (pts.length < 1) return;
+
+    ectx.beginPath();
+    pts.forEach(([nx, ny], idx) => {
+      const [cx, cy] = logoToCanvas(nx, ny);
+      if (idx === 0) ectx.moveTo(cx, cy); else ectx.lineTo(cx, cy);
+    });
+    ectx.shadowColor = 'rgba(220,80,30,0.8)';
+    ectx.shadowBlur = 7;
+    ectx.strokeStyle = 'rgba(210,95,45,0.95)';
+    ectx.lineWidth = 3;
+    ectx.stroke();
+    ectx.shadowBlur = 0;
+    ectx.strokeStyle = 'rgba(155,50,20,1)';
+    ectx.lineWidth = 1.5;
+    ectx.stroke();
+
+    if (prog < 1) {
+      const [lx, ly] = pts[pts.length - 1];
+      const [cx, cy] = logoToCanvas(lx, ly);
+      ectx.shadowColor = 'rgba(255,120,60,1)';
+      ectx.shadowBlur = 14;
+      ectx.fillStyle = 'rgba(255,170,90,1)';
+      ectx.beginPath(); ectx.arc(cx, cy, 3.5, 0, Math.PI*2); ectx.fill();
+      ectx.shadowBlur = 0;
+    }
+  });
+
+  ectx.restore();
+  etchTex.needsUpdate = true;
+}
+
+const laserMat = new THREE.MeshBasicMaterial({ color: 0xee2200, transparent: true, opacity: 0 });
+const laserBeam = new THREE.Mesh(new THREE.CylinderGeometry(0.006, 0.006, 4, 8), laserMat);
+scene.add(laserBeam);
+
+const laserSpotMat = new THREE.MeshBasicMaterial({ color: 0xff4422, transparent: true, opacity: 0, side: THREE.DoubleSide });
+const laserSpot = new THREE.Mesh(new THREE.CircleGeometry(0.05, 16), laserSpotMat);
+laserSpot.rotation.x = -Math.PI / 2;
+laserSpot.position.y = T/2 + 0.007;
+wafer.add(laserSpot);
+
+const auxBeams = Array.from({length: 3}, () => {
+  const b = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.004, 0.004, 3, 8),
+    new THREE.MeshBasicMaterial({ color: 0xcc1500, transparent: true, opacity: 0 })
+  );
+  scene.add(b);
+  return b;
+});
+
+let lastLaserLocal = new THREE.Vector3();
+
+function positionLaser(localPt) {
+  lastLaserLocal.copy(localPt);
+  const worldTarget = wafer.localToWorld(localPt.clone());
+  const worldOrigin = new THREE.Vector3(worldTarget.x, worldTarget.y + 3.2, worldTarget.z);
+  const mid = worldOrigin.clone().lerp(worldTarget, 0.5);
+  laserBeam.position.copy(mid);
+  laserBeam.quaternion.setFromUnitVectors(
+    new THREE.Vector3(0,1,0),
+    worldOrigin.clone().sub(worldTarget).normalize()
+  );
+  laserSpot.position.set(localPt.x, T/2 + 0.007, localPt.z);
+}
+
+const lerp   = (a, b, t) => a + (b - a) * t;
+const clamp  = (v, lo=0, hi=1) => Math.max(lo, Math.min(hi, v));
+const inv    = (t, p0, p1) => clamp((t - p0) / (p1 - p0));
+const easeO  = t => 1 - Math.pow(1-t, 3);
+const easeIO = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+
+const totalLogoPts = LOGO_PATHS.reduce((s, p) => s + p.length, 0);
+let t0 = null, done = false;
+let camX = 0, camY = 3.8, camZ = 5.6;
+
+function animateWafer(ts) {
+  if (!t0) t0 = ts;
+  const t = (ts - t0) / 1000;
+
+  if (t < 2.2) {
+    const p = easeO(inv(t, 0, 2.2));
+    wafer.position.y = lerp(-8, 0, p);
+    wafer.rotation.x = lerp(1.45, 1.18, p);
+    camY = lerp(5, 3.8, p);
+    camZ = lerp(4.0, 5.6, p);
+  }
+
+  if (t >= 2.2 && t < 3.1) {
+    const p = easeIO(inv(t, 2.2, 3.1));
+    wafer.rotation.x = 1.18;
+    const firstPt = logoToWaferLocal(LOGO_PATHS[0][0][0], LOGO_PATHS[0][0][1]);
+    positionLaser(firstPt);
+    laserMat.opacity = easeO(p) * 0.9;
+    laserSpotMat.opacity = 0;
+    redLight.intensity = p * 1.5;
+  }
+
+  if (t >= 3.1 && t < 7.6) {
+    const overallP = inv(t, 3.1, 7.6);
+    totalEtchProgress = overallP;
+    const target = overallP * totalLogoPts;
+    let counted = 0, activePt = null;
+    for (let pi = 0; pi < LOGO_PATHS.length; pi++) {
+      const path = LOGO_PATHS[pi];
+      if (counted + path.length <= target) {
+        etchedPaths[pi] = 1;
+        counted += path.length;
+      } else {
+        const rem = target - counted;
+        etchedPaths[pi] = rem / path.length;
+        const ptIdx = clamp(Math.floor(rem), 0, path.length - 1);
+        activePt = logoToWaferLocal(path[ptIdx][0], path[ptIdx][1]);
+        for (let pj = pi + 1; pj < LOGO_PATHS.length; pj++) etchedPaths[pj] = 0;
+        break;
+      }
+    }
+    if (activePt) positionLaser(activePt);
+    laserMat.opacity = 0.85 + Math.sin(t * 22) * 0.12;
+    laserMat.color.setHSL(0.03 + Math.sin(t*7)*0.008, 1, 0.48 + Math.sin(t*28)*0.06);
+    laserSpotMat.opacity = 0.65 + Math.sin(t * 19) * 0.3;
+    redLight.intensity = 1.3 + Math.sin(t * 16) * 0.55;
+    redLight.position.copy(wafer.localToWorld(lastLaserLocal.clone()));
+    auxBeams.forEach((b, i) => {
+      const ang = (i / auxBeams.length) * Math.PI * 2 + t * 0.5;
+      const wt = wafer.localToWorld(new THREE.Vector3(
+        lastLaserLocal.x + Math.cos(ang) * 0.35,
+        T/2 + 0.005,
+        lastLaserLocal.z + Math.sin(ang) * 0.35
+      ));
+      const wo = new THREE.Vector3(wt.x, wt.y + 2.2, wt.z);
+      b.position.copy(wo.clone().lerp(wt, 0.5));
+      b.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), wo.clone().sub(wt).normalize());
+      b.material.opacity = 0.28 + Math.sin(t * 13 + i * 1.8) * 0.14;
+    });
+    etchMat.opacity = Math.min(overallP * 1.8, 1);
+    redrawEtch();
+    camX = Math.sin(t * 0.18) * 0.18;
+    camY = 3.8; camZ = 5.6;
+  }
+
+  if (t >= 7.6 && t < 8.8) {
+    const p = easeIO(inv(t, 7.6, 8.8));
+    laserMat.opacity     = lerp(0.85, 0, p);
+    laserSpotMat.opacity = lerp(0.65, 0, p);
+    auxBeams.forEach(b => { b.material.opacity = lerp(0.3, 0, p); });
+    redLight.intensity   = lerp(1.3, 0, p);
+    wafer.rotation.x     = lerp(1.18, 0, p);
+    camX = lerp(camX, 0, 0.06);
+    camY = lerp(3.8, 5.6, p);
+    camZ = lerp(5.6, 0.3, p);
+    etchMat.opacity = 1;
+    totalEtchProgress = 1;
+    etchedPaths.fill(1);
+    redrawEtch();
+  }
+
+  if (t >= 8.8) {
+    const p = easeIO(clamp((t - 8.8) / 1.6, 0, 1));
+    waferMat.transparent = true; waferMat.opacity = lerp(1, 0, p);
+    ringMat.transparent  = true; ringMat.opacity  = lerp(1, 0, p);
+    notchMat.transparent = true; notchMat.opacity = lerp(1, 0, p);
+    gridGroup.children.forEach(l => { l.material.opacity = lerp(0.3, 0, p); });
+    etchMat.opacity  = lerp(1, 0, p);
+    laserMat.opacity = 0;
+    auxBeams.forEach(b => { b.material.opacity = 0; });
+    if (logoEl) logoEl.style.opacity = p;
+    camY = 5.6; camZ = 0.3;
+    if (p >= 1 && !done) {
+      done = true;
+      canvas.style.transition = 'opacity 0.5s ease';
+      canvas.style.opacity = '0';
+    }
+  }
+
+  camera.position.set(camX, camY, camZ);
+  camera.lookAt(0, 0, 0);
+  renderer.render(scene, camera);
+  if (!done) requestAnimationFrame(animateWafer);
+}
+
+requestAnimationFrame(animateWafer);
+})();
 </script>
 </body>
 </html>
