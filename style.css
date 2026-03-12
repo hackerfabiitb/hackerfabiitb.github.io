@@ -162,7 +162,7 @@ body::after {
 @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
 .wafer-wrap {
-    overflow: visible;
+    
     position: relative;
     z-index: 2;
     flex: 1;
@@ -172,6 +172,7 @@ body::after {
     align-items: center;
     justify-content: center;
     max-height: calc(100vh - var(--nav-h) - 120px);
+    overflow: visible;
 }
 
 #waferCanvas {
