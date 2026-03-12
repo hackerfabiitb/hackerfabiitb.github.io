@@ -576,7 +576,7 @@ resize();
 window.addEventListener('resize', resize);
 
 // Lights
-scene.add(new THREE.AmbientLight(0xaaaacc, 0.75));
+scene.add(new THREE.AmbientLight(0xbbbbff, 1.1));
 const sun = new THREE.DirectionalLight(0xffffff, 0.38);
 sun.position.set(3, 10, 4);
 scene.add(sun);
@@ -589,12 +589,9 @@ scene.add(redLight);
 
 // Wafer — dark purple-blue matte silicon
 const R = 2.2, T = 0.07;
-const waferMat = new THREE.MeshStandardMaterial({ color: 0x1a1828, metalness: 0.28, roughness: 0.78 });
+const waferMat = new THREE.MeshStandardMaterial({ color: 0x2e2850, metalness: 0.15, roughness: 0.85 });
 const wafer = new THREE.Mesh(new THREE.CylinderGeometry(R, R, T, 128), waferMat);
 scene.add(wafer);
-
-const bevelMat = new THREE.MeshStandardMaterial({ color: 0x252235, metalness: 0.3, roughness: 0.7 });
-wafer.add(new THREE.Mesh(new THREE.TorusGeometry(R, 0.018, 12, 128), bevelMat));
 
 const notchMat = new THREE.MeshStandardMaterial({ color: 0x111120 });
 const notchMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, T+0.01, 12), notchMat);
@@ -837,7 +834,6 @@ function animateWafer(ts) {
   if (t >= 9.7) {
     const p = easeIO(clamp((t - 9.7) / 1.6, 0, 1));
     waferMat.transparent = true; waferMat.opacity = lerp(1, 0, p);
-    bevelMat.transparent = true; bevelMat.opacity = lerp(1, 0, p);
     notchMat.transparent = true; notchMat.opacity = lerp(1, 0, p);
     etchMat.opacity = lerp(1, 0, p);
     laserMats.forEach(m => { m.opacity = 0; });
