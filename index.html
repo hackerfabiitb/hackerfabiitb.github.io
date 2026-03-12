@@ -578,8 +578,9 @@ scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 const sun = new THREE.DirectionalLight(0xffffff, 0.85);
 sun.position.set(3, 10, 4); sun.castShadow = true;
 scene.add(sun);
-scene.add(Object.assign(new THREE.DirectionalLight(0xfff0e0, 0.3), { position: new THREE.Vector3(-5, 2, -2) }));
-const redLight = new THREE.PointLight(0xdd2200, 0, 4);
+const fillLight = new THREE.DirectionalLight(0xfff0e0, 0.3);
+fillLight.position.set(-5, 2, -2);
+scene.add(fillLight);const redLight = new THREE.PointLight(0xdd2200, 0, 4);
 redLight.position.set(0, 2.5, 0);
 scene.add(redLight);
 
