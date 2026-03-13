@@ -529,15 +529,28 @@ document.getElementById('navLogoBtn').addEventListener('click', () => {
 // ═══════════════════════════════════════════════
 // MEMBER CARD COMPLIMENTS (easter egg)
 // ═══════════════════════════════════════════════
-const compliments = [
-    '🔬 chip wizard', '⚡ solder lord', '🧪 etch master',
-    '💡 photon wrangler', '🤓 definitely sleeping', '⬡ silicon sorcerer',
-    '📐 tolerances: ±vibes', '🚀 will found a startup', '☕ runs on chai'
-];
-document.querySelectorAll('.member-card:not(.member-card--open)').forEach(card => {
+const memberCompliments = {
+    'Aryamman Bhatia':   'Darwin',
+    'Abhineet Agarwal':  'Chutzpah',
+    'Kartik U.C':        'UC',
+    'Shaashvat Sekhar':  'Punekar',
+    'Suchet Gopal':      'Goblin',
+    'Devavrat Patni':    'Gamer',
+    'Akshat K.':         'Pseudo-mech',
+    'Abhineet Avhad':    '9tea7',
+    'Rushat Dixit':      'Influencer',
+    'Jai Bellare':       'Zeiss',
+};
+
+document.querySelectorAll('#page-team .team-grid:not(.advisors) .member-card:not(.member-card--open)').forEach(card => {
+    const nameEl = card.querySelector('h4');
+    if (!nameEl) return;
+    const name = nameEl.textContent.trim();
+    const compliment = memberCompliments[name];
+    if (!compliment) return;
     const tag = document.createElement('div');
     tag.style.cssText = 'position:absolute;bottom:4px;left:0;right:0;font-size:0.5rem;color:rgba(240,240,240,0.7);letter-spacing:0.06em;font-family:Space Mono,monospace;z-index:2;opacity:0;transition:opacity 0.3s;text-align:center;';
-    tag.textContent = compliments[Math.floor(Math.random() * compliments.length)];
+    tag.textContent = compliment;
     card.appendChild(tag);
     card.addEventListener('mouseenter', () => { tag.style.opacity = '1'; });
     card.addEventListener('mouseleave', () => { tag.style.opacity = '0'; });
