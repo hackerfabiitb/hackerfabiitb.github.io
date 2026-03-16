@@ -70,21 +70,71 @@
         <div class="about-content">
 
             <!-- LEFT: 5-photo collage -->
-            <div class="photo-collage reveal">
-                <div class="collage-item collage-main">
-                    <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team at SemiX">
+<div class="photo-collage reveal">
+                <div class="collage-item collage-main" id="collage0">
+                    <div class="collage-flip-inner">
+                        <div class="collage-front">
+                            <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team at SemiX">
+                        </div>
+                        <div class="collage-back">
+                            <i class="fas fa-users"></i>
+                            <h4>SemiX 2025</h4>
+                            <p>The HackerFab IITB team presenting to India's semiconductor community for the first time.</p>
+                        </div>
+                    </div>
+                    <span class="collage-hint">click to flip</span>
                 </div>
-                <div class="collage-item">
-                    <img src="Images/Goals/Litho.jpeg" alt="Lithography">
+                <div class="collage-item" id="collage1">
+                    <div class="collage-flip-inner">
+                        <div class="collage-front">
+                            <img src="Images/Goals/Litho.jpeg" alt="Lithography">
+                        </div>
+                        <div class="collage-back">
+                            <i class="fas fa-microchip"></i>
+                            <h4>Maskless Lithography</h4>
+                            <p>1&thinsp;&micro;m feature size achieved on our home-built lithography system.</p>
+                        </div>
+                    </div>
+                    <span class="collage-hint">click to flip</span>
                 </div>
-                <div class="collage-item">
-                    <img src="Images/Goals/spincoater.png" alt="Spin Coater">
+                <div class="collage-item" id="collage2">
+                    <div class="collage-flip-inner">
+                        <div class="collage-front">
+                            <img src="Images/Goals/spincoater.png" alt="Spin Coater">
+                        </div>
+                        <div class="collage-back">
+                            <i class="fas fa-circle-notch"></i>
+                            <h4>Spin Coater</h4>
+                            <p>Closed-loop control up to 6000&thinsp;rpm. Fully student-built and open-source.</p>
+                        </div>
+                    </div>
+                    <span class="collage-hint">click to flip</span>
                 </div>
-                <div class="collage-item">
-                    <img src="Images/Goals/Sputter.png" alt="RF Sputtering">
+                <div class="collage-item" id="collage3">
+                    <div class="collage-flip-inner">
+                        <div class="collage-front">
+                            <img src="Images/Goals/Sputter.png" alt="RF Sputtering">
+                        </div>
+                        <div class="collage-back">
+                            <i class="fas fa-atom"></i>
+                            <h4>RF Sputtering</h4>
+                            <p>Our first deposition tool &mdash; thin film deposition coming soon.</p>
+                        </div>
+                    </div>
+                    <span class="collage-hint">click to flip</span>
                 </div>
-                <div class="collage-item">
-                    <img src="Images/Goals/tubefurnace.png" alt="Tube Furnace">
+                <div class="collage-item" id="collage4">
+                    <div class="collage-flip-inner">
+                        <div class="collage-front">
+                            <img src="Images/Goals/tubefurnace.png" alt="Tube Furnace">
+                        </div>
+                        <div class="collage-back">
+                            <i class="fas fa-fire"></i>
+                            <h4>Tube Furnace</h4>
+                            <p>&plusmn;2&thinsp;&deg;C precision up to 1100&thinsp;&deg;C for oxidation and annealing.</p>
+                        </div>
+                    </div>
+                    <span class="collage-hint">click to flip</span>
                 </div>
             </div>
 
@@ -140,6 +190,7 @@
         <h2 class="reveal">Our Journey</h2>
         <p class="timeline-intro reveal">Key milestones in our story so far.</p>
         <div class="timeline">
+            <div class="timeline-item reveal"><div class="timeline-marker event"><i class="fas fa-trophy"></i></div><div class="timeline-content"><div class="timeline-date">Jan 2026</div><h4>&#127942; Won Best Project Presentation at VLSID</h4><p>Presented HackerFab IITB at VLSI Design 2026 (VLSID) and won Best Project Presentation </p></div></div>
             <div class="timeline-item reveal"><div class="timeline-marker technical"><i class="fas fa-microchip"></i></div><div class="timeline-content"><div class="timeline-date">Dec 2025</div><h4>Patterns captured on Litho v1</h4><p>We captured our first micrometer scale patterns on Litho v1</p></div></div>
             <div class="timeline-item reveal"><div class="timeline-marker community"><i class="fas fa-users"></i></div><div class="timeline-content"><div class="timeline-date">Dec 2025</div><h4>Community Grew to 40+ Members</h4><p>Expanded our outreach beyond IITB, growing to a 40 member strong community on Discord</p></div></div>
             <div class="timeline-item reveal"><div class="timeline-marker event"><i class="fas fa-microphone"></i></div><div class="timeline-content"><div class="timeline-date">Sep 2025</div><h4>Presented at SemiX</h4><p>Presented proof-of-concepts for spin coater and lithography machine. Part of the panel discussion on "Advancing India's Semiconductor Ecosystem"</p></div></div>
@@ -529,6 +580,12 @@ document.getElementById('navLogoBtn').addEventListener('click', () => {
 // ═══════════════════════════════════════════════
 // MEMBER CARD COMPLIMENTS (easter egg)
 // ═══════════════════════════════════════════════
+document.querySelectorAll('.collage-item').forEach(card => {
+    card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+    });
+});
+    
 const memberCompliments = {
     'Aryamman Bhatia':   'Darwin',
     'Abhineet Agarwal':  'Chutzpah',
