@@ -142,15 +142,31 @@
   background: linear-gradient(to top, #0a0a0a 30%, transparent);
 }
 
+.timeline-collage-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+  height: 100%;
+}
+
 .timeline-collage-track {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px;
+  flex: 1;
+}
+
+.timeline-collage-track.col-a {
   animation: tcScroll 28s linear infinite;
 }
 
-.timeline-collage-track:hover {
+.timeline-collage-track.col-b {
+  animation: tcScroll 22s linear infinite reverse;
+  margin-top: -120px;
+}
+
+.timeline-collage-inner:hover .timeline-collage-track {
   animation-play-state: paused;
 }
 
@@ -163,7 +179,7 @@
 .tc-item {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 4px;
   flex-shrink: 0;
@@ -218,18 +234,20 @@
     order: -1;
     margin-bottom: 8px;
   }
-  .timeline-collage-track {
+.timeline-collage-inner {
     flex-direction: row;
-    padding: 8px;
-    animation: tcScrollH 20s linear infinite;
+    overflow: hidden;
+  }
+  .timeline-collage-track.col-a,
+  .timeline-collage-track.col-b {
+    animation: tcScroll 20s linear infinite;
+  }
+  .timeline-collage-track.col-b {
+    animation-direction: reverse;
+    margin-top: -80px;
   }
   .tc-item {
-    width: 180px;
-    aspect-ratio: 4/3;
-  }
-  @keyframes tcScrollH {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    aspect-ratio: 3/4;
   }
 }
 
@@ -522,50 +540,40 @@
           </div><!-- /.timeline-left -->
 
           <!-- RIGHT: rolling image collage -->
+<!-- RIGHT: rolling image collage — dual shifted columns -->
           <div class="timeline-collage">
-            <div class="timeline-collage-track">
-              <!-- Set 1 -->
-              <div class="tc-item">
-                <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth">
-                <span class="tc-caption">SemiX 2025</span>
+            <div class="timeline-collage-inner">
+
+              <!-- Column A — scrolls down -->
+              <div class="timeline-collage-track col-a">
+                <div class="tc-item"><img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth"><span class="tc-caption">SemiX 2025</span></div>
+                <div class="tc-item"><img src="Images/Goals/Litho.jpeg" alt="Lithography"><span class="tc-caption">Maskless Litho — 1µm</span></div>
+                <div class="tc-item"><img src="Images/Goals/spincoater.png" alt="Spin Coater"><span class="tc-caption">Spin Coater</span></div>
+                <div class="tc-item"><img src="Images/Goals/Sputter.png" alt="RF Sputtering"><span class="tc-caption">RF Sputtering</span></div>
+                <div class="tc-item"><img src="Images/Goals/tubefurnace.png" alt="Tube Furnace"><span class="tc-caption">Tube Furnace</span></div>
+                <!-- duplicate for seamless loop -->
+                <div class="tc-item"><img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth"><span class="tc-caption">SemiX 2025</span></div>
+                <div class="tc-item"><img src="Images/Goals/Litho.jpeg" alt="Lithography"><span class="tc-caption">Maskless Litho — 1µm</span></div>
+                <div class="tc-item"><img src="Images/Goals/spincoater.png" alt="Spin Coater"><span class="tc-caption">Spin Coater</span></div>
+                <div class="tc-item"><img src="Images/Goals/Sputter.png" alt="RF Sputtering"><span class="tc-caption">RF Sputtering</span></div>
+                <div class="tc-item"><img src="Images/Goals/tubefurnace.png" alt="Tube Furnace"><span class="tc-caption">Tube Furnace</span></div>
               </div>
-              <div class="tc-item">
-                <img src="Images/Goals/Litho.jpeg" alt="Lithography">
-                <span class="tc-caption">Maskless Litho — 1µm</span>
+
+              <!-- Column B — scrolls up, offset start -->
+              <div class="timeline-collage-track col-b">
+                <div class="tc-item"><img src="Images/Goals/Sputter.png" alt="RF Sputtering"><span class="tc-caption">RF Sputtering</span></div>
+                <div class="tc-item"><img src="Images/Goals/tubefurnace.png" alt="Tube Furnace"><span class="tc-caption">Tube Furnace</span></div>
+                <div class="tc-item"><img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth"><span class="tc-caption">SemiX 2025</span></div>
+                <div class="tc-item"><img src="Images/Goals/Litho.jpeg" alt="Lithography"><span class="tc-caption">Maskless Litho — 1µm</span></div>
+                <div class="tc-item"><img src="Images/Goals/spincoater.png" alt="Spin Coater"><span class="tc-caption">Spin Coater</span></div>
+                <!-- duplicate for seamless loop -->
+                <div class="tc-item"><img src="Images/Goals/Sputter.png" alt="RF Sputtering"><span class="tc-caption">RF Sputtering</span></div>
+                <div class="tc-item"><img src="Images/Goals/tubefurnace.png" alt="Tube Furnace"><span class="tc-caption">Tube Furnace</span></div>
+                <div class="tc-item"><img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth"><span class="tc-caption">SemiX 2025</span></div>
+                <div class="tc-item"><img src="Images/Goals/Litho.jpeg" alt="Lithography"><span class="tc-caption">Maskless Litho — 1µm</span></div>
+                <div class="tc-item"><img src="Images/Goals/spincoater.png" alt="Spin Coater"><span class="tc-caption">Spin Coater</span></div>
               </div>
-              <div class="tc-item">
-                <img src="Images/Goals/spincoater.png" alt="Spin Coater">
-                <span class="tc-caption">Spin Coater</span>
-              </div>
-              <div class="tc-item">
-                <img src="Images/Goals/Sputter.png" alt="RF Sputtering">
-                <span class="tc-caption">RF Sputtering</span>
-              </div>
-              <div class="tc-item">
-                <img src="Images/Goals/tubefurnace.png" alt="Tube Furnace">
-                <span class="tc-caption">Tube Furnace</span>
-              </div>
-              <!-- Set 2 (duplicate for seamless loop) -->
-              <div class="tc-item">
-                <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth">
-                <span class="tc-caption">SemiX 2025</span>
-              </div>
-              <div class="tc-item">
-                <img src="Images/Goals/Litho.jpeg" alt="Lithography">
-                <span class="tc-caption">Maskless Litho — 1µm</span>
-              </div>
-              <div class="tc-item">
-                <img src="Images/Goals/spincoater.png" alt="Spin Coater">
-                <span class="tc-caption">Spin Coater</span>
-              </div>
-              <div class="tc-item">
-                <img src="Images/Goals/Sputter.png" alt="RF Sputtering">
-                <span class="tc-caption">RF Sputtering</span>
-              </div>
-              <div class="tc-item">
-                <img src="Images/Goals/tubefurnace.png" alt="Tube Furnace">
-                <span class="tc-caption">Tube Furnace</span>
-              </div>
+
             </div>
           </div><!-- /.timeline-collage -->
 
