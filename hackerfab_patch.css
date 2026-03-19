@@ -1,0 +1,325 @@
+/* ═══════════════════════════════════════════════════════
+   HACKERFAB IITB — PATCH CSS
+   Add this inside a <style> block or as a linked stylesheet
+   AFTER your existing style.css link.
+   Covers: (1) timeline two-column layout, (2) supporters section
+═══════════════════════════════════════════════════════ */
+
+/* ── 1. TIMELINE: two-column layout ── */
+
+.timeline-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 36px;
+  align-items: start;
+}
+
+.timeline-left {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Left-aligned vertical bar */
+.timeline-left .timeline {
+  position: relative;
+  padding-left: 44px;
+}
+
+.timeline-left .timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,51,0,0.45) 8%,
+    rgba(255,51,0,0.28) 92%,
+    transparent
+  );
+}
+
+.timeline-left .timeline-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 12px;   /* tighter gap */
+  position: relative;
+}
+
+.timeline-left .timeline-item::before { display: none !important; }
+
+.timeline-left .timeline-marker {
+  position: absolute;
+  left: -43px;
+  top: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.58rem;
+  border: 1.5px solid currentColor;
+  background: #0a0a0a;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.timeline-left .timeline-content {
+  flex: 1;
+  padding: 11px 16px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.timeline-left .timeline-content:hover {
+  border-color: rgba(255,51,0,0.28);
+  background: rgba(255,51,0,0.03);
+}
+
+.timeline-left .timeline-content .timeline-date {
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  opacity: 0.42;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-family: 'Space Mono', monospace;
+}
+
+.timeline-left .timeline-content h4 {
+  margin: 0 0 4px;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.timeline-left .timeline-content p {
+  margin: 0;
+  font-size: 0.73rem;
+  opacity: 0.58;
+  line-height: 1.5;
+}
+
+/* ── 2. RIGHT COLUMN: mosaic collage ── */
+
+.timeline-collage {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 140px);
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+/* Fade top + bottom edges */
+.timeline-collage::before,
+.timeline-collage::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 64px;
+  z-index: 3;
+  pointer-events: none;
+}
+.timeline-collage::before {
+  top: 0;
+  background: linear-gradient(to bottom, #0a0a0a 20%, transparent);
+}
+.timeline-collage::after {
+  bottom: 0;
+  background: linear-gradient(to top, #0a0a0a 20%, transparent);
+}
+
+.timeline-collage-track {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+  animation: tcScroll 36s linear infinite;
+}
+.timeline-collage-track:hover { animation-play-state: paused; }
+
+@keyframes tcScroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* Mosaic rows — each row is a flex container with varying height */
+.tc-row {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* Row type 1: wide image left, tall image right */
+.tc-row--wide-tall {
+  height: 135px;
+}
+.tc-row--wide-tall .tc-wide { flex: 1.65; }
+.tc-row--wide-tall .tc-tall { flex: 0.85; }
+
+/* Row type 2: three square-ish cells */
+.tc-row--trio {
+  height: 92px;
+}
+.tc-row--trio .tc-item { flex: 1; }
+
+/* Row type 3: tall left, wide right */
+.tc-row--tall-wide {
+  height: 125px;
+}
+.tc-row--tall-wide .tc-tall { flex: 0.75; }
+.tc-row--tall-wide .tc-wide { flex: 1.55; }
+
+/* Row type 4: two equal landscape */
+.tc-row--duo {
+  height: 105px;
+}
+.tc-row--duo .tc-item { flex: 1; }
+
+/* Individual cell */
+.tc-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  flex-shrink: 0;
+  height: 100%;
+}
+.tc-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.72) brightness(0.85);
+  transition: filter 0.4s, transform 0.5s;
+}
+.tc-item:hover img {
+  filter: saturate(1.0) brightness(0.98);
+  transform: scale(1.06);
+}
+.tc-item .tc-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 18px 7px 5px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: rgba(255,255,255,0.82);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.tc-item:hover .tc-caption { opacity: 1; }
+
+/* ── 3. SUPPORTERS SECTION ── */
+
+.supporters-section {
+  margin-top: 52px;
+}
+
+.supporters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.supporter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.02);
+  min-width: 130px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.supporter-card:hover {
+  border-color: rgba(255,51,0,0.32);
+  background: rgba(255,51,0,0.04);
+  transform: translateY(-3px);
+}
+
+/* SVG logo placeholder */
+.supporter-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.supporter-svg {
+  height: 28px;
+  width: auto;
+  max-width: 130px;
+  color: rgba(190,195,220,0.42);
+  transition: color 0.2s;
+  display: block;
+}
+
+.supporter-card:hover .supporter-svg {
+  color: rgba(255,100,55,0.88);
+}
+
+.supporter-name {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  text-align: center;
+  line-height: 1.4;
+  transition: opacity 0.2s;
+}
+
+.supporter-card:hover .supporter-name {
+  opacity: 0.82;
+}
+
+/* ── 4. RESPONSIVE ── */
+
+@media (max-width: 900px) {
+  .timeline-layout {
+    grid-template-columns: 1fr;
+  }
+  .timeline-collage {
+    position: relative;
+    top: auto;
+    height: 200px;
+    order: -1;
+    margin-bottom: 4px;
+  }
+  .timeline-collage-track {
+    flex-direction: row;
+    padding: 6px;
+    animation: tcScrollH 22s linear infinite;
+  }
+  .tc-row {
+    flex-direction: column;
+    height: auto !important;
+    width: 140px;
+    flex-shrink: 0;
+    gap: 6px;
+  }
+  .tc-row .tc-item {
+    height: 88px !important;
+    flex: none !important;
+    width: 100%;
+  }
+  @keyframes tcScrollH {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
