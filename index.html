@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HackerFab | IIT Bombay</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="hackerfab_patch.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -493,12 +493,6 @@
 </section>
 
 <!-- TIMELINE — left-aligned + right rolling collage -->
-<!-- ════════════════════════════════════════════════════
-  REPLACE YOUR ENTIRE <!-- TIMELINE --> section with this.
-  (Everything from <section id="page-timeline" ... to its closing </section>)
-════════════════════════════════════════════════════ -->
-
-<!-- TIMELINE — left-aligned + right rolling mosaic collage -->
 <section id="page-timeline" class="page">
     <div class="page-inner">
         <div class="col-rule left"></div>
@@ -527,108 +521,51 @@
             </div>
           </div><!-- /.timeline-left -->
 
-          <!-- RIGHT: scrolling mosaic collage (rows with varied aspect ratios) -->
+          <!-- RIGHT: rolling image collage -->
           <div class="timeline-collage">
             <div class="timeline-collage-track">
-
-              <!-- ── SET 1 ── -->
-              <div class="tc-row tc-row--wide-tall">
-                <div class="tc-item tc-wide">
-                  <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX 2025" loading="lazy">
-                  <span class="tc-caption">SemiX 2025</span>
-                </div>
-                <div class="tc-item tc-tall">
-                  <img src="Images/Goals/Litho.jpeg" alt="Litho" loading="lazy">
-                  <span class="tc-caption">1µm Features</span>
-                </div>
+              <!-- Set 1 -->
+              <div class="tc-item">
+                <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth">
+                <span class="tc-caption">SemiX 2025</span>
               </div>
-
-              <div class="tc-row tc-row--trio">
-                <div class="tc-item">
-                  <img src="Images/Goals/spincoater.png" alt="Spin Coater" loading="lazy">
-                  <span class="tc-caption">Spin Coater</span>
-                </div>
-                <div class="tc-item">
-                  <img src="Images/Goals/Sputter.png" alt="Sputtering" loading="lazy">
-                  <span class="tc-caption">RF Sputtering</span>
-                </div>
-                <div class="tc-item">
-                  <img src="Images/Goals/tubefurnace.png" alt="Furnace" loading="lazy">
-                  <span class="tc-caption">Tube Furnace</span>
-                </div>
+              <div class="tc-item">
+                <img src="Images/Goals/Litho.jpeg" alt="Lithography">
+                <span class="tc-caption">Maskless Litho — 1µm</span>
               </div>
-
-              <div class="tc-row tc-row--tall-wide">
-                <div class="tc-item tc-tall">
-                  <img src="Images/Goals/Sputter.png" alt="Sputter" loading="lazy">
-                  <span class="tc-caption">Deposition</span>
-                </div>
-                <div class="tc-item tc-wide">
-                  <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team" loading="lazy">
-                  <span class="tc-caption">The Team</span>
-                </div>
+              <div class="tc-item">
+                <img src="Images/Goals/spincoater.png" alt="Spin Coater">
+                <span class="tc-caption">Spin Coater</span>
               </div>
-
-              <div class="tc-row tc-row--duo">
-                <div class="tc-item">
-                  <img src="Images/Goals/Litho.jpeg" alt="Litho" loading="lazy">
-                  <span class="tc-caption">Maskless Litho</span>
-                </div>
-                <div class="tc-item">
-                  <img src="Images/Goals/tubefurnace.png" alt="Furnace" loading="lazy">
-                  <span class="tc-caption">1100°C</span>
-                </div>
+              <div class="tc-item">
+                <img src="Images/Goals/Sputter.png" alt="RF Sputtering">
+                <span class="tc-caption">RF Sputtering</span>
               </div>
-
-              <!-- ── SET 2 (exact duplicate for seamless loop) ── -->
-              <div class="tc-row tc-row--wide-tall">
-                <div class="tc-item tc-wide">
-                  <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX 2025" loading="lazy">
-                  <span class="tc-caption">SemiX 2025</span>
-                </div>
-                <div class="tc-item tc-tall">
-                  <img src="Images/Goals/Litho.jpeg" alt="Litho" loading="lazy">
-                  <span class="tc-caption">1µm Features</span>
-                </div>
+              <div class="tc-item">
+                <img src="Images/Goals/tubefurnace.png" alt="Tube Furnace">
+                <span class="tc-caption">Tube Furnace</span>
               </div>
-
-              <div class="tc-row tc-row--trio">
-                <div class="tc-item">
-                  <img src="Images/Goals/spincoater.png" alt="Spin Coater" loading="lazy">
-                  <span class="tc-caption">Spin Coater</span>
-                </div>
-                <div class="tc-item">
-                  <img src="Images/Goals/Sputter.png" alt="Sputtering" loading="lazy">
-                  <span class="tc-caption">RF Sputtering</span>
-                </div>
-                <div class="tc-item">
-                  <img src="Images/Goals/tubefurnace.png" alt="Furnace" loading="lazy">
-                  <span class="tc-caption">Tube Furnace</span>
-                </div>
+              <!-- Set 2 (duplicate for seamless loop) -->
+              <div class="tc-item">
+                <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth">
+                <span class="tc-caption">SemiX 2025</span>
               </div>
-
-              <div class="tc-row tc-row--tall-wide">
-                <div class="tc-item tc-tall">
-                  <img src="Images/Goals/Sputter.png" alt="Sputter" loading="lazy">
-                  <span class="tc-caption">Deposition</span>
-                </div>
-                <div class="tc-item tc-wide">
-                  <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team" loading="lazy">
-                  <span class="tc-caption">The Team</span>
-                </div>
+              <div class="tc-item">
+                <img src="Images/Goals/Litho.jpeg" alt="Lithography">
+                <span class="tc-caption">Maskless Litho — 1µm</span>
               </div>
-
-              <div class="tc-row tc-row--duo">
-                <div class="tc-item">
-                  <img src="Images/Goals/Litho.jpeg" alt="Litho" loading="lazy">
-                  <span class="tc-caption">Maskless Litho</span>
-                </div>
-                <div class="tc-item">
-                  <img src="Images/Goals/tubefurnace.png" alt="Furnace" loading="lazy">
-                  <span class="tc-caption">1100°C</span>
-                </div>
+              <div class="tc-item">
+                <img src="Images/Goals/spincoater.png" alt="Spin Coater">
+                <span class="tc-caption">Spin Coater</span>
               </div>
-
+              <div class="tc-item">
+                <img src="Images/Goals/Sputter.png" alt="RF Sputtering">
+                <span class="tc-caption">RF Sputtering</span>
+              </div>
+              <div class="tc-item">
+                <img src="Images/Goals/tubefurnace.png" alt="Tube Furnace">
+                <span class="tc-caption">Tube Furnace</span>
+              </div>
             </div>
           </div><!-- /.timeline-collage -->
 
@@ -669,90 +606,35 @@
             <a href="https://www.ee.iitb.ac.in/wiki/faculty/sganguly" class="member-card reveal magnetic" target="_blank"><img src="Images/TeamPhotos/SwaroopGanguly.jpg" alt="Swaroop Ganguly"><h4>Swaroop Ganguly</h4></a>
         </div>
 
-<!-- ════════════════════════════════════════════════════
-  SUPPORTERS SECTION
-  Paste this AFTER your closing </div> of the advisors team-grid,
-  but BEFORE the closing </div class="page-inner"> of the team page.
-
-  i.e. it goes right after:
-    </div>  ← this is the closing div of <div class="team-grid advisors">
-  and before:
-    </div>  ← this is the closing div of <div class="page-inner">
-════════════════════════════════════════════════════ -->
-
+        <!-- ── SUPPORTERS & PARTNERS ── -->
         <div class="supporters-section">
           <h3 class="team-category reveal">Supporters &amp; Partners</h3>
           <div class="supporters-grid">
 
-            <!-- SemiX -->
             <a href="https://semix.in" class="supporter-card reveal magnetic" target="_blank" rel="noopener">
-              <div class="supporter-logo-wrap">
-                <svg viewBox="0 0 108 38" class="supporter-svg" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Circuit-board style icon -->
-                  <rect x="2" y="2" width="34" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                  <circle cx="19" cy="19" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                  <circle cx="19" cy="19" r="3" fill="currentColor" opacity="0.6"/>
-                  <line x1="19" y1="2" x2="19" y2="11" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="19" y1="27" x2="19" y2="36" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="2" y1="19" x2="11" y2="19" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="27" y1="19" x2="36" y2="19" stroke="currentColor" stroke-width="1.4"/>
-                  <!-- Wordmark -->
-                  <text x="44" y="15" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="currentColor" letter-spacing="0.5">Semi</text>
-                  <text x="44" y="30" font-family="Space Mono,monospace" font-size="12" font-weight="400" fill="currentColor" opacity="0.65" letter-spacing="1">X</text>
-                </svg>
-              </div>
+              <div class="supporter-monogram">SX</div>
               <span class="supporter-name">SemiX</span>
             </a>
 
-            <!-- Emergent Ventures -->
             <a href="https://www.mercatus.org/emergent-ventures" class="supporter-card reveal magnetic" target="_blank" rel="noopener">
-              <div class="supporter-logo-wrap">
-                <svg viewBox="0 0 148 38" class="supporter-svg" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Diamond / spark icon -->
-                  <polygon points="19,2 34,19 19,36 4,19" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                  <polygon points="19,9 28,19 19,29 10,19" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.45"/>
-                  <circle cx="19" cy="19" r="2.5" fill="currentColor" opacity="0.55"/>
-                  <!-- Wordmark -->
-                  <text x="44" y="15" font-family="Space Mono,monospace" font-size="9.5" font-weight="700" fill="currentColor" letter-spacing="0.3">EMERGENT</text>
-                  <text x="44" y="30" font-family="Space Mono,monospace" font-size="9.5" font-weight="400" fill="currentColor" opacity="0.65" letter-spacing="0.3">VENTURES</text>
-                </svg>
-              </div>
-              <span class="supporter-name">Emergent Ventures</span>
+              <div class="supporter-monogram">EV</div>
+              <span class="supporter-name">Emergent<br>Ventures</span>
             </a>
 
-            <!-- CGSemi -->
             <a href="https://cgsemi.com" class="supporter-card reveal magnetic" target="_blank" rel="noopener">
-              <div class="supporter-logo-wrap">
-                <svg viewBox="0 0 112 38" class="supporter-svg" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Crescent / C-shape icon (semi = semiconductor) -->
-                  <path d="M28 6 A13 13 0 1 0 28 32 L28 26 A7 7 0 1 1 28 12 Z" fill="currentColor" opacity="0.7"/>
-                  <!-- Wordmark -->
-                  <text x="44" y="15" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="currentColor" letter-spacing="0.4">CG</text>
-                  <text x="44" y="30" font-family="Space Mono,monospace" font-size="11" font-weight="400" fill="currentColor" opacity="0.65">Semi</text>
-                </svg>
-              </div>
+              <div class="supporter-monogram">CG</div>
               <span class="supporter-name">CGSemi</span>
             </a>
 
-            <!-- Grad Capital -->
             <a href="https://gradcapital.in" class="supporter-card reveal magnetic" target="_blank" rel="noopener">
-              <div class="supporter-logo-wrap">
-                <svg viewBox="0 0 130 38" class="supporter-svg" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Grad cap icon -->
-                  <polygon points="19,5 34,13 19,21 4,13" fill="currentColor" opacity="0.65"/>
-                  <polyline points="6,15 6,26 19,31 32,26 32,15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                  <circle cx="35" cy="13" r="2" fill="currentColor" opacity="0.5"/>
-                  <line x1="35" y1="13" x2="35" y2="21" stroke="currentColor" stroke-width="1.4"/>
-                  <!-- Wordmark -->
-                  <text x="44" y="15" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="currentColor" letter-spacing="0.3">GRAD</text>
-                  <text x="44" y="30" font-family="Space Mono,monospace" font-size="11" font-weight="400" fill="currentColor" opacity="0.65" letter-spacing="0.3">CAPITAL</text>
-                </svg>
-              </div>
-              <span class="supporter-name">Grad Capital</span>
+              <div class="supporter-monogram">GC</div>
+              <span class="supporter-name">Grad<br>Capital</span>
             </a>
 
           </div>
-        </div><!-- /.supporters-section -->
+        </div>
+
+    </div>
 </section>
 
 <!-- CONTACT -->
