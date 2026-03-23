@@ -1,24 +1,7 @@
-# HackerFab — Deploy-ready Animated Site
+# HackerFab IITB Website
 
-This package contains a modern, animated, multi-page static website for HackerFab IITB.
+This is the website code for HackerFab IITB: Asia's first student team building DIY semiconductor fabrication tools.
 
-Pages:
-- index.html
-- about.html
-- approach.html
-- projects.html
-- budget.html
-- team.html
-- contact.html
+The website a static site on Github Pages, so uses simple html css js (no frameworks). 
 
-Assets:
-- assets/style.css
-- assets/script.js
-
-Notes:
-- Contact email updated to hackerfabiitb@gmail.com
-- Notion link included in footer & contact page
-- Images are hotlinked from Unsplash (free stock photos related to technology/electronics). If you prefer local assets, I can download and bundle them.
-
-## Deploy
-Upload all files to the root of your GitHub repository and enable GitHub Pages (branch: main, folder: /).
+Hash routing is used: subpages like #goals trigger an entire content replacement.
