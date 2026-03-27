@@ -158,11 +158,11 @@
 }
 
 .timeline-collage-track.col-a {
-  animation: tcScroll 28s linear infinite;
+  animation: none;
 }
 
 .timeline-collage-track.col-b {
-  animation: tcScroll 22s linear infinite reverse;
+  animation: none;
   margin-top: -120px;
 }
 
@@ -1221,6 +1221,41 @@ function animateWafer(ts){
 }
 
 requestAnimationFrame(animateWafer);
+})();
+</script>
+    <script>
+(function () {
+  const colA = document.querySelector('.timeline-collage-track.col-a');
+  const colB = document.querySelector('.timeline-collage-track.col-b');
+  if (!colA || !colB) return;
+
+  let posA = 0, posB = 0;
+  const speedA = 0.4;  // px per frame, downward
+  const speedB = 0.4;  // px per frame, upward
+
+  function getHalfHeight(el) {
+    return el.scrollHeight / 2;
+  }
+
+  function tick() {
+    posA += speedA;
+    posB -= speedB;
+
+    const halfA = getHalfHeight(colA);
+    const halfB = getHalfHeight(colB);
+
+    // Reset when scrolled exactly one full set
+    if (posA >= halfA) posA -= halfA;
+    if (posB <= -halfB) posB += halfB;
+
+    colA.style.transform = `translateY(-${posA}px)`;
+    colB.style.transform = `translateY(${posB}px)`;
+
+    requestAnimationFrame(tick);
+  }
+
+  // Wait for images to load so scrollHeight is accurate
+  window.addEventListener('load', () => requestAnimationFrame(tick));
 })();
 </script>
 </body>
