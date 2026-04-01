@@ -14,7 +14,7 @@
     --bg3: #d8d8d8;
     --ink: #0a0a0a;
     --ink-mid: #3a3a3a;
-    --ink-muted: #888;
+    --ink-muted: #555555;
     --rule: rgba(10, 10, 10, 0.08);
     --rule-mid: rgba(10, 10, 10, 0.18);
     --rule-heavy: rgba(10, 10, 10, 0.6);
@@ -382,7 +382,7 @@ body::after {
 }
 
 .tagline {
-    font-size: 0.72rem;
+    font-size: 1rem;
     font-style: italic;
     color: var(--ink-muted);
     max-width: 420px;
