@@ -820,12 +820,23 @@
                         ><img src="Images/TeamPhotos/Jai.jpeg" alt="Jai Bellare" />
                         <h4>Jai Bellare</h4></a
                     >
-                    <div class="member-card member-card--open reveal magnetic" id="openSpotCard">
-                        <div class="open-spot-avatar">?</div>
-                        <h4>This could be you.</h4>
-                        <span class="open-spot-link">Reach out to us</span>
-                    </div>
-                </div>
+   
+                    <a href="http:shridhar" class="member-card reveal magnetic" target="_blank"
+                        ><img src="Images/TeamPhotos/shridhar.jpeg" alt="Shridhar Patil" />
+                        <h4>Shridhar Patil</h4></a
+                    >
+                    <a href="http:supriya" class="member-card reveal magnetic" target="_blank"
+                        ><img src="Images/TeamPhotos/supriya.jpeg" alt="Supriya Mishra" />
+                        <h4>Supriya Mishra</h4></a
+                    >
+                    <a href="http:pooshan" class="member-card reveal magnetic" target="_blank"
+                        ><img src="Images/TeamPhotos/pooshan.jpeg" alt="Lakshmi Pooshan Konakalla" />
+                        <h4>Lakshmi Pooshan Konakalla</h4></a
+                    >
+                    <a href="http:yogesh" class="member-card reveal magnetic" target="_blank"
+                        ><img src="Images/TeamPhotos/yogesh.jpeg" alt="Yogesh Sawant" />
+                        <h4>Yogesh Sawant</h4></a
+                    >
 
                 <h3 class="team-category reveal">Faculty Advisors</h3>
                 <div class="team-grid advisors">
@@ -1187,7 +1198,6 @@
             function closeModal() { modal.style.display = 'none'; document.body.style.overflow = ''; }
             document.getElementById('openModal').addEventListener('click', openModal);
             document.getElementById('closeModal').addEventListener('click', closeModal);
-            document.getElementById('openSpotCard').addEventListener('click', openModal);
             window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 
             // ═══════════════════════════════════════════════
@@ -1321,16 +1331,21 @@
             });
 
             const memberCompliments = {
-                'Aryamman Bhatia':   'Darwin',
-                'Abhineet Agarwal':  'Chutzpah',
-                'Kartik U.C':        'Hackerboss',
-                'Shaashvat Sekhar':  'Punekar',
-                'Suchet Gopal':      'Goblin',
-                'Devavrat Patni':    'Gamer',
-                'Akshat K.':         'Pseudo-mech',
-                'Abhineet Avhad':    '9tea7',
-                'Rushat Dixit':      'Influencer',
-                'Jai Bellare':       'Zeiss',
+                const memberCompliments = {
+                'Aryamman Bhatia':             'Darwin',
+                'Abhineet Agarwal':            'Chutzpah',
+                'Kartik U.C':                  'Hackerboss',
+                'Shaashvat Sekhar':            'Punekar',
+                'Suchet Gopal':                'Goblin',
+                'Devavrat Patni':              'Gamer',
+                'Akshat K.':                   'Pseudo-mech',
+                'Abhineet Avhad':              '9tea7',
+                'Rushat Dixit':                'Influencer',
+                'Jai Bellare':                 'Zeiss',
+                'Shridhar Patil':              'QCboi',
+                'Supriya Mishra':              'newbie',
+                'Lakshmi Pooshan Konakalla':   'newbie',
+                'Yogesh Sawant':               'newbie',
             };
 
             document.querySelectorAll('#page-team .team-grid:not(.advisors) .member-card:not(.member-card--open)').forEach(card => {
