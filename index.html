@@ -1198,6 +1198,7 @@
             function closeModal() { modal.style.display = 'none'; document.body.style.overflow = ''; }
             document.getElementById('openModal').addEventListener('click', openModal);
             document.getElementById('closeModal').addEventListener('click', closeModal);
+            document.getElementById('openSpotCard').addEventListener('click', openModal);
             window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 
             // ═══════════════════════════════════════════════
