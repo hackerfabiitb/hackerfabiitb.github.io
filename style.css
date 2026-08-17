@@ -185,10 +185,10 @@ body::after {
     display: block;
     height: var(--nav-h);
     line-height: var(--nav-h);
-    padding: 0 1rem;
+    padding: 0 0.75rem;
     color: rgba(240, 240, 240, 0.4);
     text-decoration: none;
-    font-size: 0.66rem;
+    font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.2s;
@@ -290,7 +290,7 @@ body::after {
 }
 
 .home-text {
-    flex: 1;
+    flex: 1.4;
     min-width: 0;
     display: flex;
     flex-direction: column;
@@ -329,6 +329,7 @@ body::after {
 .wafer-wrap {
     position: relative;
     flex: 1;
+    max-width: 42%;
     min-width: 0;
     height: 100%;
     display: flex;
@@ -385,7 +386,7 @@ body::after {
     font-size: 1rem;
     font-style: italic;
     color: var(--ink-muted);
-    max-width: 420px;
+    max-width: 560px;
     border-top: 1px solid var(--rule-mid);
     border-bottom: 1px solid var(--rule-mid);
     padding: 0.4rem 0;
@@ -452,10 +453,18 @@ body::after {
 
 /* ── CTA BUTTONS ── */
 .cta-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.7rem;
+    width: 100%;
+    max-width: 560px;
+}
+.cta-buttons .apply-btn,
+.cta-buttons .start-btn,
+.cta-buttons .docs-btn,
+.cta-buttons .discord-btn {
+    width: 100%;
+    justify-content: center;
 }
 .discord-btn {
     background: #5865f2;
@@ -496,21 +505,103 @@ body::after {
     box-shadow: 1px 1px 0 var(--rule-heavy);
 }
 
+.start-btn {
+    background: var(--bg);
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+    padding: 0.6rem 1.6rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition:
+        color 0.2s,
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.15s,
+        box-shadow 0.15s,
+        letter-spacing 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 3px 3px 0 var(--rule-heavy);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.58s both;
+}
+.start-btn:hover {
+    background: var(--ink);
+    color: var(--bg);
+    box-shadow: 4px 4px 0 rgba(10, 10, 10, 0.25);
+    transform: translate(-2px, -2px);
+    letter-spacing: 0.18em;
+}
+.start-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--rule-heavy);
+}
+
+.docs-btn {
+    background: var(--red);
+    color: #fff;
+    border: 1.5px solid var(--red);
+    padding: 0.6rem 1.6rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition:
+        color 0.2s,
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.15s,
+        box-shadow 0.15s,
+        letter-spacing 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 3px 3px 0 var(--rule-heavy);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.62s both;
+}
+.docs-btn:hover {
+    background: #a93226;
+    border-color: #a93226;
+    box-shadow: 4px 4px 0 rgba(192, 57, 43, 0.35);
+    transform: translate(-2px, -2px);
+    letter-spacing: 0.18em;
+}
+.docs-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--rule-heavy);
+}
+
 /* ── SOCIAL BUTTONS ── */
 .social-buttons {
     display: flex;
     gap: 0.4rem;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 560px;
     animation: slideUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.65s both;
 }
 .social-btn {
-    width: 34px;
-    height: 34px;
+    flex: 1;
+    min-width: 46px;
+    max-width: 130px;
+    height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 1.15rem;
     text-decoration: none;
     color: var(--bg);
     background: var(--ink);
@@ -585,25 +676,22 @@ body::after {
     padding: 1.5rem 5% 3rem;
 }
 
-/* ── ABOUT PAGE — special full-height layout ── */
+/* ── ABOUT PAGE — scrollable combined About + Goals ── */
 #page-about {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    overflow-y: auto;
 }
 
 .about-page-inner {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1.2rem 4% 0;
-    height: calc(100vh - var(--nav-h));
+    padding: 1.2rem 4% 3rem;
+    min-height: calc(100vh - var(--nav-h));
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
-.about-page-inner h2 {
+.about-page-inner h2:first-of-type {
     flex-shrink: 0;
     margin-bottom: 0.6rem;
 }
@@ -612,21 +700,32 @@ body::after {
     display: grid;
     grid-template-columns: 48% 1fr;
     gap: 2.2rem;
-    flex: 1;
-    min-height: 0;
     align-items: start;
     padding-bottom: 1rem;
 }
 
+.about-goals-divider {
+    height: 1px;
+    background: var(--rule-mid);
+    margin: 2.5rem 0 2rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-goals-heading {
+    margin-top: 0;
+}
+
 /* ── 5-PHOTO COLLAGE ── */
 .photo-collage {
-    height: 100%;
-    max-height: calc(100vh - var(--nav-h) - 160px);
+    height: auto;
+    min-height: 380px;
+    max-height: 520px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 2fr 2fr 1.4fr;
     gap: 3px;
-    min-height: 0;
 }
 
 .collage-item.collage-main {
@@ -693,8 +792,6 @@ body::after {
     flex-direction: column;
     justify-content: flex-start;
     gap: 0.8rem;
-    overflow-y: auto;
-    height: 100%;
     padding-right: 0.5rem;
     padding-bottom: 1rem;
 }
@@ -1027,9 +1124,19 @@ h3.team-category {
 }
 .tech-goals-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--rule-mid);
+}
+@media (max-width: 900px) {
+    .tech-goals-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 560px) {
+    .tech-goals-grid {
+        grid-template-columns: 1fr;
+    }
 }
 .tech-card {
     background: var(--bg);
@@ -1392,6 +1499,151 @@ h3.team-category {
     color: rgba(255, 255, 255, 0.85);
 }
 
+.member-card--open:hover h4 {
+    color: var(--bg);
+}
+
+/* ── START YOUR OWN HACKERFAB PAGE ── */
+.start-page-inner {
+    max-width: 900px;
+}
+
+.start-intro {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 0.82rem;
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    line-height: 1.75;
+    font-style: italic;
+}
+
+.start-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--rule-mid);
+    margin-bottom: 2.5rem;
+}
+
+.start-block {
+    background: var(--bg);
+    padding: 1.5rem 1.3rem;
+    transition: background 0.15s, transform 0.2s;
+}
+
+.start-block:hover {
+    background: var(--bg2);
+    transform: translateY(-3px);
+}
+
+.start-block-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 0.9rem;
+    margin-bottom: 0.9rem;
+}
+
+.start-block h3 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+}
+
+.start-block h3::after {
+    display: none;
+}
+
+.start-block p {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.start-steps {
+    margin-bottom: 2.5rem;
+}
+
+.start-steps-heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 0.35rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.start-steps-heading::after {
+    display: none;
+}
+
+.start-steps-heading i {
+    color: var(--red);
+    margin-right: 0.4rem;
+}
+
+.start-steps-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule-mid);
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.start-steps-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg);
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+    line-height: 1.55;
+    transition: background 0.15s, transform 0.15s;
+}
+
+.start-steps-list li:hover {
+    background: var(--bg2);
+    transform: translateX(4px);
+}
+
+.start-steps-list li span {
+    flex-shrink: 0;
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.start-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-bottom: 2.5rem;
+}
+
 /* ── CONTACT ── */
 .contact-content {
     text-align: center;
@@ -1583,6 +1835,53 @@ footer {
     transform: translateY(0);
 }
 
+/* ── NAV COLLAPSE (kicks in earlier so split-screen / narrow desktop windows
+   still get a working hamburger before the links start overflowing) ── */
+@media (max-width: 980px) {
+    html,
+    body {
+        cursor: auto;
+    }
+    #cursor {
+        display: none;
+    }
+    a,
+    button,
+    .nav-logo,
+    .hamburger {
+        cursor: pointer;
+        pointer-events: auto;
+    }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        width: 100%;
+        background: var(--ink);
+        flex-direction: column;
+        padding: 0.4rem 0;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        z-index: 999;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links a {
+        height: auto;
+        line-height: 1;
+        padding: 0.85rem 1.4rem;
+        border-bottom: 1px solid rgba(240, 240, 240, 0.06);
+    }
+    .nav-links a.active {
+        border-left: 2px solid var(--red);
+        border-bottom-color: rgba(240, 240, 240, 0.06);
+    }
+    .hamburger {
+        display: flex;
+    }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
     html,
@@ -1643,6 +1942,30 @@ footer {
     }
     .home-inner h1 {
         font-size: 1.2rem;
+    }
+
+    .cta-buttons {
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        max-width: none;
+    }
+    .apply-btn,
+    .start-btn,
+    .docs-btn,
+    .discord-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .start-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .start-cta .apply-btn,
+    .start-cta .start-btn,
+    .start-cta .docs-btn,
+    .start-cta .discord-btn {
+        width: 100%;
+        justify-content: center;
     }
 
     #page-about {
