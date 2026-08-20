@@ -291,28 +291,33 @@
             }
 
             /* Monogram badge (used when no logo image available) */
-            .supporter-monogram {
-              width: 52px;
-              height: 52px;
-              border-radius: 50%;
-              background: rgba(255,51,0,0.08);
-              border: 1.5px solid rgba(255,51,0,0.25);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-family: 'Space Mono', monospace;
-              font-size: 0.75rem;
-              font-weight: 700;
-              color: rgba(255,90,50,0.85);
-              letter-spacing: 0.04em;
-              flex-shrink: 0;
-              transition: border-color 0.2s, background 0.2s;
-            }
+            /* Monogram badge — square frame, logo fit inside */
+.supporter-monogram {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1.5px solid rgba(255,51,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
 
-            .supporter-card:hover .supporter-monogram {
-              border-color: rgba(255,51,0,0.55);
-              background: rgba(255,51,0,0.14);
-            }
+.supporter-monogram img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.supporter-card:hover .supporter-monogram {
+  border-color: rgba(255,51,0,0.55);
+  background: #fff;
+}
 
             /* If real logo image is provided */
             .supporter-logo {
