@@ -718,13 +718,14 @@ body::after {
 }
 
 /* ── 4-PHOTO COLLAGE: full-width team photo + 3-across row ── */
+/* ── 4-PHOTO COLLAGE: full-width team photo on top ── */
 .photo-collage {
-    aspect-ratio: 1 / 1;
     height: auto;
+    min-height: 380px;
     max-height: 520px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1.4fr 1fr;
+    grid-template-rows: 2fr 1.4fr;
     gap: 3px;
 }
 
@@ -2011,9 +2012,9 @@ footer {
         grid-template-columns: 1fr;
         flex: none;
     }
-        .photo-collage {
-        aspect-ratio: 1 / 1;
-        height: auto;
+    .photo-collage {
+        height: 60vw;
+        min-height: 260px;
         max-height: 420px;
     }
     .about-text {
