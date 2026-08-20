@@ -1434,7 +1434,7 @@ h3.team-category {
     object-fit: cover;
     margin: 0 auto 0.7rem;
     display: block;
-    border: 1.5px solid transparent;
+    border: 1.5px solid var(--rule-heavy);
     transition: border-color 0.2s;
 }
 .team-grid.advisors .member-card img {
@@ -1442,7 +1442,7 @@ h3.team-category {
     height: 110px;
 }
 .member-card:hover img {
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: var(--red);
 }
 .member-card h4 {
     color: var(--ink);
