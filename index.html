@@ -177,28 +177,24 @@
         flex: 1;
       }
 
-      .timeline-collage-track.col-a {
-        animation: none;
-      }
+.timeline-collage-track.col-a {
+  animation: tcScroll 32s linear infinite;
+}
 
-      .timeline-collage-track.col-b {
-        animation: none;
-        margin-top: -120px;
-      }
+.timeline-collage-track.col-b {
+  animation: tcScroll 38s linear infinite reverse;
+  margin-top: -120px;
+}
 
       .timeline-collage-inner:hover .timeline-collage-track {
         animation-play-state: paused;
       }
 
-      /* Duplicate the items array for seamless loop — handled by having 2x items in HTML */
-      @keyframes tcScroll {
-        0% {
-          transform: translateY(0);
-        }
-        100% {
-          transform: translateY(-50%);
-        }
-      }
+            /* Duplicate the items array for seamless loop — handled by having 2x items in HTML */
+            @keyframes tcScroll {
+              0%   { transform: translateY(0); }
+              100% { transform: translateY(var(--tc-scroll-distance, -50%)); }
+            }
 
       .tc-item {
         position: relative;
@@ -285,12 +281,13 @@
         margin-top: 52px;
       }
 
-      .supporters-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        align-items: stretch;
-      }
+            .supporters-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px;
+                align-items: stretch;
+                }
 
       .supporter-card {
         display: flex;
@@ -318,31 +315,34 @@
         transform: translateY(-3px);
       }
 
-      /* Monogram badge (used when no logo image available) */
-      .supporter-monogram {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: rgba(255, 51, 0, 0.08);
-        border: 1.5px solid rgba(255, 51, 0, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Space Mono', monospace;
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: rgba(255, 90, 50, 0.85);
-        letter-spacing: 0.04em;
-        flex-shrink: 0;
-        transition:
-          border-color 0.2s,
-          background 0.2s;
-      }
+            /* Monogram badge (used when no logo image available) */
+            /* Monogram badge — square frame, logo fit inside */
+.supporter-monogram {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1.5px solid rgba(255,51,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
 
-      .supporter-card:hover .supporter-monogram {
-        border-color: rgba(255, 51, 0, 0.55);
-        background: rgba(255, 51, 0, 0.14);
-      }
+.supporter-monogram img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.supporter-card:hover .supporter-monogram {
+  border-color: rgba(255,51,0,0.55);
+  background: #fff;
+}
 
       /* If real logo image is provided */
       .supporter-logo {
@@ -378,284 +378,281 @@
     <div id="cursor"></div>
     <div id="toast-container"></div>
 
-    <nav id="navbar">
-      <div class="nav-logo" id="navLogoBtn">hackerfabiitb</div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-        <li><a href="#" class="nav-link" data-page="tools">Tools</a></li>
-        <li><a href="#" class="nav-link" data-page="philosophy">Philosophy</a></li>
-        <li><a href="#" class="nav-link" data-page="about">About</a></li>
-        <li><a href="#" class="nav-link" data-page="goals">Goals</a></li>
-        <li><a href="#" class="nav-link" data-page="timeline">Journey</a></li>
-        <li><a href="#" class="nav-link" data-page="team">Team</a></li>
-        <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
-      </ul>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </nav>
+        <nav id="navbar">
+            <div class="nav-logo" id="navLogoBtn">hackerfabiitb</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="timeline">Journey</a></li>
+                <li><a href="#" class="nav-link" data-page="team">Team</a></li>
+                <li><a href="#" class="nav-link" data-page="start">Start your own HackerFab</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </nav>
 
-    <!-- HOME -->
-    <section id="page-home" class="page active">
-      <div id="home-particles"></div>
-      <div class="page-inner home-inner">
-        <div class="col-rule left"></div>
-        <div class="col-rule right"></div>
-        <div class="home-dateline">
-          IIT Bombay &nbsp;·&nbsp; Founded Aug 2025 &nbsp;·&nbsp; India's First Student Chip Fab
-        </div>
-        <div class="home-main">
-          <div class="wafer-wrap" id="waferWrap">
-            <canvas id="waferCanvas"></canvas>
-            <div id="waferLogoReveal">
-              <img src="Images/Logos/logo_square_500px_white.jpg" alt="HackerFab Logo" id="homeLogoImg" />
+        <!-- HOME -->
+        <section id="page-home" class="page active">
+            <div id="home-particles"></div>
+            <div class="page-inner home-inner">
+                <div class="col-rule left"></div>
+                <div class="col-rule right"></div>
+                <div class="home-dateline">
+                    IIT Bombay &nbsp;·&nbsp; Founded Aug 2025 &nbsp;·&nbsp; India's First Student Chip Fab
+                </div>
+                <div class="home-main">
+                    <div class="wafer-wrap" id="waferWrap">
+                        <canvas id="waferCanvas"></canvas>
+                        <div id="waferLogoReveal">
+                            <img src="Images/Logos/logo_square_500px_white.jpg" alt="HackerFab Logo" id="homeLogoImg" />
+                        </div>
+                    </div>
+                    <div class="home-text">
+                        <h1 id="homeH1">
+                            India's first <br />
+                            student-built <br />semiconductor fab
+                        </h1>
+                        <p class="tagline">
+                            We build open-source semiconductor fabrication tools to make hands-on fabrication accessible
+                            to students across India.
+                        </p>
+                        <div class="cta-buttons">
+                            <button class="apply-btn ripple-container magnetic" id="openModal">
+                                <i class="fas fa-paper-plane"></i> <span>Apply to Join (IITB Students)</span>
+                            </button>
+                            <a href="#" class="start-btn ripple-container magnetic" data-page="start">
+                                <i class="fas fa-seedling"></i> <span>Start Your Own HackerFab</span>
+                            </a>
+                            <a
+                                href="https://hackerfabiitb.gitbook.io/docs"
+                                class="docs-btn ripple-container magnetic"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fas fa-book"></i> <span>Documentation</span>
+                            </a>
+                            <a
+                                href="https://discord.gg/FNUgVRxmef"
+                                class="discord-btn ripple-container magnetic"
+                                target="_blank"
+                            >
+                                <i class="fab fa-discord"></i> <span>Join Our Discord</span>
+                            </a>
+                        </div>
+                        <div class="social-buttons">
+                            <a
+                                href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all"
+                                class="social-btn linkedin magnetic"
+                                target="_blank"
+                                ><i class="fab fa-linkedin"></i
+                            ></a>
+                            <a href="mailto:hackerfabiitb@gmail.com" class="social-btn email magnetic"
+                                ><i class="fas fa-envelope"></i
+                            ></a>
+                            <a href="https://x.com/hackerfabindia" class="social-btn twitter magnetic" target="_blank"
+                                ><i class="fab fa-x-twitter"></i
+                            ></a>
+                            <a
+                                href="https://www.instagram.com/hackerfabiitb/"
+                                class="social-btn instagram magnetic"
+                                target="_blank"
+                                ><i class="fab fa-instagram"></i
+                            ></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="home-text">
-            <h1 id="homeH1">
-              India's first <br />
-              student-built <br />semiconductor fab
-            </h1>
-            <p class="tagline">
-              We build open-source semiconductor fabrication tools to make hands-on fabrication accessible to students
-              across India.
-            </p>
-            <button class="apply-btn ripple-container magnetic" id="openModal">
-              <i class="fas fa-paper-plane"></i> <span>Apply to Join</span>
-            </button>
-            <div class="social-buttons">
-              <a
-                href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all"
-                class="social-btn linkedin magnetic"
-                target="_blank"
-                ><i class="fab fa-linkedin"></i
-              ></a>
-              <a href="mailto:hackerfabiitb@gmail.com" class="social-btn email magnetic"
-                ><i class="fas fa-envelope"></i
-              ></a>
-              <a href="https://x.com/hackerfabindia" class="social-btn twitter magnetic" target="_blank"
-                ><i class="fab fa-x-twitter"></i
-              ></a>
-              <a href="https://www.instagram.com/hackerfabiitb/" class="social-btn instagram magnetic" target="_blank"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a href="https://discord.gg/FNUgVRxmef" class="social-btn discord magnetic" target="_blank"
-                ><i class="fab fa-discord"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- TOOLS -->
-    <section id="page-tools" class="page">
-      <div class="page-inner">
-        <div class="col-rule left"></div>
-        <div class="col-rule right"></div>
-      </div>
-    </section>
+        <!-- ABOUT -->
+        <section id="page-about" class="page">
+            <div class="page-inner about-page-inner">
+                <div class="col-rule left"></div>
+                <div class="col-rule right"></div>
+                <h2 class="reveal">About Us</h2>
+                <div class="about-content">
+                    <div class="photo-collage reveal">
+                        <div class="collage-item collage-main" id="collage0">
+                            <div class="collage-flip-inner">
+                                <div class="collage-front">
+                                    <img src="Images/Aboutus/team.jpg" alt="HF IITB Team" />
+                                </div>
+                                <div class="collage-back">
+                                    <i class="fas fa-users"></i>
+                                    <h4>SemiX 2025</h4>
+                                    <p>
+                                        The HackerFab IITB team in front of the lab.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="collage-hint">click to flip</span>
+                        </div>
+                        <div class="collage-item" id="collage1">
+                            <div class="collage-flip-inner">
+                                <div class="collage-front">
+                                    <img src="Images/Aboutus/semix_explain.jpg" alt="Us at semix" />
+                                </div>
+                                <div class="collage-back">
+                                    <i class="fas fa-user"></i>
+                                    <h4>Semix 2025</h4>
+                                    <p>Explaining our vision and tools at Semix 2025</p>
+                                </div>
+                            </div>
+                            <span class="collage-hint">click to flip</span>
+                        </div>
+                        <div class="collage-item" id="collage2">
+                            <div class="collage-flip-inner">
+                                <div class="collage-front">
+                                    <img src="Images/Aboutus/Lab_litho.jpg" alt="Lab members working on litho" />
+                                </div>
+                                <div class="collage-back">
+                                    <i class="fas fa-user"></i>
+                                    <h4>Building Litho</h4>
+                                    <p>Lab members building and testing our lithography system.</p>
+                                </div>
+                            </div>
+                            <span class="collage-hint">click to flip</span>
+                        </div>
+                        <div class="collage-item" id="collage3">
+                            <div class="collage-flip-inner">
+                                <div class="collage-front">
+                                    <img src="Images/Aboutus/stuff (5).jpeg" alt="Working on CAD models" />
+                                </div>
+                                <div class="collage-back">
+                                    <i class="fas fa-user"></i>
+                                    <h4>Building CAD Models</h4>
+                                    <p>Designing our tools on CAD modeling software</p>
+                                </div>
+                            </div>
+                            <span class="collage-hint">click to flip</span>
+                        </div>
 
-    <!-- PHILOSOPHY -->
-    <section id="page-philosophy" class="page">
-      <div class="page-inner">
-        <div class="col-rule left"></div>
-        <div class="col-rule right"></div>
-        <h1 class="reveal">Our Philosophy</h1>
-        <h3 class="reveal">Thinking Through Every Layer</h3>
-        <p class="reveal">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
-      </div>
-    </section>
+                    </div>
+                    <div class="about-text">
+                        <p class="mission reveal" id="missionText">
+                            "Making hands-on chip fabrication accessible across India."
+                        </p>
+                        <p class="reveal">
+                            Founded in August 2025, we're a group of students determined to democratize technology and
+                            foster innovation.
+                        </p>
+                        <p class="reveal">
+                            We are part of the
+                            <a href="https://docs.hackerfab.org/home/" target="_blank" rel="noopener"
+                                >HackerFab network</a
+                            >, aiming to become a stepping stone to the semiconductor industry.
+                        </p>
+                        <div class="about-pillars">
+                            <div class="pillar reveal">
+                                <i class="fas fa-microchip"></i>
+                                <h4>Semiconductor Fabrication</h4>
+                                <p>Open-source tools for hands-on chip making.</p>
+                            </div>
+                            <div class="pillar reveal">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h4>Education</h4>
+                                <p>Integrating our tools with coursework at IITB</p>
+                            </div>
+                            <div class="pillar reveal">
+                                <i class="fas fa-code-branch"></i>
+                                <h4>Open Source</h4>
+                                <p>Sharing tools, documentation and knowledge freely</p>
+                            </div>
+                            <div class="pillar reveal">
+                                <i class="fas fa-users"></i>
+                                <h4>Community</h4>
+                                <p>Join our Discord! Spreading this movement all over India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- ABOUT -->
-    <section id="page-about" class="page">
-      <div class="page-inner about-page-inner">
-        <div class="col-rule left"></div>
-        <div class="col-rule right"></div>
-        <h2 class="reveal">About Us</h2>
-        <div class="about-content">
-          <div class="photo-collage reveal">
-            <div class="collage-item collage-main" id="collage0">
-              <div class="collage-flip-inner">
-                <div class="collage-front">
-                  <img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="Team at SemiX" />
-                </div>
-                <div class="collage-back">
-                  <i class="fas fa-users"></i>
-                  <h4>SemiX 2025</h4>
-                  <p>The HackerFab IITB team presenting to India's semiconductor community for the first time.</p>
-                </div>
-              </div>
-              <span class="collage-hint">click to flip</span>
-            </div>
-            <div class="collage-item" id="collage1">
-              <div class="collage-flip-inner">
-                <div class="collage-front">
-                  <img src="Images/Goals/Litho.jpeg" alt="Lithography" />
-                </div>
-                <div class="collage-back">
-                  <i class="fas fa-microchip"></i>
-                  <h4>Maskless Lithography</h4>
-                  <p>1&thinsp;&micro;m feature size achieved on our home-built lithography system.</p>
-                </div>
-              </div>
-              <span class="collage-hint">click to flip</span>
-            </div>
-            <div class="collage-item" id="collage2">
-              <div class="collage-flip-inner">
-                <div class="collage-front">
-                  <img src="Images/Goals/spincoater.png" alt="Spin Coater" />
-                </div>
-                <div class="collage-back">
-                  <i class="fas fa-circle-notch"></i>
-                  <h4>Spin Coater</h4>
-                  <p>Closed-loop control up to 6000&thinsp;rpm. Fully student-built and open-source.</p>
-                </div>
-              </div>
-              <span class="collage-hint">click to flip</span>
-            </div>
-            <div class="collage-item" id="collage3">
-              <div class="collage-flip-inner">
-                <div class="collage-front">
-                  <img src="Images/Goals/Sputter.png" alt="RF Sputtering" />
-                </div>
-                <div class="collage-back">
-                  <i class="fas fa-atom"></i>
-                  <h4>RF Sputtering</h4>
-                  <p>Our first deposition tool &mdash; thin film deposition coming soon.</p>
-                </div>
-              </div>
-              <span class="collage-hint">click to flip</span>
-            </div>
-            <div class="collage-item" id="collage4">
-              <div class="collage-flip-inner">
-                <div class="collage-front">
-                  <img src="Images/Goals/tubefurnace.png" alt="Tube Furnace" />
-                </div>
-                <div class="collage-back">
-                  <i class="fas fa-fire"></i>
-                  <h4>Tube Furnace</h4>
-                  <p>&plusmn;2&thinsp;&deg;C precision up to 1100&thinsp;&deg;C for oxidation and annealing.</p>
-                </div>
-              </div>
-              <span class="collage-hint">click to flip</span>
-            </div>
-          </div>
-          <div class="about-text">
-            <p class="mission reveal" id="missionText">"Making hands-on chip fabrication accessible across India."</p>
-            <p class="reveal">
-              Founded in August 2025, we're a group of students determined to democratize technology and foster
-              innovation.
-            </p>
-            <p class="reveal">
-              We are part of the
-              <a href="https://docs.hackerfab.org/home/" target="_blank" rel="noopener">HackerFab network</a>, aiming to
-              become a stepping stone to the semiconductor industry.
-            </p>
-            <div class="about-pillars">
-              <div class="pillar reveal">
-                <i class="fas fa-microchip"></i>
-                <h4>Semiconductor Fabrication</h4>
-                <p>Why should TSMC have all the fun?</p>
-              </div>
-              <div class="pillar reveal">
-                <i class="fas fa-graduation-cap"></i>
-                <h4>Education</h4>
-                <p>Integrating our tools with coursework at IITB</p>
-              </div>
-              <div class="pillar reveal">
-                <i class="fas fa-code-branch"></i>
-                <h4>Open Source</h4>
-                <p>Sharing tools, documentation and knowledge freely</p>
-              </div>
-              <div class="pillar reveal">
-                <i class="fas fa-users"></i>
-                <h4>Community</h4>
-                <p>Join our Discord! Spreading this movement all over India</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                <div class="about-goals-divider reveal" aria-hidden="true"></div>
 
-    <!-- GOALS -->
-    <section id="page-goals" class="page">
-      <div class="page-inner">
-        <div class="col-rule left"></div>
-        <div class="col-rule right"></div>
-        <h2 class="reveal">Our Goals</h2>
-        <div class="goals-category">
-          <h3 class="reveal"><i class="fas fa-microchip"></i> Technical Roadmap</h3>
-          <p class="goals-intro reveal">
-            Check out our journey so far, documentation and resources attached with each step.
-          </p>
-          <div class="tech-goals-grid">
-            <div class="tech-card reveal">
-              <span class="status in-progress">In-Progress</span><img src="Images/Goals/Litho.jpeg" alt="Lithography" />
-              <h4>Maskless Lithography</h4>
-              <p>Achieved a pattern image of 1µm feature size.</p>
+                <h2 class="reveal about-goals-heading">Our Goals</h2>
+                <div class="goals-category">
+                    <h3 class="reveal"><i class="fas fa-microchip"></i> Technical Roadmap</h3>
+                    <p class="goals-intro reveal">
+                        Check out our journey so far, documentation and resources attached with each step.
+                    </p>
+                    <div class="tech-goals-grid">
+                        <div class="tech-card reveal">
+                            <span class="status in-progress">In-Progress</span
+                            ><img src="Images/Goals/Litho.jpeg" alt="Lithography" />
+                            <h4>Maskless Lithography</h4>
+                            <p>Achieved a pattern image of 1µm feature size.</p>
+                        </div>
+                        <div class="tech-card reveal">
+                            <span class="status in-progress">Testing in Progress</span
+                            ><img src="Images/Goals/spincoater.png" alt="Spin Coater" />
+                            <h4>Spincoater</h4>
+                            <p>Demonstrated closed loop control up to 6000rpm</p>
+                        </div>
+                        <div class="tech-card reveal">
+                            <span class="status planned">Testing in progress</span
+                            ><img src="Images/Goals/sputter.jpg" alt="RF Sputtering" />
+                            <h4>RF Sputtering</h4>
+                            <p>Our first deposition tool!</p>
+                        </div>
+                        <div class="tech-card reveal">
+                            <span class="status planned">Testing in progress</span
+                            ><img src="Images/Goals/tube.jpg" alt="Tube Furnace" />
+                            <h4>Tube Furnace</h4>
+                            <p>+/-2 degrees C at target temperatures up to 1100 degrees C</p>
+                        </div>
+                        <div class="tech-card reveal">
+                            <span class="status planned">Testing in Progress</span
+                            ><img src="Images/Goals/thermal.png" alt="Thermal Evaporation" />
+                            <h4>Thermal Evaporation</h4>
+                            <p>Deposition of Al at 1100°C</p>
+                        </div>
+                        <div class="tech-card reveal">
+                            <span class="status planned">In Progress</span
+                            ><img src="Images/Goals/nmos.png" alt="NMOS Transistors" />
+                            <h4>NMOS Transistors</h4>
+                            <p>Our current aim with our tools, to build a functional NMOS transistor.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="goals-category">
+                    <h3 class="reveal"><i class="fas fa-seedling"></i> Growth &amp; Outreach</h3>
+                    <p class="goals-intro reveal">
+                        Constantly trying to expand our community and bring HackerFab to more colleges across India.
+                    </p>
+                    <div class="growth-goals">
+                        <div class="growth-card reveal">
+                            <div class="growth-icon"><i class="fas fa-users"></i></div>
+                            <div class="growth-content">
+                                <h4>Community Building</h4>
+                                <p>
+                                    Growing our network of makers, students, and innovators across colleges in India. We
+                                    aim to establish chapters and partnerships with institutions nationwide.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="growth-card reveal">
+                            <div class="growth-icon"><i class="fas fa-chalkboard-user"></i></div>
+                            <div class="growth-content">
+                                <h4>Conferences &amp; Talks</h4>
+                                <p>
+                                    Presenting our work at major technical conferences across India to share knowledge,
+                                    inspire others, and connect with the broader maker and research community.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="growth-card reveal">
+                            <div class="growth-icon"><i class="fas fa-map-location-dot"></i></div>
+                            <div class="growth-content">
+                                <h4>Pan-India Network</h4>
+                                <p>
+                                    Establishing HackerFab presence at multiple institutions, creating a collaborative
+                                    network for sharing resources, expertise, and opportunities.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="tech-card reveal">
-              <span class="status in-progress">In Progress</span
-              ><img src="Images/Goals/spincoater.png" alt="Spin Coater" />
-              <h4>Spincoater</h4>
-              <p>Demonstrated closed loop control up to 6000rpm</p>
-            </div>
-            <div class="tech-card reveal">
-              <span class="status planned">Planned</span><img src="Images/Goals/Sputter.png" alt="RF Sputtering" />
-              <h4>RF Sputtering</h4>
-              <p>Our first deposition tool!</p>
-            </div>
-            <div class="tech-card reveal">
-              <span class="status planned">Planned</span><img src="Images/Goals/tubefurnace.png" alt="Tube Furnace" />
-              <h4>Tube Furnace</h4>
-              <p>+/-2 degrees C at target temperatures up to 1100 degrees C</p>
-            </div>
-          </div>
-        </div>
-        <div class="goals-category">
-          <h3 class="reveal"><i class="fas fa-seedling"></i> Growth &amp; Outreach</h3>
-          <p class="goals-intro reveal">
-            Constantly trying to expand our community and bring HackerFab to more colleges across India.
-          </p>
-          <div class="growth-goals">
-            <div class="growth-card reveal">
-              <div class="growth-icon"><i class="fas fa-users"></i></div>
-              <div class="growth-content">
-                <h4>Community Building</h4>
-                <p>
-                  Growing our network of makers, students, and innovators across colleges in India. We aim to establish
-                  chapters and partnerships with institutions nationwide.
-                </p>
-              </div>
-            </div>
-            <div class="growth-card reveal">
-              <div class="growth-icon"><i class="fas fa-chalkboard-user"></i></div>
-              <div class="growth-content">
-                <h4>Conferences &amp; Talks</h4>
-                <p>
-                  Presenting our work at major technical conferences across India to share knowledge, inspire others,
-                  and connect with the broader maker and research community.
-                </p>
-              </div>
-            </div>
-            <div class="growth-card reveal">
-              <div class="growth-icon"><i class="fas fa-map-location-dot"></i></div>
-              <div class="growth-content">
-                <h4>Pan-India Network</h4>
-                <p>
-                  Establishing HackerFab presence at multiple institutions, creating a collaborative network for sharing
-                  resources, expertise, and opportunities.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
     <!-- TIMELINE — left-aligned + right rolling collage -->
     <section id="page-timeline" class="page">
@@ -665,355 +662,492 @@
         <h2 class="reveal">Our Journey</h2>
         <p class="timeline-intro reveal">Key milestones in our story so far.</p>
 
-        <div class="timeline-layout">
-          <!-- LEFT: timeline items, left-aligned -->
-          <div class="timeline-left">
-            <div class="timeline">
-              <div class="timeline-item reveal">
-                <div class="timeline-marker event"><i class="fas fa-trophy"></i></div>
-                <div class="timeline-content">
-                  <div class="timeline-date">Jan 2026</div>
-                  <h4>&#127942; Won Best Project Presentation at VLSID</h4>
-                  <p>Presented HackerFab IITB at VLSI Design 2026 (VLSID) and won Best Project Presentation</p>
-                </div>
-              </div>
-              <div class="timeline-item reveal">
-                <div class="timeline-marker technical"><i class="fas fa-microchip"></i></div>
-                <div class="timeline-content">
-                  <div class="timeline-date">Dec 2025</div>
-                  <h4>Patterns captured on Litho v1</h4>
-                  <p>We captured our first micrometer scale patterns on Litho v1</p>
-                </div>
-              </div>
-              <div class="timeline-item reveal">
-                <div class="timeline-marker community"><i class="fas fa-users"></i></div>
-                <div class="timeline-content">
-                  <div class="timeline-date">Dec 2025</div>
-                  <h4>Community Grew to 40+ Members</h4>
-                  <p>Expanded our outreach beyond IITB, growing to a 40 member strong community on Discord</p>
-                </div>
-              </div>
-              <div class="timeline-item reveal">
-                <div class="timeline-marker event"><i class="fas fa-microphone"></i></div>
-                <div class="timeline-content">
-                  <div class="timeline-date">Sep 2025</div>
-                  <h4>Presented at SemiX</h4>
-                  <p>
-                    Presented proof-of-concepts for spin coater and lithography machine. Part of the panel discussion on
-                    "Advancing India's Semiconductor Ecosystem"
-                  </p>
-                </div>
-              </div>
-              <div class="timeline-item reveal">
-                <div class="timeline-marker community"><i class="fas fa-users"></i></div>
-                <div class="timeline-content">
-                  <div class="timeline-date">Oct 2025</div>
-                  <h4>Community Grew to 50 Members</h4>
-                  <p>Reached our first major community milestone.</p>
-                </div>
-              </div>
-              <div class="timeline-item reveal">
-                <div class="timeline-marker technical"><i class="fas fa-flask"></i></div>
-                <div class="timeline-content">
-                  <div class="timeline-date">Sep 2025</div>
-                  <h4>Lab Setup Complete</h4>
-                  <p>First functional fabrication workspace established.</p>
-                </div>
-              </div>
-              <div class="timeline-item reveal">
-                <div class="timeline-marker milestone"><i class="fas fa-flag"></i></div>
-                <div class="timeline-content">
-                  <div class="timeline-date">Aug 2025</div>
-                  <h4>HackerFab IITB Founded</h4>
-                  <p>The beginning of our journey to democratize fabrication.</p>
-                </div>
-              </div>
-            </div>
-            <div class="timeline-legend reveal">
-              <span><i class="fas fa-microchip technical"></i> Technical</span>
-              <span><i class="fas fa-microphone event"></i> Events</span>
-              <span><i class="fas fa-users community"></i> Community</span>
-              <span><i class="fas fa-flag milestone"></i> Milestone</span>
-            </div>
-          </div>
-          <!-- /.timeline-left -->
+                <div class="timeline-layout">
+                    <!-- LEFT: timeline items, left-aligned -->
+                    <div class="timeline-left">
+                        <div class="timeline">
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker community"><i class="fas fa-book"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Jul 2026</div>
+                                    <h4>HackerFab Documentation Live</h4>
+                                    <p>
+                                        Published open-source build guides and resources on GitBook for teams starting
+                                        their own fabs.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker community"><i class="fas fa-users"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">May 2026</div>
+                                    <h4>Community Reached 1000 Members</h4>
+                                    <p>The HackerFab India community reached a 1000 members!.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker technical"><i class="fas fa-layer-group"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Apr 2026</div>
+                                    <h4>First Full Sputtered Patterns — Presented at EDL</h4>
+                                    <p>
+                                        Deposited sputtered patterns combining our lithography and sputter tools, and
+                                        presented this work at EDL.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker technical"><i class="fas fa-fire"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Mar 2026</div>
+                                    <h4>First Oxide Growth on Tube Furnace</h4>
+                                    <p>Captured our first oxide growth using the tube furnace.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker community"><i class="fas fa-door-open"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Feb 2026</div>
+                                    <h4>Lab Open Day</h4>
+				    A
+                                    <p>We held a lab open day to showcase our work to students and faculty from various colleges and well as a plethora of people interested in semiconductor engineering. </p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker event"><i class="fas fa-trophy"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Jan 2026</div>
+                                    <h4>&#127942; Won Best Project Presentation at VLSID</h4>
+                                    <p>
+                                        Presented HackerFab IITB at VLSI Design 2026 (VLSID) and won Best Project
+                                        Presentation
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker technical"><i class="fas fa-atom"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Date TBD</div>
+                                    <h4>Built Our Own Sputter System</h4>
+                                    <p>Successfully built our in-house sputter system and deposited aluminium.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker technical"><i class="fas fa-microchip"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Dec 2025</div>
+                                    <h4>Patterns captured on Litho v1</h4>
+                                    <p>We captured our first micrometer scale patterns on Litho v1</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker community"><i class="fas fa-users"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Dec 2025</div>
+                                    <h4>Community Grew to 40+ Members</h4>
+                                    <p>
+                                        Expanded our outreach beyond IITB, growing to a 40 member strong community on
+                                        Discord
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker community"><i class="fas fa-users"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Oct 2025</div>
+                                    <h4>Community Grew to 50 Members</h4>
+                                    <p>Reached our first major community milestone.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker event"><i class="fas fa-microphone"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Sep 2025</div>
+                                    <h4>Presented at SemiX</h4>
+                                    <p>
+                                        Presented proof-of-concepts for spin coater and lithography machine. Part of the
+                                        panel discussion on "Advancing India's Semiconductor Ecosystem"
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker technical"><i class="fas fa-flask"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Sep 2025</div>
+                                    <h4>Lab Setup Complete</h4>
+                                    <p>First functional fabrication workspace established.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item reveal">
+                                <div class="timeline-marker milestone"><i class="fas fa-flag"></i></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">Aug 2025</div>
+                                    <h4>HackerFab IITB Founded</h4>
+                                    <p>The beginning of our journey to democratize fabrication.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-legend reveal">
+                            <span><i class="fas fa-microchip technical"></i> Technical</span>
+                            <span><i class="fas fa-microphone event"></i> Events</span>
+                            <span><i class="fas fa-users community"></i> Community</span>
+                            <span><i class="fas fa-flag milestone"></i> Milestone</span>
+                        </div>
+                    </div>
+                    <!-- /.timeline-left -->
 
           <!-- RIGHT: rolling image collage -->
-          <!-- RIGHT: rolling image collage — dual shifted columns -->
-          <div class="timeline-collage">
-            <div class="timeline-collage-inner">
-              <!-- Column A — scrolls down -->
-              <div class="timeline-collage-track col-a">
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (1).jpeg" alt="Photo 1" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (2).jpeg" alt="Photo 2" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (3).jpeg" alt="Photo 3" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (4).jpeg" alt="Photo 4" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (5).jpeg" alt="Photo 5" />
-                </div>
-                <!-- duplicate for seamless loop -->
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (1).jpeg" alt="Photo 1" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (2).jpeg" alt="Photo 2" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (3).jpeg" alt="Photo 3" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (4).jpeg" alt="Photo 4" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (5).jpeg" alt="Photo 5" />
-                </div>
-              </div>
-              <!-- Column B — scrolls up, offset start -->
-              <div class="timeline-collage-track col-b">
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (6).jpeg" alt="Photo 6" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (7).jpeg" alt="Photo 7" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (8).jpeg" alt="Photo 8" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (9).jpeg" alt="Photo 9" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (6).jpeg" alt="Photo 6" />
-                </div>
-                <!-- duplicate for seamless loop -->
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (7).jpeg" alt="Photo 7" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (8).jpeg" alt="Photo 8" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (9).jpeg" alt="Photo 9" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (6).jpeg" alt="Photo 6" />
-                </div>
-                <div class="tc-item">
-                  <img src="Images/RandomPhotos/stuff (7).jpeg" alt="Photo 7" />
-                </div>
-              </div>
+<!-- RIGHT: rolling image collage — dual shifted columns -->
+<div class="timeline-collage">
+  <div class="timeline-collage-inner">
+    <!-- Column A — scrolls down -->
+    <div class="timeline-collage-track col-a">
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (1).jpeg" alt="Photo 1"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (2).jpeg" alt="Photo 2"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (3).jpeg" alt="Photo 3"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (4).jpeg" alt="Photo 4"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (5).jpeg" alt="Photo 5"></div>
+      <div class="tc-item"><img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth"></div>
+      <!-- duplicate for seamless loop -->
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (1).jpeg" alt="Photo 1"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (2).jpeg" alt="Photo 2"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (3).jpeg" alt="Photo 3"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (4).jpeg" alt="Photo 4"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (5).jpeg" alt="Photo 5"></div>
+      <div class="tc-item"><img src="Images/TeamPhotos/SemiX_Booth.jpg" alt="SemiX Booth"></div>
+    </div>
+    <!-- Column B — scrolls up, offset start -->
+    <div class="timeline-collage-track col-b">
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (6).jpeg" alt="Photo 6"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (7).jpeg" alt="Photo 7"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (8).jpeg" alt="Photo 8"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (9).jpeg" alt="Photo 9"></div>
+      <div class="tc-item"><img src="Images/Goals/Litho.jpeg" alt="Lithography setup"></div>
+      <!-- duplicate for seamless loop -->
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (6).jpeg" alt="Photo 6"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (7).jpeg" alt="Photo 7"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (8).jpeg" alt="Photo 8"></div>
+      <div class="tc-item"><img src="Images/RandomPhotos/stuff (9).jpeg" alt="Photo 9"></div>
+      <div class="tc-item"><img src="Images/Goals/Litho.jpeg" alt="Lithography setup"></div>
+    </div>
+  </div>
+</div>
+
+        </div><!-- /.timeline-layout -->
+    </div>
+</section>
+
+        <!-- TEAM -->
+        <section id="page-team" class="page">
+            <div class="page-inner">
+                <div class="col-rule left"></div>
+                <div class="col-rule right"></div>
+                <h2 class="reveal">Our Team</h2>
+                <h3 class="team-category reveal">Core Members</h3>
+                <div class="team-grid">
+                    <a
+                        href="https://www.linkedin.com/in/aryamman-bhatia-2818b1280/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/Aryamman.jpg" alt="Aryamman" />
+                        <h4>Aryamman Bhatia</h4></a
+                    >
+                    <a
+                        href="https://www.linkedin.com/in/abhineet-agarwal/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/Abhineet.jpg" alt="Abhineet Agarwal" />
+                        <h4>Abhineet Agarwal</h4></a
+                    >
+
+                    <a
+                        href="https://www.linkedin.com/in/suchet-gopal/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/Suchet.jpg" alt="Suchet Gopal" />
+                        <h4>Suchet Gopal</h4></a
+                    >
+                    <a
+                        href="https://www.linkedin.com/in/devavrat-patni/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/Devavrat.png" alt="Devavrat Patni" />
+                        <h4>Devavrat Patni</h4></a
+                    >
+                    <a
+                        href="https://www.linkedin.com/in/akshat-kushwah-06074b282/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/Akshat.jpeg" alt="Akshat K." />
+                        <h4>Akshat K.</h4></a
+                    >
+                    <a
+                        href="https://www.linkedin.com/in/abhineet-avhad/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/AbhineetAvhad.jpeg" alt="Abhineet Avhad" />
+                        <h4>Abhineet Avhad</h4></a
+                    >
+                    <a
+                        href="https://www.linkedin.com/in/rushatdixit/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/Rushat.jpeg" alt="Rushat Dixit" />
+                        <h4>Rushat Dixit</h4></a
+                    >
+                    <a href="https://linkedin.com/in/jai-bellare" class="member-card reveal" target="_blank"
+                        ><img src="Images/TeamPhotos/Jai.jpeg" alt="Jai Bellare" />
+                        <h4>Jai Bellare</h4></a
+                    >
+   
+                    <a href="https://www.linkedin.com/in/shridp/" class="member-card reveal" target="_blank"
+                        ><img src="Images/TeamPhotos/shridhar.jpg" alt="Shridhar Patil" />
+                        <h4>Shridhar Patil</h4></a
+                    >
+                    <a href="https://www.linkedin.com/in/supriya-mishra-5a0673325/" class="member-card reveal" target="_blank"
+                        ><img src="Images/TeamPhotos/supriya.jpg" alt="Supriya Mishra" />
+                        <h4>Supriya Mishra</h4></a
+                    >
+                    <a href="https://www.linkedin.com/in/pooshan-konakalla-983093376/" class="member-card reveal" target="_blank"
+                        ><img src="Images/TeamPhotos/pooshan.jpg" alt="Lakshmi Pooshan Konakalla" />
+                        <h4>Lakshmi Pooshan Konakalla</h4></a
+                    >
+                    <a href="https://www.linkedin.com/in/yogesh-jangid-327820325/" class="member-card reveal" target="_blank"
+                        ><img src="Images/TeamPhotos/Yogesh.jpeg" alt="Yogesh Jangid" />
+                        <h4>Yogesh Jangid</h4></a
+                    >
+                    <a href="https://www.linkedin.com/in/deepika-kale-0a95a7327/" class="member-card reveal" target="_blank"
+                        ><img src="Images/TeamPhotos/deepika.png" alt="Deepika Kale" />
+                        <h4>Deepika Kale</h4></a
+                    >
+                                        <a
+                        href="https://www.linkedin.com/in/aryan-vyapari-67289931b/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/aryan.jpeg" alt="Aryan Vyapari" />
+                        <h4>Aryan Vyapari</h4></a
+                    >
             </div>
-          </div>
-        </div>
-        <!-- /.timeline-layout -->
-      </div>
-    </section>
+                                <h3 class="team-category reveal">Alumni</h3>
+                <div class="team-grid">
+                    <a
+                        href="https://www.linkedin.com/in/kartik-u-chikkanagoudar-082267224/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/Kartik.png" alt="Kartik U.C" />
+                        <h4>Kartik U.C</h4></a
+                    >
+                </div>
 
-    <!-- TEAM -->
-    <section id="page-team" class="page">
-      <div class="page-inner">
-        <div class="col-rule left"></div>
-        <div class="col-rule right"></div>
-        <h2 class="reveal">Our Team</h2>
-        <h3 class="team-category reveal">Core Members</h3>
-        <div class="team-grid">
-          <a
-            href="https://www.linkedin.com/in/aryamman-bhatia-2818b1280/"
-            class="member-card reveal magnetic"
-            target="_blank"
-            ><img src="Images/TeamPhotos/Aryamman.jpg" alt="Aryamman" />
-            <h4>Aryamman Bhatia</h4></a
-          >
-          <a href="https://www.linkedin.com/in/abhineet-agarwal/" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/Abhineet.jpg" alt="Abhineet Agarwal" />
-            <h4>Abhineet Agarwal</h4></a
-          >
-          <a
-            href="https://www.linkedin.com/in/kartik-u-chikkanagoudar-082267224/"
-            class="member-card reveal magnetic"
-            target="_blank"
-            ><img src="Images/TeamPhotos/Kartik.png" alt="Kartik U.C" />
-            <h4>Kartik U.C</h4></a
-          >
-          <a
-            href="https://www.linkedin.com/in/shaashvat-sekhar-b903a629b/"
-            class="member-card reveal magnetic"
-            target="_blank"
-            ><img src="Images/TeamPhotos/Shaashvat.jpg" alt="Shaashvat Sekhar" />
-            <h4>Shaashvat Sekhar</h4></a
-          >
-          <a href="https://www.linkedin.com/in/suchet-gopal/" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/Suchet.jpg" alt="Suchet Gopal" />
-            <h4>Suchet Gopal</h4></a
-          >
-          <a href="https://www.linkedin.com/in/devavrat-patni/" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/Devavrat.png" alt="Devavrat Patni" />
-            <h4>Devavrat Patni</h4></a
-          >
-          <a
-            href="https://www.linkedin.com/in/akshat-kushwah-06074b282/"
-            class="member-card reveal magnetic"
-            target="_blank"
-            ><img src="Images/TeamPhotos/Akshat.jpeg" alt="Akshat K." />
-            <h4>Akshat K.</h4></a
-          >
-          <a href="https://www.linkedin.com/in/abhineet-avhad/" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/AbhineetAvhad.jpeg" alt="Abhineet Avhad" />
-            <h4>Abhineet Avhad</h4></a
-          >
-          <a href="https://www.linkedin.com/in/rushatdixit/" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/Rushat.jpeg" alt="Rushat Dixit" />
-            <h4>Rushat Dixit</h4></a
-          >
-          <a href="https://linkedin.com/in/jai-bellare" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/Jai.jpeg" alt="Jai Bellare" />
-            <h4>Jai Bellare</h4></a
-          >
+                
+                <h3 class="team-category reveal">Faculty Advisors</h3>
+                <div class="team-grid advisors">
+                    <a
+                        href="https://www.ee.iitb.ac.in/web/people/veeresh-deshpande/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/VeereshDeshpande.jpg" alt="Veeresh Deshpande" />
+                        <h4>Veeresh Deshpande</h4></a
+                    >
+                    <a
+                        href="https://www.ee.iitb.ac.in/web/people/udayan-ganguly/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/UdayanGanguly.jpg" alt="Udayan Ganguly" />
+                        <h4>Udayan Ganguly</h4></a
+                    >
+                    <a
+                        href="https://www.ee.iitb.ac.in/web/people/anil-kottantharayil/"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/Anil.jpg" alt="Anil Kottantharayil" />
+                        <h4>Anil Kottantharayil</h4></a
+                    >
+                    <a
+                        href="https://www.ee.iitb.ac.in/wiki/faculty/sganguly"
+                        class="member-card reveal"
+                        target="_blank"
+                        ><img src="Images/TeamPhotos/SwaroopGanguly.jpg" alt="Swaroop Ganguly" />
+                        <h4>Swaroop Ganguly</h4></a
+                    >
+                </div>
 
-          <a href="http:shridhar" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/shridhar.jpg" alt="Shridhar Patil" />
-            <h4>Shridhar Patil</h4></a
-          >
-          <a href="http:supriya" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/supriya.jpg" alt="Supriya Mishra" />
-            <h4>Supriya Mishra</h4></a
-          >
-          <a href="http:pooshan" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/pooshan.jpg" alt="Lakshmi Pooshan Konakalla" />
-            <h4>Lakshmi Pooshan Konakalla</h4></a
-          >
-          <a href="http:yogesh" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/yogesh.jpeg" alt="Yogesh Sawant" />
-            <h4>Yogesh Sawant</h4></a
-          >
-        </div>
-        <h3 class="team-category reveal">Faculty Advisors</h3>
-        <div class="team-grid advisors">
-          <a
-            href="https://www.ee.iitb.ac.in/web/people/veeresh-deshpande/"
-            class="member-card reveal magnetic"
-            target="_blank"
-            ><img src="Images/TeamPhotos/VeereshDeshpande.jpg" alt="Veeresh Deshpande" />
-            <h4>Veeresh Deshpande</h4></a
-          >
-          <a
-            href="https://www.ee.iitb.ac.in/web/people/udayan-ganguly/"
-            class="member-card reveal magnetic"
-            target="_blank"
-            ><img src="Images/TeamPhotos/UdayanGanguly.jpg" alt="Udayan Ganguly" />
-            <h4>Udayan Ganguly</h4></a
-          >
-          <a
-            href="https://www.ee.iitb.ac.in/web/people/anil-kottantharayil/"
-            class="member-card reveal magnetic"
-            target="_blank"
-            ><img src="Images/TeamPhotos/Anil.jpg" alt="Anil Kottantharayil" />
-            <h4>Anil Kottantharayil</h4></a
-          >
-          <a href="https://www.ee.iitb.ac.in/wiki/faculty/sganguly" class="member-card reveal magnetic" target="_blank"
-            ><img src="Images/TeamPhotos/SwaroopGanguly.jpg" alt="Swaroop Ganguly" />
-            <h4>Swaroop Ganguly</h4></a
-          >
-        </div>
+                <!-- ── SUPPORTERS & PARTNERS ── -->
+                <div class="supporters-section">
+                    <h3 class="team-category reveal">Supporters</h3>
+                    <div class="supporters-grid">
+                        <a
+                            href="https://semix.in"
+                            class="supporter-card reveal magnetic"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                        <div class="supporter-monogram"> <img src="Images/Sponsor/semix.jpg" alt="SemiX logo" /> </div>                            
+                        <span class="supporter-name">SemiX</span>
+                        </a>
 
-        <!-- ── SUPPORTERS & PARTNERS ── -->
-        <div class="supporters-section">
-          <h3 class="team-category reveal">Supporters &amp; Partners</h3>
-          <div class="supporters-grid">
-            <a href="https://semix.in" class="supporter-card reveal magnetic" target="_blank" rel="noopener">
-              <div class="supporter-monogram">SX</div>
-              <span class="supporter-name">SemiX</span>
-            </a>
+                        <a
+                            href="https://www.mercatus.org/emergent-ventures"
+                            class="supporter-card reveal magnetic"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                        <div class="supporter-monogram"> <img src="Images/Sponsor/ev.png" alt="Emergent Ventures logo" /> </div>                            
+                            <span class="supporter-name">Emergent<br />Ventures</span>
+                        </a>
 
-            <a
-              href="https://www.mercatus.org/emergent-ventures"
-              class="supporter-card reveal magnetic"
-              target="_blank"
-              rel="noopener"
-            >
-              <div class="supporter-monogram">EV</div>
-              <span class="supporter-name">Emergent<br />Ventures</span>
-            </a>
+                        <a
+                            href="https://cgsemi.com"
+                            class="supporter-card reveal magnetic"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                        <div class="supporter-monogram"> <img src="Images/Sponsor/cg.jpg" alt="CGSemi logo" /> </div>                            
+                            <span class="supporter-name">CGSemi</span>
+                        </a>
 
-            <a href="https://cgsemi.com" class="supporter-card reveal magnetic" target="_blank" rel="noopener">
-              <div class="supporter-monogram">CG</div>
-              <span class="supporter-name">CGSemi</span>
-            </a>
+                        <a
+                            href="https://gradcapital.in"
+                            class="supporter-card reveal magnetic"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                        <div class="supporter-monogram"> <img src="Images/Sponsor/gc.jpg" alt="Grad Capital logo" /> </div>                            
+                            <span class="supporter-name">Grad<br />Capital</span>
+                        </a>
 
-            <a href="https://gradcapital.in" class="supporter-card reveal magnetic" target="_blank" rel="noopener">
-              <div class="supporter-monogram">GC</div>
-              <span class="supporter-name">Grad<br />Capital</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+                        <a
+                            href="#"
+                            class="supporter-card reveal magnetic"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                        <div class="supporter-monogram"> <img src="Images/Sponsor/drf.jpg" alt="DRF logo" /> </div>                            
+                            <span class="supporter-name">IITB Alumni<br />Fund</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- CONTACT -->
-    <section id="page-contact" class="page">
-      <div class="page-inner">
-        <div class="col-rule left"></div>
-        <div class="col-rule right"></div>
-        <h2 class="reveal">Contact Us</h2>
-        <div class="contact-content">
-          <div class="contact-info reveal">
-            <p><i class="fas fa-map-marker-alt"></i> IIT Bombay, Powai, Mumbai - 400076</p>
-            <p><i class="fas fa-phone"></i> +91 79779 94553</p>
-            <p><i class="fas fa-envelope"></i> hackerfabiitb@gmail.com</p>
-          </div>
-          <div class="join-us reveal">
-            <a href="mailto:hackerfabiitb@gmail.com?subject=Application%20to%20Join" class="join-link">
-              Students at IITB: To join us, drop us a mail and join our Discord!
-            </a>
-          </div>
-          <div class="social-icons reveal">
-            <a href="mailto:hackerfabiitb@gmail.com" class="magnetic"><i class="fas fa-envelope"></i></a>
-            <a href="https://discord.gg/FNUgVRxmef" target="_blank" class="magnetic"><i class="fab fa-discord"></i></a>
-            <a href="https://x.com/hackerfabindia" target="_blank" class="magnetic"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://github.com/hackerfabiitb" target="_blank" class="magnetic"
-              ><i class="fab fa-github"></i
-            ></a>
-            <a
-              href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all"
-              target="_blank"
-              class="magnetic"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-            <a href="https://www.instagram.com/hackerfabiitb/" target="_blank" class="magnetic"
-              ><i class="fab fa-instagram"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-      <footer>
-        <div class="footer-content">
-          <div class="footer-logo">HackerFab</div>
-          <div class="footer-links">
-            <a href="#" data-page="home">Home</a>
-            <a href="#" data-page="tools">Tools</a>
-            <a href="#" data-page="philosophy">Philosophy</a>
-            <a href="#" data-page="about">About</a>
-            <a href="#" data-page="goals">Goals</a>
-            <a href="#" data-page="team">Team</a>
-            <a href="#" data-page="contact">Contact</a>
-          </div>
-          <p class="copyright">
-            &copy; 2025 HackerFab, IIT Bombay. All rights reserved. &nbsp;|&nbsp;
-            <span id="footer-secret" style="cursor: none; opacity: 0.4" title="try the konami code"
-              >up up down down left right left right B A</span
-            >
-          </p>
-        </div>
-      </footer>
-    </section>
+        <!-- START YOUR OWN HACKERFAB -->
+        <section id="page-start" class="page">
+            <div class="page-inner start-page-inner">
+                <div class="col-rule left"></div>
+                <div class="col-rule right"></div>
+                <h2 class="reveal">Start Your Own HackerFab</h2>
+                <p class="start-intro reveal">
+                    Bring open-source semiconductor fabrication to your campus. This page will walk you through getting
+                    started — content and resources are being added.
+                </p>
+
+                <div class="start-cta reveal">
+                    <a
+                        href="https://hackerfabiitb.gitbook.io/docs"
+                        class="docs-btn ripple-container magnetic"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <i class="fas fa-book"></i> <span>Read the Documentation</span>
+                    </a>
+                    <a
+                        href="Start_your_HackerFab_compressed.pdf"
+                        class="docs-btn ripple-container magnetic"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <i class="fas fa-file-pdf"></i> <span>Start Your HackerFab Guide</span>
+                    </a>
+                    <a
+                        href="https://youtu.be/McIU-L6DveY"
+                        class="docs-btn ripple-container magnetic"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <i class="fab fa-youtube"></i> <span>Watch on YouTube</span>
+                    </a>
+                    <a href="mailto:hackerfabiitb@gmail.com" class="start-btn ripple-container magnetic">
+                        <i class="fas fa-envelope"></i> <span>Get in Touch</span>
+                    </a>
+                    <a
+                        href="https://discord.gg/FNUgVRxmef"
+                        class="discord-btn ripple-container magnetic"
+                        target="_blank"
+                    >
+                        <i class="fab fa-discord"></i> <span>Join Our Discord</span>
+                    </a>
+                </div>
+
+                <div class="start-steps reveal">
+                    <h3 class="start-steps-heading"><i class="fas fa-list-ol"></i> Roadmap</h3>
+                    <ol class="start-steps-list">
+                        <li class="reveal"><span>01</span> Read the HackerFab documentation and pick a first tool to build.</li>
+                        <li class="reveal"><span>02</span> Find faculty advisors and secure lab or workshop space on campus.</li>
+                        <li class="reveal"><span>03</span> Recruit a core team of builders — hardware, software, and ops.</li>
+                        <li class="reveal"><span>04</span> Join our Discord and reach out to existing chapters for guidance.</li>
+                        <li class="reveal"><span>05</span> Document your build and contribute back to the open-source network.</li>
+                    </ol>
+                </div>
+
+                <!-- ── CONTACT (folded in from the old standalone Contact page) ── -->
+                <div class="supporters-section">
+                    <h3 class="team-category reveal">Get in Touch</h3>
+                    <div class="contact-content">
+                        <div class="contact-info reveal">
+                            <p><i class="fas fa-map-marker-alt"></i> IIT Bombay, Powai, Mumbai - 400076</p>
+                            <p><i class="fas fa-phone"></i> +91 79779 94553</p>
+                            <p><i class="fas fa-phone"></i> +91 70586 12978</p>
+                            <p><i class="fas fa-phone"></i> +91 99690 12868</p>
+                            <p><i class="fas fa-envelope"></i> hackerfabiitb@gmail.com</p>
+                        </div>
+                        <div class="join-us reveal">
+                            <a href="mailto:hackerfabiitb@gmail.com?subject=Application%20to%20Join" class="join-link">
+                                Students at IITB: To join us, drop us a mail and join our Discord!
+                            </a>
+                        </div>
+                        <div class="social-icons reveal">
+                            <a href="mailto:hackerfabiitb@gmail.com" class="magnetic"><i class="fas fa-envelope"></i></a>
+                            <a href="https://discord.gg/FNUgVRxmef" target="_blank" class="magnetic"
+                                ><i class="fab fa-discord"></i
+                            ></a>
+                            <a href="https://x.com/hackerfabindia" target="_blank" class="magnetic"
+                                ><i class="fab fa-x-twitter"></i
+                            ></a>
+                            <a href="https://github.com/hackerfabiitb" target="_blank" class="magnetic"
+                                ><i class="fab fa-github"></i
+                            ></a>
+                            <a
+                                href="https://www.linkedin.com/company/hackerfab-iitb/posts/?feedView=all"
+                                target="_blank"
+                                class="magnetic"
+                                ><i class="fab fa-linkedin"></i
+                            ></a>
+                            <a href="https://www.instagram.com/hackerfabiitb/" target="_blank" class="magnetic"
+                                ><i class="fab fa-instagram"></i
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="footer-content">
+                    <div class="footer-logo">HackerFab</div>
+                    <div class="footer-links">
+                        <a href="#" data-page="home">Home</a>
+                        <a href="#" data-page="about">About</a>
+                        <a href="#" data-page="timeline">Journey</a>
+                        <a href="#" data-page="team">Team</a>
+                        <a href="#" data-page="start">Start your own HackerFab</a>
+                    </div>
+                    <p class="copyright">
+                        &copy; 2025 HackerFab, IIT Bombay. All rights reserved. &nbsp;|&nbsp;
+                        <span id="footer-secret" style="cursor:none;opacity:0.4;" title="try the konami code"
+                            >up up down down left right left right B A</span
+                        >
+                    </p>
+                </div>
+            </footer>
+        </section>
 
     <!-- APPLY MODAL -->
     <div id="applyModal" class="modal">
@@ -1141,20 +1275,18 @@
         btn.addEventListener('mouseleave', () => cursor.classList.remove('on-red-btn'));
       });
 
-      // ═══════════════════════════════════════════════
-      // MAGNETIC BUTTONS
-      // ═══════════════════════════════════════════════
-      document.querySelectorAll('.magnetic').forEach((el) => {
-        el.addEventListener('mousemove', (e) => {
-          const rect = el.getBoundingClientRect();
-          const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.25;
-          const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.25;
-          el.style.transform = `translate(${dx}px, ${dy}px)`;
-        });
-        el.addEventListener('mouseleave', () => {
-          el.style.transform = '';
-        });
-      });
+            // ═══════════════════════════════════════════════
+            // MAGNETIC BUTTONS
+            // ═══════════════════════════════════════════════
+            document.querySelectorAll('.magnetic:not(.member-card)').forEach(el => {
+                el.addEventListener('mousemove', e => {
+                    const rect = el.getBoundingClientRect();
+                    const dx = (e.clientX - (rect.left + rect.width  / 2)) * 0.25;
+                    const dy = (e.clientY - (rect.top  + rect.height / 2)) * 0.25;
+                    el.style.transform = `translate(${dx}px, ${dy}px)`;
+                });
+                el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+            });
 
       // ═══════════════════════════════════════════════
       // RIPPLE
@@ -1176,53 +1308,49 @@
       // ═══════════════════════════════════════════════
       let transitioning = false;
 
-      function showPage(pageId) {
-        if (transitioning) return;
-        const current = document.querySelector('.page.active');
-        const next = document.getElementById('page-' + pageId);
-        if (!next || current === next) return;
-        transitioning = true;
-        current.classList.add('leaving');
-        setTimeout(() => {
-          current.classList.remove('active', 'leaving', 'visible');
-          next.scrollTop = 0;
-          next.classList.add('active');
-          requestAnimationFrame(() =>
-            requestAnimationFrame(() => {
-              next.classList.add('visible');
-              transitioning = false;
-              setTimeout(triggerReveals, 80);
-            })
-          );
-        }, 240);
-        document.querySelectorAll('.nav-link').forEach((a) => a.classList.remove('active'));
-        document.querySelectorAll('.nav-link[data-page="' + pageId + '"]').forEach((a) => a.classList.add('active'));
-        history.replaceState(null, '', '#' + pageId);
-        document.getElementById('navLinks').classList.remove('active');
-        toastOnFirstVisit(pageId);
-      }
+            function showPage(pageId) {
+                if (transitioning) return;
+                const current = document.querySelector('.page.active');
+                const next    = document.getElementById('page-' + pageId);
+                if (!next || current === next) return;
+                transitioning = true;
+                current.classList.add('leaving');
+                setTimeout(() => {
+                    current.classList.remove('active', 'leaving', 'visible');
+                    next.scrollTop = 0;
+                    next.classList.add('active');
+                    requestAnimationFrame(() => requestAnimationFrame(() => {
+                        next.classList.add('visible');
+                        transitioning = false;
+                        setTimeout(triggerReveals, 80);
+                    }));
+                }, 240);
+                document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+                document.querySelectorAll('.nav-link[data-page="' + pageId + '"]').forEach(a => a.classList.add('active'));
+                history.replaceState(null, '', '#' + pageId);
+                document.getElementById('navLinks').classList.remove('active');
+                toastOnFirstVisit(pageId);
+                if (pageId === 'timeline') setTimeout(initTimelineCollage, 150);
+            }
 
       document.querySelector('.page.active').classList.add('visible');
       setTimeout(triggerReveals, 200);
 
-      document.getElementById('navbar').addEventListener('mouseenter', () => (cursor.style.background = '#fff'));
-      document.getElementById('navbar').addEventListener('mouseleave', () => (cursor.style.background = ''));
-      document.querySelectorAll('.nav-link').forEach((l) => {
-        l.addEventListener('click', (e) => {
-          e.preventDefault();
-          showPage(l.dataset.page);
-        });
-      });
-      document.querySelectorAll('.footer-links a[data-page]').forEach((l) => {
-        l.addEventListener('click', (e) => {
-          e.preventDefault();
-          showPage(l.dataset.page);
-        });
-      });
-      document.getElementById('navLogoBtn').addEventListener('click', () => showPage('home'));
+            document.getElementById('navbar').addEventListener('mouseenter', () => cursor.style.background = '#fff');
+            document.getElementById('navbar').addEventListener('mouseleave', () => cursor.style.background = '');
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.addEventListener('click', e => { e.preventDefault(); showPage(l.dataset.page); });
+            });
+            document.querySelectorAll('[data-page]:not(.nav-link)').forEach(el => {
+                el.addEventListener('click', e => {
+                    e.preventDefault();
+                    showPage(el.dataset.page);
+                });
+            });
 
-      const hash = window.location.hash.replace('#', '');
-      if (['tools', 'philosophy', 'about', 'goals', 'timeline', 'team', 'contact'].includes(hash)) showPage(hash);
+            const hash = window.location.hash.replace('#', '');
+            if (hash === 'goals') showPage('about');
+            else if (['about', 'timeline', 'team', 'start'].includes(hash)) showPage(hash);
 
       // ═══════════════════════════════════════════════
       // SCROLL REVEAL
@@ -1338,31 +1466,30 @@
         }, 22);
       }
 
-      // ═══════════════════════════════════════════════
-      // TOAST NOTIFICATIONS
-      // ═══════════════════════════════════════════════
-      const visitedPages = new Set();
-      const pageToasts = {
-        about: '👀 Stalking us? We appreciate it.',
-        goals: '🔬 1um and counting...',
-        timeline: '📅 We move fast for undergrads.',
-        team: '⚡ These are the chip people.',
-        contact: "📡 Ping us. We don't bite.",
-      };
-      function toastOnFirstVisit(page) {
-        if (!visitedPages.has(page) && pageToasts[page]) {
-          visitedPages.add(page);
-          setTimeout(() => showToast(pageToasts[page]), 600);
-        }
-      }
-      function showToast(msg) {
-        const t = document.createElement('div');
-        t.className = 'toast';
-        t.textContent = msg;
-        document.getElementById('toast-container').appendChild(t);
-        setTimeout(() => t.remove(), 3200);
-      }
-      setTimeout(() => showToast('👋 Welcome to HackerFab IITB. Try clicking things.'), 1500);
+            // ═══════════════════════════════════════════════
+            // TOAST NOTIFICATIONS
+            // ═══════════════════════════════════════════════
+            const visitedPages = new Set();
+            const pageToasts = {
+                about:    '👀 Stalking us? We appreciate it.',
+                timeline: '📅 We move fast for undergrads.',
+                team:     '⚡ These are the chip people.',
+                start:    '🌱 Ready to build your own fab?'
+            };
+            function toastOnFirstVisit(page) {
+                if (!visitedPages.has(page) && pageToasts[page]) {
+                    visitedPages.add(page);
+                    setTimeout(() => showToast(pageToasts[page]), 600);
+                }
+            }
+            function showToast(msg) {
+                const t = document.createElement('div');
+                t.className = 'toast';
+                t.textContent = msg;
+                document.getElementById('toast-container').appendChild(t);
+                setTimeout(() => t.remove(), 3200);
+            }
+            setTimeout(() => showToast('👋 Welcome to HackerFab IITB. Try clicking things.'), 1500);
 
       // ═══════════════════════════════════════════════
       // SECRET KEY COMBOS (easter egg)
@@ -1417,31 +1544,48 @@
         showPage('home');
       });
 
-      // ═══════════════════════════════════════════════
-      // MEMBER CARD COMPLIMENTS (easter egg)
-      // ═══════════════════════════════════════════════
-      document.querySelectorAll('.collage-item').forEach((card) => {
-        card.addEventListener('click', () => {
-          card.classList.toggle('flipped');
-        });
-      });
+            // ═══════════════════════════════════════════════
+            // MEMBER CARD COMPLIMENTS (easter egg)
+            // ═══════════════════════════════════════════════
+            document.querySelectorAll('.collage-item').forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('flipped');
+                });
+            });
 
-      const memberCompliments = {
-        'Aryamman Bhatia': 'Darwin',
-        'Abhineet Agarwal': 'Chutzpah',
-        'Kartik U.C': 'Hackerboss',
-        'Shaashvat Sekhar': 'Punekar',
-        'Suchet Gopal': 'Goblin',
-        'Devavrat Patni': 'Gamer',
-        'Akshat K.': 'Pseudo-mech',
-        'Abhineet Avhad': '9tea7',
-        'Rushat Dixit': 'Influencer',
-        'Jai Bellare': 'Zeiss',
-        'Shridhar Patil': 'QCboi',
-        'Supriya Mishra': 'newbie',
-        'Lakshmi Pooshan Konakalla': 'newbie',
-        'Yogesh Sawant': 'newbie',
-      };
+            function initTimelineCollage() {
+                document.querySelectorAll('.timeline-collage-track').forEach(track => {
+                    const items = track.querySelectorAll('.tc-item');
+                    if (items.length < 2) return;
+                    const half = Math.floor(items.length / 2);
+                    let height = 0;
+                    for (let i = 0; i < half; i++) height += items[i].offsetHeight + 10;
+                    if (height > 0) {
+                        const duration = Math.max(24, Math.round(height / 18));
+                        track.style.setProperty('--tc-scroll-distance', `-${height}px`);
+                        track.style.animation = `tcScroll ${duration}s linear infinite${track.classList.contains('col-b') ? ' reverse' : ''}`;
+                    }
+                });
+            }
+            initTimelineCollage();
+            window.addEventListener('resize', initTimelineCollage);
+
+            const memberCompliments = {
+                'Aryamman Bhatia':             '',
+                'Abhineet Agarwal':            '',
+                'Kartik U.C':                  '',
+                'Suchet Gopal':                '',
+                'Devavrat Patni':              '',
+                'Akshat K.':                   '',
+                'Abhineet Avhad':              '',
+                'Rushat Dixit':                '',
+                'Jai Bellare':                 '',
+                'Shridhar Patil':              '',
+                'Supriya Mishra':              '',
+                'Lakshmi Pooshan Konakalla':   '',
+                'Yogesh Sawant':               '',
+                'Deepika Kale':                '',
+            };
 
       document
         .querySelectorAll('#page-team .team-grid:not(.advisors) .member-card:not(.member-card--open)')
