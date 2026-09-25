@@ -78,7 +78,12 @@ body::after {
 /* ── SCAN LINE OVERLAY ── */
 #scanlines {
     position: fixed;
-    inset: 0;
+    /* taller than the viewport by one loop (100px) so the stripes can be moved
+       with a GPU-composited transform instead of repainting background-position */
+    top: -100px;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 9998;
     pointer-events: none;
     background: repeating-linear-gradient(
@@ -89,14 +94,15 @@ body::after {
         rgba(0, 0, 0, 0.015) 4px
     );
     animation: scanMove 8s linear infinite;
+    will-change: transform;
     opacity: 0.4;
 }
 @keyframes scanMove {
     0% {
-        background-position: 0 0;
+        transform: translate3d(0, 0, 0);
     }
     100% {
-        background-position: 0 100px;
+        transform: translate3d(0, 100px, 0);
     }
 }
 
@@ -119,7 +125,7 @@ body::after {
         opacity 0.12s;
     mix-blend-mode: normal;
     opacity: 0;
-    will-change: left, top;
+    will-change: transform;
 }
 #cursor.hovering {
     width: 27px;
