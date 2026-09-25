@@ -16,8 +16,6 @@
             const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
             renderer.setClearColor(0x000000, 0);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
             const scene = new THREE.Scene();
             scene.background = null;
@@ -30,13 +28,15 @@
               camera.updateProjectionMatrix();
             }
             resize();
-            window.addEventListener('resize', resize);
+            let resizeTimer;
+            const onResize = () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 100); };
+            window.addEventListener('resize', onResize, { passive: true });
+            const homePage = document.getElementById('page-home');
 
             scene.add(new THREE.AmbientLight(0xb0b8d8, 0.6));
             const keyLight = new THREE.DirectionalLight(0xffffff, 0.55);
             keyLight.position.set(4, 12, 6);
-            keyLight.castShadow = true;
-            scene.add(keyLight);
+                        scene.add(keyLight);
             const rimLight = new THREE.DirectionalLight(0x8899cc, 0.35);
             rimLight.position.set(-6, 3, -4);
             scene.add(rimLight);
@@ -51,8 +51,7 @@
             const waferGeo = new THREE.CylinderGeometry(R, R, T, 128, 1);
             const waferMat = new THREE.MeshStandardMaterial({ color: 0x3d4a7a, metalness: 0.55, roughness: 0.30 });
             const wafer = new THREE.Mesh(waferGeo, waferMat);
-            wafer.receiveShadow = true; wafer.castShadow = true;
-            scene.add(wafer);
+                        scene.add(wafer);
 
             const topMat = new THREE.MeshStandardMaterial({ color: 0x4a5a9a, metalness: 0.45, roughness: 0.22 });
             const topDisc = new THREE.Mesh(new THREE.CircleGeometry(R - 0.025, 128), topMat);
@@ -145,13 +144,14 @@
             });
             const laserLocalPos = Array.from({length:N_LASERS},()=>new THREE.Vector3());
 
+            const _wt=new THREE.Vector3(), _wo=new THREE.Vector3(), _dir=new THREE.Vector3(), _up=new THREE.Vector3(0,1,0);
             function positionLaserBeam(li,localPt){
               laserLocalPos[li].copy(localPt);
-              const wt=wafer.localToWorld(localPt.clone());
-              const wo=new THREE.Vector3(wt.x,wt.y+3.8,wt.z);
+              const wt=wafer.localToWorld(_wt.copy(localPt));
+              const wo=_wo.set(wt.x,wt.y+3.8,wt.z);
               const lb=laserBeams[li];
-              lb.mesh.position.copy(wo.clone().lerp(wt,0.5));
-              lb.mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),wo.clone().sub(wt).normalize());
+              lb.mesh.position.copy(wo).lerp(wt,0.5);
+              lb.mesh.quaternion.setFromUnitVectors(_up,_dir.copy(wo).sub(wt).normalize());
               laserSpots[li].mesh.position.set(localPt.x,T/2+0.006,localPt.z);
             }
 
@@ -175,7 +175,7 @@
               });
             });
 
-            let t0=null,done=false,camX=0,camY=4.5,camZ=6.8;
+            let t0=null,done=false,finalBaked=false,camX=0,camY=4.5,camZ=6.8;
 
             function animateWafer(ts){
               if(!t0)t0=ts;
@@ -183,7 +183,7 @@
               if(t<PHASE_RISE[1]){const p=easeO(inv(t,...PHASE_RISE));wafer.position.y=lerp(-9,0,p);wafer.rotation.x=lerp(0.15,0.50,p);camY=lerp(5.5,4.5,p);camZ=lerp(5.0,6.8,p);}
               if(t>=PHASE_AIM[0]&&t<PHASE_AIM[1]){const p=easeIO(inv(t,...PHASE_AIM));wafer.rotation.x=0.50;LASER_PATHS.forEach((lp,li)=>{if(lp.length===0)return;positionLaserBeam(li,logoToLocal(lp[0][0][0],lp[0][0][1]));laserBeams[li].mat.opacity=easeO(p)*0.85;laserSpots[li].mat.opacity=0;laserLights[li].intensity=p*1.2;});}
               if(t>=PHASE_ETCH[0]&&t<PHASE_ETCH[1]){
-                const localT=t-PHASE_ETCH[0];const activeTips=[];
+                const localT=t-PHASE_ETCH[0];const activeTips=[];const onScreen=homePage?homePage.classList.contains('active'):true;
                 LASER_PATHS.forEach((lp,li)=>{
                   if(lp.length===0)return;
                   const tl=laserTimelines[li];
@@ -194,13 +194,20 @@
                   if(isJumping){laserBeams[li].mat.opacity=lerp(laserBeams[li].mat.opacity,0,0.4);laserSpots[li].mat.opacity=0;laserLights[li].intensity=lerp(laserLights[li].intensity,0,0.35);positionLaserBeam(li,logoToLocal(lp[pi][0][0],lp[pi][0][1]));}
                   else{const drawP=inv(localT,slot.tjump,slot.t1);const ptCount=lp[pi].length;const ptIdx=clamp(Math.floor(drawP*ptCount),0,ptCount-1);const activePt=logoToLocal(lp[pi][ptIdx][0],lp[pi][ptIdx][1]);positionLaserBeam(li,activePt);const flicker=0.85+Math.sin(t*23+li*2.1)*0.12;laserBeams[li].mat.opacity=flicker;laserBeams[li].mat.color.setHSL(0.03+Math.sin(t*8+li)*0.01,1,0.47+Math.sin(t*30+li)*0.06);laserSpots[li].mat.opacity=0.6+Math.sin(t*18+li*1.7)*0.3;laserLights[li].intensity=1.2+Math.sin(t*15+li*2.3)*0.5;laserLights[li].position.copy(wafer.localToWorld(laserLocalPos[li].clone()));activeTips.push({li,pts:lp[pi],prog:drawP});}
                 });
-                redrawEtchCanvas(activeTips);etchMat.opacity=Math.min(inv(t,...PHASE_ETCH)*2.0,1);camX=Math.sin(t*0.14)*0.15;camY=4.5;camZ=6.8;
+                if(onScreen)redrawEtchCanvas(activeTips);etchMat.opacity=Math.min(inv(t,...PHASE_ETCH)*2.0,1);camX=Math.sin(t*0.14)*0.15;camY=4.5;camZ=6.8;
               }
-              if(t>=PHASE_DOWN[0]&&t<PHASE_DOWN[1]){const p=easeIO(inv(t,...PHASE_DOWN));laserBeams.forEach(lb=>{lb.mat.opacity=lerp(lb.mat.opacity,0,p+0.05);});laserSpots.forEach(ls=>{ls.mat.opacity=lerp(ls.mat.opacity,0,p+0.05);});laserLights.forEach(ll=>{ll.intensity=lerp(ll.intensity,0,p+0.05);});wafer.rotation.x=lerp(0.50,0,p);camX=lerp(camX,0,0.08);camY=lerp(4.5,6.2,p);camZ=lerp(6.8,0.5,p);LASER_PATHS.forEach((lp,li)=>bakeLaserPaths(li,lp.length));ectx.clearRect(0,0,1024,1024);ectx.save();ectx.beginPath();ectx.arc(512,512,500,0,Math.PI*2);ectx.clip();ectx.drawImage(bgCanvas,0,0);ectx.restore();etchTex.needsUpdate=true;etchMat.opacity=1;}
-              if(t>=PHASE_FADE[0]){const p=easeIO(clamp((t-PHASE_FADE[0])/1.6,0,1));waferMat.transparent=true;waferMat.opacity=lerp(1,0,p);topMat.transparent=true;topMat.opacity=lerp(1,0,p);notchMat.transparent=true;notchMat.opacity=lerp(1,0,p);etchMat.opacity=lerp(1,0,p);laserBeams.forEach(lb=>{lb.mat.opacity=0;});laserSpots.forEach(ls=>{ls.mat.opacity=0;});if(logoEl)logoEl.style.opacity=p;camY=6.2;camZ=0.5;if(p>=1&&!done){done=true;canvas.style.transition='opacity 0.5s ease';canvas.style.opacity='0';}}
+              if(t>=PHASE_DOWN[0]&&t<PHASE_DOWN[1]){const p=easeIO(inv(t,...PHASE_DOWN));laserBeams.forEach(lb=>{lb.mat.opacity=lerp(lb.mat.opacity,0,p+0.05);});laserSpots.forEach(ls=>{ls.mat.opacity=lerp(ls.mat.opacity,0,p+0.05);});laserLights.forEach(ll=>{ll.intensity=lerp(ll.intensity,0,p+0.05);});wafer.rotation.x=lerp(0.50,0,p);camX=lerp(camX,0,0.08);camY=lerp(4.5,6.2,p);camZ=lerp(6.8,0.5,p);if(!finalBaked){finalBaked=true;LASER_PATHS.forEach((lp,li)=>bakeLaserPaths(li,lp.length));ectx.clearRect(0,0,1024,1024);ectx.save();ectx.beginPath();ectx.arc(512,512,500,0,Math.PI*2);ectx.clip();ectx.drawImage(bgCanvas,0,0);ectx.restore();etchTex.needsUpdate=true;}etchMat.opacity=1;}
+              if(t>=PHASE_FADE[0]){const p=easeIO(clamp((t-PHASE_FADE[0])/1.6,0,1));if(!waferMat.transparent){waferMat.transparent=topMat.transparent=notchMat.transparent=true;}waferMat.opacity=lerp(1,0,p);topMat.opacity=lerp(1,0,p);notchMat.opacity=lerp(1,0,p);etchMat.opacity=lerp(1,0,p);laserBeams.forEach(lb=>{lb.mat.opacity=0;});laserSpots.forEach(ls=>{ls.mat.opacity=0;});if(logoEl)logoEl.style.opacity=p;camY=6.2;camZ=0.5;if(p>=1&&!done){done=true;canvas.style.transition='opacity 0.5s ease';canvas.style.opacity='0';setTimeout(cleanup,600);}}
               if(t>=PHASE_RISE[1]&&t<PHASE_DOWN[1]){wafer.rotation.y=Math.sin(t*0.08)*0.04;}
-              camera.position.set(camX,camY,camZ);camera.lookAt(0,0,0);renderer.render(scene,camera);
+              camera.position.set(camX,camY,camZ);camera.lookAt(0,0,0);if(!homePage||homePage.classList.contains('active'))renderer.render(scene,camera);
               if(!done)requestAnimationFrame(animateWafer);
+            }
+
+            function cleanup(){
+              window.removeEventListener('resize', onResize);
+              scene.traverse(o=>{ if(o.geometry)o.geometry.dispose(); if(o.material){ if(o.material.map)o.material.map.dispose(); o.material.dispose(); } });
+              renderer.dispose();
+              if(renderer.forceContextLoss)renderer.forceContextLoss();
             }
 
             requestAnimationFrame(animateWafer);
